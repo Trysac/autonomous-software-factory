@@ -6,7 +6,7 @@
 <title>Autonomous Software Factory</title>
 <meta name="description" content="An autonomous software factory that designs, builds, tests, audits and documents production-grade open-source software overnight, with a human approving what gets built and reviewing every pull request.">
 <meta property="og:title" content="Autonomous Software Factory">
-<meta property="og:description" content="98 production-grade open-source utilities, 125,092 lines of code and tests, built in one overnight run.">
+<meta property="og:description" content="100 production-grade open-source utilities, 127,184 lines of code and tests, built in one overnight run.">
 <meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -72,7 +72,7 @@ h2 { font-size: clamp(26px, 3.4vw, 36px); letter-spacing: -0.02em; margin: 0 0 1
 .tag.plan { color: var(--warn); border-color: color-mix(in srgb, var(--warn) 40%, transparent); }
 .gates { display: flex; flex-wrap: wrap; gap: 8px; }
 .gates .tag { font-size: 13px; padding: 8px 10px; }
-.lines { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
+.lines { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
 @media (max-width: 960px) { .lines { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 520px) { .lines { grid-template-columns: 1fr; } }
 .line h3 { font-size: 16px; margin: 6px 0; }
@@ -116,7 +116,7 @@ footer { padding: 32px 0 48px; color: var(--muted); font-size: 13px; border-top:
     <h1>Software that ships <em>while you sleep</em>.</h1>
     <p class="lead">An autonomous software factory that designs, builds, tests, audits and documents production-grade software overnight. A human approves what gets built and reviews every pull request; the factory does the rest, within a hard budget, with every token, call and minute measured.</p>
     <div class="cta">
-      <a class="btn primary" href="#catalog">Browse the 98 utilities</a>
+      <a class="btn primary" href="#catalog">Browse the 100 utilities</a>
       <a class="btn" href="https://github.com/Trysac?tab=repositories&q=topic%3Aautonomous-software-factory">See them on GitHub</a>
       <a class="btn" href="#contact">Work with me</a>
     </div>
@@ -126,16 +126,16 @@ footer { padding: 32px 0 48px; color: var(--muted); font-size: 13px; border-top:
 <section id="results">
   <div class="wrap">
     <h2>First production run</h2>
-    <p class="sub">One batch of one hundred open-source utilities across twelve engineering domains, specified up front, built overnight and published as public, MIT-licensed repositories.</p>
+    <p class="sub">One batch of one hundred open-source utilities across twelve engineering domains, specified up front, built overnight and published as public, MIT-licensed repositories. All one hundred shipped: 87 straight through the pipeline, the rest recovered by the factory's own triage after fixing what blocked them.</p>
     <div class="stats">
-      <div class="stat"><b>98/100</b><span>utilities delivered as reviewed pull requests</span></div>
-      <div class="stat"><b>125,092</b><span>lines of source and tests (64,930 code, 60,162 tests)</span></div>
+      <div class="stat"><b>100/100</b><span>utilities delivered as reviewed pull requests</span></div>
+      <div class="stat"><b>127,184</b><span>lines of source and tests (66,229 code, 60,955 tests)</span></div>
       <div class="stat"><b>≥ 80%</b><span>test coverage enforced on every utility</span></div>
-      <div class="stat"><b>$0.93</b><span>average API cost per delivered utility, measured</span></div>
-      <div class="stat"><b>3</b><span>languages: Python 72, TypeScript 21, Go 5</span></div>
+      <div class="stat"><b>$0.94</b><span>average API cost per delivered utility, measured</span></div>
+      <div class="stat"><b>3</b><span>languages: Python 72, TypeScript 22, Go 6</span></div>
       <div class="stat"><b>12</b><span>domains, from LLM engineering to security and data</span></div>
-      <div class="stat"><b>666</b><span>model calls, every one logged with tokens and cost</span></div>
-      <div class="stat"><b>2</b><span>operating systems in CI: Linux and Windows, several runtime versions</span></div>
+      <div class="stat"><b>683</b><span>model calls, every one logged with tokens and cost</span></div>
+      <div class="stat"><b>345</b><span>automated tests guard the factory itself, which is built like the products it makes</span></div>
     </div>
   </div>
 </section>
@@ -176,17 +176,47 @@ footer { padding: 32px 0 48px; color: var(--muted); font-size: 13px; border-top:
   </div>
 </section>
 
+<section id="trust">
+  <div class="wrap">
+    <h2>Built for client work, not only open source</h2>
+    <p class="sub">Every project declares how it will be distributed: public open source, private internal, built for a client, or a commercial product. The factory turns that into rules it enforces on its own, before any code leaves the machine.</p>
+    <div class="grid">
+      <div class="card"><h3>Client code stays with compliant providers</h3><p>Confidential projects are only routed to model providers that do not train on inputs and offer zero data retention. The planner refuses any other route.</p></div>
+      <div class="card"><h3>License gates on every dependency</h3><p>Each profile has an allow, review and deny list of licenses. Copyleft or non-commercial dependencies never slip into a product meant to be sold.</p></div>
+      <div class="card"><h3>Tools used, never shipped</h3><p>Scanners and test tools run inside the factory and are never bundled into deliverables, so their licenses stay with the factory.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="improve">
+  <div class="wrap">
+    <h2>It never forgets, and it reviews itself every five projects</h2>
+    <p class="sub">The factory keeps a complete logbook and stops to review its own work long before a mistake can repeat a hundred times.</p>
+    <div class="grid">
+      <div class="card"><h3>Review checkpoint every five</h3><p>Each assembly line pauses after five finished projects until the results are reviewed against the lessons learned. Errors are caught after five projects, not after a hundred.</p></div>
+      <div class="card"><h3>History is never overwritten</h3><p>Every measure, plan, setting and configuration version is appended, never replaced. Any moment of the factory's life can be reconstructed and compared.</p></div>
+      <div class="card"><h3>Backed up off the machine</h3><p>A consistent snapshot of the logbook and the irreplaceable files is taken every night and copied off-site.</p></div>
+    </div>
+    <h3 style="margin:36px 0 12px">Roles being added before project 400</h3>
+    <div class="gates">
+      <span class="tag ok">analyst: idea to testable spec</span><span class="tag ok">spec checker</span><span class="tag plan">release manager</span><span class="tag plan">security engineer</span><span class="tag plan">web apps</span><span class="tag plan">visual QA</span><span class="tag plan">architect for multi-module projects</span><span class="tag plan">maintenance</span>
+    </div>
+  </div>
+</section>
+
 <section id="lines">
   <div class="wrap">
     <h2>Assembly lines</h2>
-    <p class="sub">The factory is model-agnostic. Each assembly line binds the same pipeline and gates to a different model provider, so lines can be compared on the same work by cost, success rate and quality. Around 700 more projects are planned across the lines.</p>
+    <p class="sub">The factory is model-agnostic. Each assembly line binds the same pipeline, gates and audit to a different model provider, with its own models per role, prices, budget and price window, so lines are compared on the same kind of work by cost, success rate and quality. A line that is missing a key or over budget simply stands still; it never stops another line. Around 700 more projects are planned across them.</p>
     <div class="lines">
-      <div class="card line"><span class="tag ok">live</span><h3>Line A · Anthropic</h3><p>Claude models. Produced the first run of 100 utilities.</p></div>
-      <div class="card line"><span class="tag plan">planned</span><h3>Line B · Google</h3><p>Gemini models through the Gemini API.</p></div>
-      <div class="card line"><span class="tag plan">planned</span><h3>Line C · DeepSeek</h3><p>Low-cost frontier models, run off-peak.</p></div>
-      <div class="card line"><span class="tag plan">planned</span><h3>Line D · Multi-model</h3><p>Many providers behind one router, a model chosen per role.</p></div>
-      <div class="card line"><span class="tag plan">planned</span><h3>Line E · Vertex AI</h3><p>Google Cloud, used while trial credits last.</p></div>
+      <div class="card line"><span class="tag ok">delivered 100</span><h3>Line A · Anthropic</h3><p>Claude models through the Batch API. Built the first run of 100 utilities.</p></div>
+      <div class="card line"><span class="tag ok">ready</span><h3>Line B · Google Gemini</h3><p>Gemini Flash through the Gemini Batch API at half price. Next run: 100 projects.</p></div>
+      <div class="card line"><span class="tag plan">built</span><h3>Line C · DeepSeek</h3><p>Calls only in the off-peak window, at half price, including fixes and audits.</p></div>
+      <div class="card line"><span class="tag plan">built</span><h3>Line D · Multi-model</h3><p>One router, many providers: the cheapest compliant endpoint per request, no data collection.</p></div>
+      <div class="card line"><span class="tag plan">built</span><h3>Line E · Self-hosted</h3><p>Open-weight models on local hardware: zero marginal cost for the roles they handle well.</p></div>
+      <div class="card line"><span class="tag plan">built</span><h3>Line F · Vertex AI</h3><p>Google Cloud at flex pricing, switched off automatically when its trial credits expire.</p></div>
     </div>
+    <p class="note">Estimated with the tokens measured on line A, the same 100-project workload costs about 30 % as much on line B. The next run will measure it.</p>
   </div>
 </section>
 
@@ -214,7 +244,7 @@ footer { padding: 32px 0 48px; color: var(--muted); font-size: 13px; border-top:
 <section id="catalog" class="catalog">
   <div class="wrap">
     <h2>Full catalog</h2>
-    <p class="sub">All 98 delivered utilities, grouped by domain. Each links to its public repository.</p>
+    <p class="sub">All 100 delivered utilities, grouped by domain. Each links to its public repository.</p>
     <details><summary>LLM engineering <span>12 utilities</span></summary>
       <ul>
         <li><a href="https://github.com/Trysac/u001-llm-structured-output"><code>u001-llm-structured-output</code></a><p>Validated structured output from LLM replies into Pydantic models, with linear JSON extraction, string-safe repairs and a bounded re-ask loop</p><span class="tag">Python</span></li>
@@ -295,7 +325,7 @@ footer { padding: 32px 0 48px; color: var(--muted); font-size: 13px; border-top:
         <li><a href="https://github.com/Trysac/u056-typed-config"><code>u056-typed-config</code></a><p>Typed configuration from environment, .env and JSON files into frozen dataclasses, with aggregated errors, masked secrets and generated docs</p><span class="tag">Python</span></li>
       </ul>
     </details>
-    <details><summary>APIs and contracts <span>7 utilities</span></summary>
+    <details><summary>APIs and contracts <span>8 utilities</span></summary>
       <ul>
         <li><a href="https://github.com/Trysac/u057-openapi-diff"><code>u057-openapi-diff</code></a><p>Diff two OpenAPI 3.0 or 3.1 documents and classify each change as breaking, warning or info with ten rules, as a library and a CI CLI</p><span class="tag">TypeScript</span></li>
         <li><a href="https://github.com/Trysac/u058-openapi-mock"><code>u058-openapi-mock</code></a><p>Mock HTTP handler from an OpenAPI 3.x document with examples, deterministic schema bodies, RFC 7240 Prefer control and seeded errors</p><span class="tag">TypeScript</span></li>
@@ -303,6 +333,7 @@ footer { padding: 32px 0 48px; color: var(--muted); font-size: 13px; border-top:
         <li><a href="https://github.com/Trysac/u060-http-cassette"><code>u060-http-cassette</code></a><p>Record and replay HTTP interactions through an injectable transport, redacting credentials in headers, URLs, JSON and form bodies before disk</p><span class="tag">Python</span></li>
         <li><a href="https://github.com/Trysac/u061-schema-codegen"><code>u061-schema-codegen</code></a><p>Generate Pydantic v2 models and TypeScript types from one JSON Schema model graph, injection-safe, with a CI check mode for stale outputs</p><span class="tag">Python</span></li>
         <li><a href="https://github.com/Trysac/u062-jira-cloud-lite"><code>u062-jira-cloud-lite</code></a><p>Minimal Jira Cloud REST v3 client in Go for enhanced JQL search, issue transitions and issue properties, with safe retries and no redirects</p><span class="tag">Go</span></li>
+        <li><a href="https://github.com/Trysac/u063-adf-markdown"><code>u063-adf-markdown</code></a><p>Convert Atlassian Document Format JSON to compact, safe Markdown for a core node subset, with canonical normalization</p><span class="tag">Go</span></li>
         <li><a href="https://github.com/Trysac/u064-metricool-client"><code>u064-metricool-client</code></a><p>Typed Python client core for the Metricool API: schedule posts, page through comments, export them to CSV with formula-injection protection</p><span class="tag">Python</span></li>
       </ul>
     </details>
@@ -327,7 +358,7 @@ footer { padding: 32px 0 48px; color: var(--muted); font-size: 13px; border-top:
         <li><a href="https://github.com/Trysac/u077-excel-normalizer"><code>u077-excel-normalizer</code></a><p>Normalize messy Excel sheets with multi-row headers and merged cells into clean tables, with zip-bomb limits and CSV injection escaping</p><span class="tag">Python</span></li>
       </ul>
     </details>
-    <details><summary>Developer experience, CI and documentation <span>8 utilities</span></summary>
+    <details><summary>Developer experience, CI and documentation <span>9 utilities</span></summary>
       <ul>
         <li><a href="https://github.com/Trysac/u078-docs-standard-check"><code>u078-docs-standard-check</code></a><p>CI check that a repository meets a declared documentation standard: required files, headings, forbidden placeholders and relative links</p><span class="tag">TypeScript</span></li>
         <li><a href="https://github.com/Trysac/u079-adr-cli"><code>u079-adr-cli</code></a><p>Create, list, link and supersede Architecture Decision Records in the adr-tools Markdown format, with exclusive creates and atomic updates</p><span class="tag">Python</span></li>
@@ -337,6 +368,7 @@ footer { padding: 32px 0 48px; color: var(--muted); font-size: 13px; border-top:
         <li><a href="https://github.com/Trysac/u083-repo-health"><code>u083-repo-health</code></a><p>Score a local repository checkout on docs, tests, CI, security and maintenance with ten weighted offline checks and a grade</p><span class="tag">Python</span></li>
         <li><a href="https://github.com/Trysac/u084-gha-lint"><code>u084-gha-lint</code></a><p>Estimate the billable minutes of GitHub Actions workflows and lint them for token permissions, unpinned actions and script injection</p><span class="tag">Go</span></li>
         <li><a href="https://github.com/Trysac/u085-affected-tests"><code>u085-affected-tests</code></a><p>Select the Python test files affected by changed files using a static ast import graph, with conservative run-all triggers</p><span class="tag">Python</span></li>
+        <li><a href="https://github.com/Trysac/u086-mermaid-check"><code>u086-mermaid-check</code></a><p>Find Mermaid diagrams in Markdown and lint them for common structural mistakes without a browser, with an optional external renderer</p><span class="tag">TypeScript</span></li>
       </ul>
     </details>
     <details><summary>Integration and automation <span>9 utilities</span></summary>

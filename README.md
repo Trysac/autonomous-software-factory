@@ -5,7 +5,7 @@ production-grade software overnight, with a human approving what gets built and 
 
 **Live page:** https://trysac.github.io/autonomous-software-factory/
 
-- First run: 98 of 100 open-source utilities delivered across 12 engineering domains (Python, TypeScript, Go).
+- First run: 100 of 100 open-source utilities delivered across 12 engineering domains (Python, TypeScript, Go).
 - Every utility passes lint, types, tests with at least 80% coverage, a documentation standard, a secret scan,
   a dependency audit and an independent specification audit, then CI on Linux and Windows.
 - Browse them: [repositories with the `autonomous-software-factory` topic](https://github.com/Trysac?tab=repositories&q=topic%3Aautonomous-software-factory).
