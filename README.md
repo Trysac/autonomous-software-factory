@@ -7,7 +7,7 @@ production-grade software overnight, with a human approving what gets built and 
 
 - First run (line A, Anthropic): 100 of 100 open-source utilities delivered across 12 engineering domains
   (Python, TypeScript, Go), USD 0.94 of API cost per utility.
-- Second run (line B, Google Gemini): 99 of 99 delivered, 83 by the pipeline alone, USD 0.27 per utility.
+- Second run (line B, Google Gemini): 100 of 100 delivered, 84 by the pipeline alone, USD 0.27 per utility.
 - Every utility passes lint, types, tests with at least 80% coverage, a documentation standard, a secret scan,
   a dependency audit and an independent specification audit, then CI on Linux and Windows.
 - Browse them: [repositories with the `autonomous-software-factory` topic](https://github.com/Trysac?tab=repositories&q=topic%3Aautonomous-software-factory).
