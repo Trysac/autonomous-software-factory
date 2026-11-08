@@ -6,7 +6,7 @@
 <title>Autonomous Software Factory</title>
 <meta name="description" content="An autonomous software factory that designs, builds, tests, audits and documents production-grade software overnight, with a human approving what gets built and reviewing every pull request.">
 <meta property="og:title" content="Autonomous Software Factory">
-<meta property="og:description" content="200 production-grade open-source utilities built overnight on two model providers, from $0.27 of API cost per project, every gate and token measured.">
+<meta property="og:description" content="214 production-grade open-source utilities built overnight on two model providers, from $0.27 of API cost per project, every gate and token measured.">
 <meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -208,7 +208,9 @@ footer { padding: 32px 0 48px; color: var(--muted); font-size: 13px; border-top:
     <a class="brand" href="#">Autonomous <span>Software Factory</span></a>
     <nav aria-label="Sections">
       <a class="opt" href="#how">How it works</a>
+      <a class="opt" href="#roles">Roles</a>
       <a class="opt" href="#compare">Anthropic vs Gemini</a>
+      <a class="opt" href="#bigger">Bigger projects</a>
       <a class="opt" href="#case">Case study</a>
       <a class="opt" href="#catalog">Catalog</a>
       <a class="hire" href="https://www.linkedin.com/in/jose-miguel-gomez-architect">Hire me</a>
@@ -220,7 +222,7 @@ footer { padding: 32px 0 48px; color: var(--muted); font-size: 13px; border-top:
 <div class="hero">
   <div class="wrap">
     <div>
-      <span class="eyebrow"><i class="pulse" aria-hidden="true"></i>2 production runs · 200 projects · Nov 2026</span>
+      <span class="eyebrow"><i class="pulse" aria-hidden="true"></i>4 production runs · 214 projects · Nov 2026</span>
       <h1>Software that ships <em>while you sleep</em>.</h1>
       <p class="lead">You approve a specification at night. By morning there is a tested, audited and documented pull request waiting for your review, built by an autonomous factory that runs on any model provider and measures every token it spends.</p>
       <div class="cta">
@@ -250,12 +252,12 @@ footer { padding: 32px 0 48px; color: var(--muted); font-size: 13px; border-top:
 <div class="strip">
   <div class="wrap">
     <div class="stats">
-      <div class="stat"><b data-count="200">200</b><span>open-source utilities delivered as pull requests, on two model providers</span></div>
+      <div class="stat"><b data-count="214">214</b><span>open-source projects delivered as pull requests, on two model providers</span></div>
       <div class="stat"><b data-count="0.27" data-prefix="$" data-decimals="2">$0.27</b><span>API cost per project on the cheapest line, measured</span></div>
       <div class="stat"><b data-count="80" data-prefix="≥ " data-suffix="%">≥ 80%</b><span>test coverage enforced on every utility</span></div>
-      <div class="stat"><b data-count="1311">1,311</b><span>model calls, each logged with tokens and cost</span></div>
+      <div class="stat"><b data-count="1576">1,576</b><span>model calls, each logged with tokens and cost</span></div>
     </div>
-    <div class="facts"><span><b>127,184</b> lines of code and tests in the first run</span><span><b>3</b> languages: Python, TypeScript, Go</span><span><b>12</b> engineering domains</span><span><b>345</b> tests guard the factory itself</span></div>
+    <div class="facts"><span><b>127,184</b> lines of code and tests in the first run</span><span><b>3</b> languages: Python, TypeScript, Go</span><span><b>12</b> engineering domains</span><span><b>716</b> tests guard the factory itself</span><span><b>82%</b> of all items delivered with no human fix (200 of 245)</span></div>
   </div>
 </div>
 
@@ -292,6 +294,27 @@ footer { padding: 32px 0 48px; color: var(--muted); font-size: 13px; border-top:
   </div>
 </section>
 
+
+<section id="roles" class="reveal">
+  <div class="wrap">
+    <p class="kicker">Roles</p>
+    <h2>A team of specialised roles, not one prompt.</h2>
+    <p class="sub">Like a human engineering team, the factory splits the work into roles. Some are models with narrow permissions; the rest are deterministic code that no model can talk its way around. Each role is versioned, and each line can bind a different model to it.</p>
+    <div class="grid">
+      <div class="card"><span class="tag">model</span><h3>Analyst</h3><p>Turns an idea into a specification with testable acceptance criteria. It never queues work: a human approves the specification first.</p></div>
+      <div class="card"><span class="tag">model</span><h3>Architect</h3><p>Splits a project too large for one generation into modules with frozen interfaces, built and gated one by one in dependency order.</p></div>
+      <div class="card"><span class="tag">model</span><h3>Generator</h3><p>Writes the code, tests and documentation of one utility or module in a single batch request.</p></div>
+      <div class="card"><span class="tag">model</span><h3>Fixer</h3><p>Repairs failing gates in bounded rounds, with file tools only: no shell, no network and no edits outside the allowed paths.</p></div>
+      <div class="card"><span class="tag">model</span><h3>Auditor</h3><p>A read-only reviewer, separate from the author, that checks the result against its specification and reports findings in the pull request.</p></div>
+      <div class="card"><span class="tag">model</span><h3>Docs writer</h3><p>Rewrites the documentation so it describes the code that was actually delivered.</p></div>
+      <div class="card"><span class="tag ok">deterministic</span><h3>Planner</h3><p>Estimates every item, reserves its worst case against the line budget and refuses routes the project distribution forbids.</p></div>
+      <div class="card"><span class="tag ok">deterministic</span><h3>Quality and security gates</h3><p>Formatters, linters, types, tests, coverage, documentation standard, secret scan, dependency audit and static security analysis.</p></div>
+      <div class="card"><span class="tag ok">deterministic</span><h3>Publisher and release manager</h3><p>One clean pull request per item, never a push to main; releases are tagged only after a human merges.</p></div>
+    </div>
+    <p class="note">Planned next: a web application field, visual QA, maintenance of delivered repositories and threat-model review.</p>
+  </div>
+</section>
+
 <section id="compare" class="reveal">
   <div class="wrap">
     <p class="kicker">Measured head to head</p>
@@ -311,6 +334,25 @@ footer { padding: 32px 0 48px; color: var(--muted); font-size: 13px; border-top:
       <div class="row" role="row"><span role="rowheader">Where the money goes</span><span role="cell">64 % generation, 17 % correction</span><span role="cell">12 % generation, 70 % correction</span></div>
     </div>
     <p class="note">Gemini generates almost for free, so its cost sits in correction. Its low-cost correction model ran out of turns on 16 projects whose defects were a few lines each; they were finished by hand. Gemini's audit was also far cheaper and reported fewer findings, which reads as a less demanding reviewer rather than better code.</p>
+  </div>
+</section>
+
+
+<section id="bigger" class="reveal">
+  <div class="wrap">
+    <p class="kicker">Bigger projects</p>
+    <h2>Where one generation stops, the architect takes over.</h2>
+    <p class="sub">Ten size-L systems were attempted on line B: a storage engine, a WebAssembly interpreter, a SAT solver, a CRDT, a regex engine, a spreadsheet formula engine, a Datalog engine, a SQL engine, a Git object store and a linearizability checker. The results are reported as they happened, including the work done by hand.</p>
+    <div class="compare" role="table" aria-label="Challenge run">
+      <div class="row head" role="row"><span role="columnheader">Step</span><span role="columnheader">Projects delivered</span><span role="columnheader">What it taught</span></div>
+      <div class="row" role="row"><span role="rowheader">One generation each</span><span role="cell">1 of 10</span><span role="cell">A large project does not fit in one generation plus a few corrections.</span></div>
+      <div class="row" role="row"><span role="rowheader">After fixing the line itself</span><span role="cell">6 of 10</span><span role="cell">Complexity first exposed gaps in the factory, such as dependencies that were never installed.</span></div>
+      <div class="row" role="row"><span role="rowheader">Re-planned by the architect</span><span role="cell">10 of 10</span><span role="cell">The last 4 became 22 modules: 18 delivered, 8 of them by the line alone; 4 conformance modules are held for review.</span></div>
+    </div>
+    <p class="note">5 of the 10 projects were delivered by the line with no human fix. Every hand fix is recorded in the ledger as an intervention, 32 so far across all runs, and is excluded from the autonomous success rate. Model API cost of the whole challenge: $34.</p>
+    <div class="grid" style="margin-top:24px">
+      <div class="card"><span class="tag">Line A · Anthropic</span><h3>Unreal Engine agent toolsets</h3><p>4 toolsets for the Unreal Engine 5.8 MCP server (asset intake, captures, render profiles, performance probes), delivered by the line with no human fix for $4.52 in total. The pure logic is tested in CI; packaging as editor plugins is a supervised step.</p></div>
+    </div>
   </div>
 </section>
 
@@ -354,7 +396,7 @@ footer { padding: 32px 0 48px; color: var(--muted); font-size: 13px; border-top:
       <div class="card"><h3>Documentation that answers questions</h3><p>Each README states the problem, installation, a real example, the public API, error codes and when not to use it, backed by architecture decision records.</p></div>
       <div class="card"><h3>Guardrails on the factory itself</h3><p>Path allowlists, protected configuration, secret redaction in every log, history scans before publishing and a hard spending cap that pauses the queue.</p></div>
       <div class="card"><h3>Measured, not estimated</h3><p>Tokens, calls, cost per phase, gate time, fix rounds and lead time are recorded per utility and rolled into analytics after every run.</p></div>
-      <div class="card"><h3>It learns from every run</h3><p>Each run produces written lessons; it pauses every five projects for review, and the lessons that repeat become rules or checks before the next run.</p></div>
+      <div class="card"><h3>It learns from every run</h3><p>Each run produces written lessons; it pauses every few projects for review, and the lessons that repeat become rules or checks before the next run.</p></div>
     </div>
     <h3 style="margin:36px 0 12px">Quality gates on every pull request</h3>
     <div class="gates">
@@ -380,10 +422,10 @@ footer { padding: 32px 0 48px; color: var(--muted); font-size: 13px; border-top:
   <div class="wrap">
     <p class="kicker">Assembly lines</p>
     <h2>One factory, any model provider.</h2>
-    <p class="sub">Each assembly line binds the same pipeline, gates and audit to a different provider, with its own models per role, prices, budget and price window. A line that is missing a key or over budget simply stands still; it never stops another line.</p>
+    <p class="sub">Each assembly line binds the same pipeline, gates and audit to a different provider, with its own models per role, prices, budget and price window. Each line runs with its own driver and lock: a line that is missing a key or over budget simply stands still; it never stops another line.</p>
     <div class="lines">
-      <div class="card line"><span class="tag ok">delivered 100</span><h3>Line A · Anthropic</h3><p>Claude models through the Batch API. Built the first run of 100 utilities.</p></div>
-      <div class="card line"><span class="tag ok">delivered 100</span><h3>Line B · Google Gemini</h3><p>Gemini Flash through the Gemini Batch API at half price. Built the second run of 100 utilities.</p></div>
+      <div class="card line"><span class="tag ok">delivered 104</span><h3>Line A · Anthropic</h3><p>Claude models through the Batch API. Built the first run of 100 utilities and 4 Unreal Engine agent toolsets.</p></div>
+      <div class="card line"><span class="tag ok">delivered 110</span><h3>Line B · Google Gemini</h3><p>Gemini Flash through the Gemini Batch API at half price. Built the second run of 100 utilities and the 10-project challenge.</p></div>
       <div class="card line"><span class="tag plan">built</span><h3>Line C · DeepSeek</h3><p>Calls only in the off-peak window, at half price, including fixes and audits.</p></div>
       <div class="card line"><span class="tag plan">built</span><h3>Line D · Multi-model</h3><p>One router, many providers: the cheapest compliant endpoint per request, no data collection.</p></div>
       <div class="card line"><span class="tag plan">built</span><h3>Line E · Self-hosted</h3><p>Open-weight models on local hardware: zero marginal cost for the roles they handle well.</p></div>
@@ -417,8 +459,8 @@ footer { padding: 32px 0 48px; color: var(--muted); font-size: 13px; border-top:
 <section id="catalog" class="catalog reveal">
   <div class="wrap">
     <p class="kicker">Catalog</p>
-    <h2>Full catalog: 200 utilities.</h2>
-    <p class="sub">Every delivered utility of both runs, grouped by domain. Each links to its public repository.</p>
+    <h2>Full catalog: 214 projects.</h2>
+    <p class="sub">Every delivered project of every run, grouped by domain. Each links to its public repository.</p>
     <h3 class="run-title"><span class="tag">Run 1 · Line A · Anthropic</span> 100 utilities</h3>
     <details><summary>LLM engineering <span>12 utilities</span></summary>
       <ul>
@@ -725,6 +767,29 @@ footer { padding: 32px 0 48px; color: var(--muted); font-size: 13px; border-top:
         <li><a href="https://github.com/Trysac/u200-vision-structured-extract"><code>u200-vision-structured-extract</code></a><p>Extract schema-validated JSON from images through an injected vision model port: header-only image checks, a JSON Schema subset and a bounded re-ask loop</p><span><span class="tag">Python</span></span></li>
       </ul>
     </details>
+    <h3 class="run-title"><span class="tag">Runs 3 and 4 · Challenge and Unreal</span> 14 projects</h3>
+    <details><summary>Systems projects (challenge) <span>10 projects</span></summary>
+      <ul>
+        <li><a href="https://github.com/Trysac/u401-lsm-kv-engine"><code>u401-lsm-kv-engine</code></a><p>Pure Go embedded log-structured merge-tree key-value engine with write-ahead log, memtable, SSTables, Bloom filters, and crash recovery.</p><span><span class="tag">Go</span></span></li>
+        <li><a href="https://github.com/Trysac/u402-linearizability-checker"><code>u402-linearizability-checker</code></a><p>Deterministic linearizability checker for concurrent execution histories using Wing and Gong search with Lowe pruning, key partitioning, and minimal counterexample generation.</p><span><span class="tag">Go</span></span></li>
+        <li><a href="https://github.com/Trysac/u403-wasm-interpreter"><code>u403-wasm-interpreter</code></a><p>Zero-dependency WebAssembly MVP binary decoder, validator, and stack-based interpreter with explicit fuel metering and host imports.</p><span><span class="tag">Go</span></span></li>
+        <li><a href="https://github.com/Trysac/u404-cdcl-sat-solver"><code>u404-cdcl-sat-solver</code></a><p>Pure-Python CDCL SAT solver with two-watched-literals, 1-UIP learning, DRAT proofs, and assumptions.</p><span><span class="tag">Python</span></span></li>
+        <li><a href="https://github.com/Trysac/u405-crdt-json"><code>u405-crdt-json</code></a><p>Conflict-free replicated JSON document with maps, RGA sequences, PN-counters, state-vector sync, and binary encoding.</p><span><span class="tag">TypeScript</span></span></li>
+        <li><a href="https://github.com/Trysac/u406-linear-regex"><code>u406-linear-regex</code></a><p>Linear-time regular expression engine in TypeScript implementing a ReDoS-safe RE2 subset via Pike VM and lazy DFA.</p><span><span class="tag">TypeScript</span></span></li>
+        <li><a href="https://github.com/Trysac/u407-formula-engine"><code>u407-formula-engine</code></a><p>Zero-dependency spreadsheet formula engine in TypeScript with A1 reference parsing, incremental recalculation via dependency DAG, and cycle detection.</p><span><span class="tag">TypeScript</span></span></li>
+        <li><a href="https://github.com/Trysac/u408-datalog-engine"><code>u408-datalog-engine</code></a><p>In-memory stratified Datalog engine in pure Python with semi-naive evaluation, DRed incremental view updates, aggregates, and derivation explanations.</p><span><span class="tag">Python</span></span></li>
+        <li><a href="https://github.com/Trysac/u409-columnar-sql-engine"><code>u409-columnar-sql-engine</code></a><p>Embeddable columnar SQL query engine in Go with vectorized batch execution, a rule-based optimizer, CSV tables and three-valued NULL logic.</p><span><span class="tag">Go</span></span></li>
+        <li><a href="https://github.com/Trysac/u410-git-objects"><code>u410-git-objects</code></a><p>Pure Python zero-dependency reader and writer for Git object stores, packed refs, and packfiles v2.</p><span><span class="tag">Python</span></span></li>
+      </ul>
+    </details>
+    <details><summary>Unreal Engine agent toolsets <span>4 projects</span></summary>
+      <ul>
+        <li><a href="https://github.com/Trysac/u801-ue-asset-intake-toolset"><code>u801-ue-asset-intake-toolset</code></a><p>Unreal MCP toolset that imports, validates and normalizes 3D assets and textures with a provenance log.</p><span><span class="tag">Python</span></span></li>
+        <li><a href="https://github.com/Trysac/u802-ue-capture-toolset"><code>u802-ue-capture-toolset</code></a><p>Unreal MCP toolset for reproducible captures with JSON sidecars, bug evidence and Markdown contact sheets.</p><span><span class="tag">Python</span></span></li>
+        <li><a href="https://github.com/Trysac/u803-ue-render-profiles-toolset"><code>u803-ue-render-profiles-toolset</code></a><p>Unreal MCP toolset for versioned render profiles (CVars and scalability) with apply, diff, revert and ini export.</p><span><span class="tag">Python</span></span></li>
+        <li><a href="https://github.com/Trysac/u804-ue-perf-probe-toolset"><code>u804-ue-perf-probe-toolset</code></a><p>Unreal MCP toolset that records CSV Profiler captures, computes frame statistics against budgets and reports build size.</p><span><span class="tag">Python</span></span></li>
+      </ul>
+    </details>
   </div>
 </section>
 
@@ -754,7 +819,7 @@ footer { padding: 32px 0 48px; color: var(--muted); font-size: 13px; border-top:
 <footer>
   <div class="wrap">
     <div>Designed and operated by <strong>José Miguel Gómez</strong>, Senior AI Product Engineer · <a href="https://github.com/Trysac">GitHub</a> · <a href="https://www.linkedin.com/in/jose-miguel-gomez-architect">LinkedIn</a></div>
-    <div class="note">The factory's source code, prompts, rules and operating data are private. Figures on this page come from the factory's measured ledger for the runs of 2026-11-06 and 2026-11-07.</div>
+    <div class="note">The factory's source code, prompts, rules and operating data are private. Figures on this page come from the factory's measured ledger for the runs of 2026-11-06 to 2026-11-08.</div>
   </div>
 </footer>
 
