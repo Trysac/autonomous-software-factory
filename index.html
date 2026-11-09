@@ -310,8 +310,11 @@ footer { padding: 32px 0 48px; color: var(--muted); font-size: 13px; border-top:
       <div class="card"><span class="tag ok">deterministic</span><h3>Planner</h3><p>Estimates every item, reserves its worst case against the line budget and refuses routes the project distribution forbids.</p></div>
       <div class="card"><span class="tag ok">deterministic</span><h3>Quality and security gates</h3><p>Formatters, linters, types, tests, coverage, documentation standard, secret scan, dependency audit and static security analysis.</p></div>
       <div class="card"><span class="tag ok">deterministic</span><h3>Publisher and release manager</h3><p>One clean pull request per item, never a push to main; releases are tagged only after a human merges.</p></div>
+      <div class="card"><span class="tag">model</span><h3>Security engineer</h3><p>Our own Semgrep rules and OSV-Scanner on every project, plus a read-only threat-model review (STRIDE per entry point) for anything with authentication or user data.</p></div>
+      <div class="card"><span class="tag">model</span><h3>Visual QA</h3><p>Screenshots every page of a web app at desktop and phone widths, checks contrast with axe and, when its line has an image-capable model, attaches a critique against a written rubric: evidence for the reviewer, never a gate.</p></div>
+      <div class="card"><span class="tag ok">deterministic</span><h3>Maintenance</h3><p>Classifies the dependency updates across every delivered repository and merges only patch updates whose CI passed, after a dry run.</p></div>
     </div>
-    <p class="note">Planned next: a web application field, visual QA, maintenance of delivered repositories and threat-model review.</p>
+    <p class="note">Two fields: libraries, and web applications built with Vite and React under end-to-end, accessibility and Lighthouse budget gates.</p>
   </div>
 </section>
 
