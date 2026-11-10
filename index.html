@@ -496,8 +496,8 @@ footer { padding: 32px 0 48px; color: var(--muted); font-size: 13px; border-top:
 <section id="catalog" class="catalog reveal">
   <div class="wrap">
     <p class="kicker">Catalog</p>
-    <h2>Full catalog: 214 projects.</h2>
-    <p class="sub">Every delivered project of runs 1 to 4, grouped by domain. Each links to its public repository. Projects of lines C and D are added here as their runs finish.</p>
+    <h2>Full catalog: 263 projects.</h2>
+    <p class="sub">Every delivered project of every run, grouped by domain. Each links to its public repository. Lines C and D are still running; their projects are added here as they are delivered.</p>
     <h3 class="run-title"><span class="tag">Run 1 · Line A · Anthropic</span> 100 utilities</h3>
     <details><summary>LLM engineering <span>12 utilities</span></summary>
       <ul>
@@ -825,6 +825,117 @@ footer { padding: 32px 0 48px; color: var(--muted); font-size: 13px; border-top:
         <li><a href="https://github.com/Trysac/u802-ue-capture-toolset"><code>u802-ue-capture-toolset</code></a><p>Unreal MCP toolset for reproducible captures with JSON sidecars, bug evidence and Markdown contact sheets.</p><span><span class="tag">Python</span></span></li>
         <li><a href="https://github.com/Trysac/u803-ue-render-profiles-toolset"><code>u803-ue-render-profiles-toolset</code></a><p>Unreal MCP toolset for versioned render profiles (CVars and scalability) with apply, diff, revert and ini export.</p><span><span class="tag">Python</span></span></li>
         <li><a href="https://github.com/Trysac/u804-ue-perf-probe-toolset"><code>u804-ue-perf-probe-toolset</code></a><p>Unreal MCP toolset that records CSV Profiler captures, computes frame statistics against budgets and reports build size.</p><span><span class="tag">Python</span></span></li>
+      </ul>
+    </details>
+    <h3 class="run-title"><span class="tag plan">Run 5 · Line C · DeepSeek · running</span> 42 utilities</h3>
+    <details><summary>LLM engineering <span>8 utilities</span></summary>
+      <ul>
+        <li><a href="https://github.com/Trysac/u201-context-window-packer"><code>u201-context-window-packer</code></a><p>Pack messages and documents into an LLM context window by priority, keep pinned items and input order, and truncate safely at word and code fence boundaries</p><span><span class="tag">Python</span><span class="tag plan">in review</span></span></li>
+        <li><a href="https://github.com/Trysac/u202-response-format-enforcer"><code>u202-response-format-enforcer</code></a><p>Validate LLM replies as CSV with typed columns, read-only SQLite SELECT statements or a full-match regex, and re-ask with a bounded correction loop</p><span><span class="tag">Python</span><span class="tag plan">in review</span></span></li>
+        <li><a href="https://github.com/Trysac/u203-token-stream-assembler"><code>u203-token-stream-assembler</code></a><p>Assemble streamed LLM deltas from OpenAI chat chunks or Anthropic message events into one complete message with text, parsed tool call arguments and stop reason</p><span><span class="tag">TypeScript</span><span class="tag plan">in review</span></span></li>
+        <li><a href="https://github.com/Trysac/u204-rate-limit-planner"><code>u204-rate-limit-planner</code></a><p>Plan safe request concurrency and pacing for LLM providers from their RPM and TPM limits, average token use and latency</p><span><span class="tag">Python</span><span class="tag plan">in review</span></span></li>
+        <li><a href="https://github.com/Trysac/u205-prompt-ab-router"><code>u205-prompt-ab-router</code></a><p>Assign prompt variants to users with a stable salted SHA-256 hash, log first exposures with bounded memory and check the sample ratio mismatch of an experiment</p><span><span class="tag">Python</span><span class="tag plan">in review</span></span></li>
+        <li><a href="https://github.com/Trysac/u207-prompt-template-ts"><code>u207-prompt-template-ts</code></a><p>Typed prompt templates for TypeScript: variable names and types inferred from the template string at compile time, strict runtime checks and non-recursive rendering</p><span><span class="tag">TypeScript</span><span class="tag plan">in review</span></span></li>
+        <li><a href="https://github.com/Trysac/u208-unsupported-claim-flagger"><code>u208-unsupported-claim-flagger</code></a><p>Flag answer sentences whose numbers, dates, quotes or proper names do not appear in the supplied context, without needing citations or an LLM</p><span><span class="tag">Python</span><span class="tag plan">in review</span></span></li>
+        <li><a href="https://github.com/Trysac/u209-llm-session-replay"><code>u209-llm-session-replay</code></a><p>Record LLM client calls to a JSONL session file and replay them strictly in order for deterministic Go tests, with request hashes, field-level mismatch errors and integrity checks</p><span><span class="tag">Go</span><span class="tag plan">in review</span></span></li>
+      </ul>
+    </details>
+    <details><summary>RAG, documents and search <span>7 utilities</span></summary>
+      <ul>
+        <li><a href="https://github.com/Trysac/u210-html-main-content"><code>u210-html-main-content</code></a><p>Extract the main content of an HTML page as clean text blocks: drop navigation, ads, hidden and boilerplate elements, then pick the article by structure or text density</p><span><span class="tag">Python</span><span class="tag plan">in review</span></span></li>
+        <li><a href="https://github.com/Trysac/u211-doc-section-diff"><code>u211-doc-section-diff</code></a><p>Compare two versions of a Markdown document section by section with stable section ids and content hashes, and report what a RAG index must add, drop, rename or re-embed</p><span><span class="tag">Python</span><span class="tag plan">in review</span></span></li>
+        <li><a href="https://github.com/Trysac/u213-retrieval-debugger"><code>u213-retrieval-debugger</code></a><p>Explain why a document was or was not retrieved for a query: its rank against the cutoff, per-term exact, accent and stem matches, missing terms and terms cut off by chunking</p><span><span class="tag">Python</span><span class="tag plan">in review</span></span></li>
+        <li><a href="https://github.com/Trysac/u214-autocomplete-index"><code>u214-autocomplete-index</code></a><p>In-memory autocomplete index for TypeScript: trie prefix search with typo tolerance by Levenshtein distance, diacritic-insensitive matching and weighted, deterministic ranking</p><span><span class="tag">TypeScript</span><span class="tag plan">in review</span></span></li>
+        <li><a href="https://github.com/Trysac/u215-text-normalizer"><code>u215-text-normalizer</code></a><p>Normalize text for indexing with an explicit, ordered rule set: zero-width removal, control characters, Unicode NFKC, curly quotes, dashes and whitespace, idempotent</p><span><span class="tag">Python</span><span class="tag plan">in review</span></span></li>
+        <li><a href="https://github.com/Trysac/u216-entity-linker"><code>u216-entity-linker</code></a><p>Link mentions in text to a catalog of entities by name and alias: token-aligned longest match, case and accent insensitive, context-term disambiguation and exact character offsets</p><span><span class="tag">Python</span><span class="tag plan">in review</span></span></li>
+        <li><a href="https://github.com/Trysac/u217-doc-qa-cli"><code>u217-doc-qa-cli</code></a><p>Answer questions about a folder of Markdown and text files with an injected LLM, lexical retrieval, escaped excerpts and citations whose verbatim quotes are verified</p><span><span class="tag">Python</span><span class="tag plan">in review</span></span></li>
+      </ul>
+    </details>
+    <details><summary>Agents and MCP <span>6 utilities</span></summary>
+      <ul>
+        <li><a href="https://github.com/Trysac/u220-planner-executor"><code>u220-planner-executor</code></a><p>Planner-executor agent pattern over a text-only LLM port: a validated JSON plan of tool steps, step references, bounded replanning after failures and content-free events</p><span><span class="tag">Python</span><span class="tag plan">in review</span></span></li>
+        <li><a href="https://github.com/Trysac/u221-tool-permission-policy"><code>u221-tool-permission-policy</code></a><p>Declarative allow, ask and deny policies for agent tool calls: tool name globs, argument constraints on paths, hosts, values and numbers, context conditions and fail-closed deny</p><span><span class="tag">Python</span><span class="tag plan">in review</span></span></li>
+        <li><a href="https://github.com/Trysac/u222-agent-budget-guard"><code>u222-agent-budget-guard</code></a><p>Framework-neutral budget guard for agent runs: caps on steps, tokens, tool calls per tool and elapsed time with an injected clock, nested sub-budgets and terminal exceeded state</p><span><span class="tag">Python</span><span class="tag plan">in review</span></span></li>
+        <li><a href="https://github.com/Trysac/u224-agent-manifest-lint"><code>u224-agent-manifest-lint</code></a><p>Lint agent manifests for least privilege: required fields, wildcard and sensitive permissions, tool permissions not declared, unused grants and inline secrets, with JSON pointers</p><span><span class="tag">Python</span><span class="tag plan">in review</span></span></li>
+        <li><a href="https://github.com/Trysac/u225-form-fill-kit"><code>u225-form-fill-kit</code></a><p>Fill forms from agent-proposed values with typed validation, a human confirmation summary bound to a SHA-256 digest of the exact values and single-use submission</p><span><span class="tag">Python</span><span class="tag plan">in review</span></span></li>
+        <li><a href="https://github.com/Trysac/u226-agent-task-queue"><code>u226-agent-task-queue</code></a><p>In-memory priority task queue for agent workers in Go: leases with tokens, retries with capped exponential backoff, a bounded dead list and an injected clock</p><span><span class="tag">Go</span><span class="tag plan">in review</span></span></li>
+      </ul>
+    </details>
+    <details><summary>AI evaluation and quality <span>5 utilities</span></summary>
+      <ul>
+        <li><a href="https://github.com/Trysac/u227-annotation-cli"><code>u227-annotation-cli</code></a><p>Label model outputs in the terminal with single-key choices, undo, resumable append-only JSONL storage, safe display of untrusted text and Cohen&#x27;s kappa agreement</p><span><span class="tag">Python</span><span class="tag plan">in review</span></span></li>
+        <li><a href="https://github.com/Trysac/u228-rubric-builder"><code>u228-rubric-builder</code></a><p>Build versioned grading rubrics from human-scored examples: anchors per score level, a content fingerprint, semver bumps from rubric diffs and an exact judge prompt</p><span><span class="tag">Python</span><span class="tag plan">in review</span></span></li>
+        <li><a href="https://github.com/Trysac/u231-eval-output-cache"><code>u231-eval-output-cache</code></a><p>Content-addressed cache of model outputs for repeatable evaluations: canonical request keys, a bounded on-disk store and a caching LLM port</p><span><span class="tag">Python</span><span class="tag plan">in review</span></span></li>
+        <li><a href="https://github.com/Trysac/u232-model-output-diff-viewer"><code>u232-model-output-diff-viewer</code></a><p>Render outputs of several models for the same prompts as one static, script-free HTML page with word-level diffs against a baseline model and similarity scores</p><span><span class="tag">TypeScript</span><span class="tag plan">in review</span></span></li>
+        <li><a href="https://github.com/Trysac/u233-toxicity-eval"><code>u233-toxicity-eval</code></a><p>Evaluate toxicity of model outputs with interchangeable classifiers: a classifier port, a lexicon baseline, an LLM classifier, thresholds and per-group flag rates</p><span><span class="tag">Python</span><span class="tag plan">in review</span></span></li>
+      </ul>
+    </details>
+    <details><summary>Observability <span>4 utilities</span></summary>
+      <ul>
+        <li><a href="https://github.com/Trysac/u235-synthetic-probe"><code>u235-synthetic-probe</code></a><p>Synthetic HTTP probes in Go with typed failure reasons, capped body reads, an injected clock and doer, and a rolling SLO tracker with error budget remaining</p><span><span class="tag">Go</span><span class="tag plan">in review</span></span></li>
+        <li><a href="https://github.com/Trysac/u237-frontend-error-capture"><code>u237-frontend-error-capture</code></a><p>Capture frontend errors with parsed stacks, breadcrumbs, redacted messages and URLs, stable fingerprints, dedup, rate limits and batching through an injected transport</p><span><span class="tag">TypeScript</span><span class="tag plan">in review</span></span></li>
+        <li><a href="https://github.com/Trysac/u238-runbook-linker"><code>u238-runbook-linker</code></a><p>Check that every Prometheus alert links to a runbook that exists: local files, heading anchors, base-URL mapping, path containment and suggested links for missing ones</p><span><span class="tag">Python</span><span class="tag plan">in review</span></span></li>
+        <li><a href="https://github.com/Trysac/u239-latency-budget"><code>u239-latency-budget</code></a><p>Per-stage latency budgets for request pipelines: nearest-rank percentiles per window, unbudgeted time, and alerts with trigger and clear hysteresis</p><span><span class="tag">Python</span><span class="tag plan">in review</span></span></li>
+      </ul>
+    </details>
+    <details><summary>Backend architecture <span>6 utilities</span></summary>
+      <ul>
+        <li><a href="https://github.com/Trysac/u240-cron-scheduler-ts"><code>u240-cron-scheduler-ts</code></a><p>In-process cron job scheduler for TypeScript: IANA time zones with explicit DST handling, one run per occurrence across instances through a lock port, overlap and catch-up policies</p><span><span class="tag">TypeScript</span><span class="tag plan">in review</span></span></li>
+        <li><a href="https://github.com/Trysac/u241-cqrs-kit"><code>u241-cqrs-kit</code></a><p>Typed command, query and event buses for Python: exact-type handler lookup, onion middleware, events published only after a command succeeds, bounded nesting</p><span><span class="tag">Python</span><span class="tag plan">in review</span></span></li>
+        <li><a href="https://github.com/Trysac/u242-leader-election"><code>u242-leader-election</code></a><p>Lease-based leader election for Go services over Postgres or Redis: exact SQL and Lua, monotonically increasing terms, step-down before the lease expires and an in-memory store</p><span><span class="tag">Go</span><span class="tag plan">in review</span></span></li>
+        <li><a href="https://github.com/Trysac/u243-promise-timeouts"><code>u243-promise-timeouts</code></a><p>Timeouts and cancellation for promises built on AbortSignal, with injectable timers, a cancellable sleep and a manual clock for tests</p><span><span class="tag">TypeScript</span><span class="tag plan">in review</span></span></li>
+        <li><a href="https://github.com/Trysac/u244-tenant-quota"><code>u244-tenant-quota</code></a><p>Per-tenant usage quotas over UTC calendar windows: plan limits with overrides, atomic check-and-consume through a store port, reservations, soft-limit events and reset times</p><span><span class="tag">Python</span><span class="tag plan">in review</span></span></li>
+        <li><a href="https://github.com/Trysac/u248-graceful-shutdown"><code>u248-graceful-shutdown</code></a><p>Ordered graceful shutdown for Go services: readiness flip, pre-stop delay, phased hooks with per-hook timeouts, panic capture, second-signal force and HTTP draining</p><span><span class="tag">Go</span><span class="tag plan">in review</span></span></li>
+      </ul>
+    </details>
+    <details><summary>APIs and integrations <span>1 utility</span></summary>
+      <ul>
+        <li><a href="https://github.com/Trysac/u254-gitlab-api-lite"><code>u254-gitlab-api-lite</code></a><p>Minimal GitLab REST v4 client over an injected transport: offset and keyset pagination, encoded project paths, RateLimit and Retry-After handling and same-origin next links</p><span><span class="tag">Python</span><span class="tag plan">in review</span></span></li>
+      </ul>
+    </details>
+    <details><summary>Security <span>1 utility</span></summary>
+      <ul>
+        <li><a href="https://github.com/Trysac/u262-email-dns-audit"><code>u262-email-dns-audit</code></a><p>Audit a domain&#x27;s email DNS records over an injected resolver: SPF syntax and the 10-lookup limit per RFC 7208, DMARC policy per RFC 7489 and DKIM selector keys</p><span><span class="tag">Go</span><span class="tag plan">in review</span></span></li>
+      </ul>
+    </details>
+    <details><summary>Data <span>1 utility</span></summary>
+      <ul>
+        <li><a href="https://github.com/Trysac/u269-units-dimensional"><code>u269-units-dimensional</code></a><p>Parse quantities such as 9.81 m/s^2 and convert them between units with exact dimensional analysis over SI base dimensions</p><span><span class="tag">Python</span><span class="tag plan">in review</span></span></li>
+      </ul>
+    </details>
+    <details><summary>Platform and FinOps <span>1 utility</span></summary>
+      <ul>
+        <li><a href="https://github.com/Trysac/u283-whats-new-widget"><code>u283-whats-new-widget</code></a><p>Framework-free core of an embeddable whats-new widget: validated changelog entries, unread counts from a stored last-seen id, and escaped accessible HTML</p><span><span class="tag">TypeScript</span><span class="tag plan">in review</span></span></li>
+      </ul>
+    </details>
+    <details><summary>Privacy and compliance <span>1 utility</span></summary>
+      <ul>
+        <li><a href="https://github.com/Trysac/u288-pseudonymizer"><code>u288-pseudonymizer</code></a><p>Keyed pseudonymization with HMAC-SHA256 tokens per domain, key ids for rotation and re-identification through a bounded vault port, with a stated threat model</p><span><span class="tag">Python</span><span class="tag plan">in review</span></span></li>
+      </ul>
+    </details>
+    <details><summary>Testing <span>1 utility</span></summary>
+      <ul>
+        <li><a href="https://github.com/Trysac/u294-fake-clock"><code>u294-fake-clock</code></a><p>A Clock interface for Go with a real implementation and a manual fake whose timers, tickers and sleeps fire only when a test advances time</p><span><span class="tag">Go</span><span class="tag plan">in review</span></span></li>
+      </ul>
+    </details>
+    <h3 class="run-title"><span class="tag plan">Run 6 · Line D · Vertex AI · running</span> 7 utilities</h3>
+    <details><summary>RAG, documents and search <span>1 utility</span></summary>
+      <ul>
+        <li><a href="https://github.com/Trysac/u903-pdf-form-filler"><code>u903-pdf-form-filler</code></a><p>Fill PDF AcroForm fields with validation against each field definition, write an incremental update and optionally flatten the result</p><span><span class="tag">Python</span><span class="tag plan">in review</span></span></li>
+      </ul>
+    </details>
+    <details><summary>Data <span>5 utilities</span></summary>
+      <ul>
+        <li><a href="https://github.com/Trysac/u906-openlineage-collector"><code>u906-openlineage-collector</code></a><p>Emit and receive OpenLineage run events, validate them against the 2-0-2 spec and query upstream and downstream lineage of datasets and jobs</p><span><span class="tag">Python</span><span class="tag plan">in review</span></span></li>
+        <li><a href="https://github.com/Trysac/u908-geo-hex-toolkit"><code>u908-geo-hex-toolkit</code></a><p>Pure Python hierarchical hexagon grid on an equal-area projection with exact integer parent and child links, great-circle distances and polygon cover</p><span><span class="tag">Python</span><span class="tag plan">in review</span></span></li>
+        <li><a href="https://github.com/Trysac/u909-rich-text-model"><code>u909-rich-text-model</code></a><p>Framework-free rich text document model with a schema, invertible steps, transactions, mapped selections and a bounded undo/redo history</p><span><span class="tag">TypeScript</span><span class="tag plan">in review</span></span></li>
+        <li><a href="https://github.com/Trysac/u910-json-schema-forms"><code>u910-json-schema-forms</code></a><p>Accessible HTML forms generated from a JSON Schema 2020-12 subset, with if/then/else visibility and a hand-written validator with JSON Pointer errors</p><span><span class="tag">TypeScript</span><span class="tag plan">in review</span></span></li>
+        <li><a href="https://github.com/Trysac/u914-virtual-tree-view"><code>u914-virtual-tree-view</code></a><p>Virtualized tree view for 100,000 nodes with the full WAI-ARIA tree keyboard pattern, aria-activedescendant focus and recycled DOM rows</p><span><span class="tag">TypeScript</span><span class="tag plan">in review</span></span></li>
+      </ul>
+    </details>
+    <details><summary>Developer experience, CI and documentation <span>1 utility</span></summary>
+      <ul>
+        <li><a href="https://github.com/Trysac/u912-icu-messageformat"><code>u912-icu-messageformat</code></a><p>Hand-written ICU MessageFormat parser and formatter with ICU apostrophe quoting, plural with offset and exact matches, selectordinal, select and Intl numbers</p><span><span class="tag">TypeScript</span><span class="tag plan">in review</span></span></li>
       </ul>
     </details>
   </div>
