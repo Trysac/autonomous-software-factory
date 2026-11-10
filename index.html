@@ -6,7 +6,7 @@
 <title>Autonomous Software Factory</title>
 <meta name="description" content="An autonomous software factory that designs, builds, tests, audits and documents production-grade software overnight, with a human approving what gets built and reviewing every pull request.">
 <meta property="og:title" content="Autonomous Software Factory">
-<meta property="og:description" content="214 production-grade open-source utilities built overnight on two model providers, from $0.27 of API cost per project, every gate and token measured.">
+<meta property="og:description" content="262 production-grade open-source projects built overnight on four assembly lines, from $0.11 of API cost per project, every gate and token measured.">
 <meta property="og:type" content="website">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -143,6 +143,23 @@ h2 { font-size: clamp(27px, 3.4vw, 38px); letter-spacing: -0.025em; margin: 0 0 
 .compare [role="rowheader"] { color: var(--muted); }
 .compare [role="cell"] { font-weight: 600; }
 @media (max-width: 640px) { .compare .row { grid-template-columns: 1fr 1fr; } .compare [role="rowheader"] { grid-column: 1 / -1; } .compare .head span:first-child { display: none; } }
+.vs.four { grid-template-columns: repeat(4, 1fr); }
+.vs.four .card b { font-size: 36px; }
+.vs .model { display: block; font: 600 12px/1.4 "JetBrains Mono", monospace; color: var(--accent); overflow-wrap: anywhere; }
+@media (max-width: 960px) { .vs.four { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 420px) { .vs.four .card b { font-size: 30px; } }
+.compare-scroll { overflow-x: auto; border-radius: var(--radius); -webkit-overflow-scrolling: touch; }
+.compare-scroll:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.compare.four .row { grid-template-columns: 1.3fr repeat(4, 1fr); }
+@media (max-width: 640px) { .compare.four { min-width: 640px; } .compare.four .row { padding: 12px 14px; font-size: 14px; } .compare.four [role="rowheader"] { grid-column: auto; } .compare.four .head span:first-child { display: block; } }
+.models { margin-top: 26px; }
+.models .lines { grid-template-columns: repeat(2, 1fr); }
+@media (max-width: 640px) { .models .lines { grid-template-columns: 1fr; } }
+.models h3 { font-size: 18px; margin: 0 0 4px; }
+.models .lines h4 { font-size: 15px; margin: 6px 0; }
+.models ul { margin: 0; padding-left: 18px; font-size: 14px; color: var(--muted); }
+.models li { margin: 4px 0; }
+.models code { font: 600 12.5px "JetBrains Mono", monospace; color: var(--accent); overflow-wrap: anywhere; }
 
 /* Case study */
 .case { display: grid; grid-template-columns: 1fr 1.1fr; gap: 28px; align-items: start; }
@@ -222,7 +239,7 @@ footer { padding: 32px 0 48px; color: var(--muted); font-size: 13px; border-top:
 <div class="hero">
   <div class="wrap">
     <div>
-      <span class="eyebrow"><i class="pulse" aria-hidden="true"></i>4 production runs · 214 projects · Nov 2026</span>
+      <span class="eyebrow"><i class="pulse" aria-hidden="true"></i>6 production runs · 262 projects · Nov 2026</span>
       <h1>Software that ships <em>while you sleep</em>.</h1>
       <p class="lead">You approve a specification at night. By morning there is a tested, audited and documented pull request waiting for your review, built by an autonomous factory that runs on any model provider and measures every token it spends.</p>
       <div class="cta">
@@ -252,8 +269,8 @@ footer { padding: 32px 0 48px; color: var(--muted); font-size: 13px; border-top:
 <div class="strip">
   <div class="wrap">
     <div class="stats">
-      <div class="stat"><b data-count="214">214</b><span>open-source projects delivered as pull requests, on two model providers</span></div>
-      <div class="stat"><b data-count="0.27" data-prefix="$" data-decimals="2">$0.27</b><span>API cost per project on the cheapest line, measured</span></div>
+      <div class="stat"><b data-count="262">262</b><span>open-source projects delivered as pull requests, on four assembly lines</span></div>
+      <div class="stat"><b data-count="0.11" data-prefix="$" data-decimals="2">$0.11</b><span>API cost per project on the cheapest line so far, measured</span></div>
       <div class="stat"><b data-count="80" data-prefix="≥ " data-suffix="%">≥ 80%</b><span>test coverage enforced on every utility</span></div>
       <div class="stat"><b data-count="1576">1,576</b><span>model calls, each logged with tokens and cost</span></div>
     </div>
@@ -320,23 +337,39 @@ footer { padding: 32px 0 48px; color: var(--muted); font-size: 13px; border-top:
 
 <section id="compare" class="reveal">
   <div class="wrap">
-    <p class="kicker">Measured head to head</p>
-    <h2>Same pipeline, same gates, 3x cheaper.</h2>
-    <p class="sub">The factory is model-agnostic. Two lines built 100 projects each with the same specifications format, quality gates and audit; only the models changed. Every figure below comes from the factory's ledger, not from price sheets.</p>
-    <div class="vs">
-      <div class="card"><span class="tag">Line A · Anthropic Claude</span><b>$0.94</b><span class="note">API cost per delivered project</span><div class="bar2" aria-hidden="true"><i style="--w:100%"></i></div></div>
-      <div class="card"><span class="tag ok">Line B · Google Gemini</span><b>$0.27</b><span class="note">API cost per delivered project</span><div class="bar2" aria-hidden="true"><i style="--w:29%"></i></div></div>
+    <p class="kicker">Measured side by side</p>
+    <h2>Same pipeline, same gates, four providers.</h2>
+    <p class="sub">The factory is model-agnostic. Four lines run the same specifications format, quality gates and audit; only the models change. Lines A and B have finished 100 projects each; lines C and D are still running. Every figure below comes from the factory's ledger, not from price sheets.</p>
+    <div class="vs four">
+      <div class="card"><span class="tag">Line A · Anthropic</span><b>$0.94</b><span class="note">API cost per delivered project</span><span class="model">claude-sonnet-5-5</span><div class="bar2" aria-hidden="true"><i style="--w:54%"></i></div></div>
+      <div class="card"><span class="tag ok">Line B · Gemini</span><b>$0.27</b><span class="note">API cost per delivered project</span><span class="model">gemini-3.8-flash</span><div class="bar2" aria-hidden="true"><i style="--w:16%"></i></div></div>
+      <div class="card"><span class="tag plan">Line C · DeepSeek · running</span><b>$0.11</b><span class="note">API cost per delivered project</span><span class="model">deepseek-v4-pro</span><div class="bar2" aria-hidden="true"><i style="--w:6%"></i></div></div>
+      <div class="card"><span class="tag plan">Line D · Vertex AI · running</span><b>$1.74</b><span class="note">API cost per delivered project</span><span class="model">google/gemini-4-argon</span><div class="bar2" aria-hidden="true"><i style="--w:100%"></i></div></div>
     </div>
-    <div class="compare" role="table" aria-label="Line A versus line B">
-      <div class="row head" role="row"><span role="columnheader"></span><span role="columnheader">Line A · Anthropic</span><span role="columnheader">Line B · Gemini</span></div>
-      <div class="row" role="row"><span role="rowheader">Delivered by the pipeline alone</span><span role="cell">100 of 100</span><span role="cell">84 of 100</span></div>
-      <div class="row" role="row"><span role="rowheader">Delivered in total</span><span role="cell">100 of 100</span><span role="cell">100 of 100</span></div>
-      <div class="row" role="row"><span role="rowheader">API cost per delivered project</span><span role="cell">$0.94</span><span role="cell">$0.27</span></div>
-      <div class="row" role="row"><span role="rowheader">Median time from start to pull request</span><span role="cell">4.1 h</span><span role="cell">487 min</span></div>
-      <div class="row" role="row"><span role="rowheader">Average lines per project (code / tests)</span><span role="cell">662 / 610</span><span role="cell">479 / 366</span></div>
-      <div class="row" role="row"><span role="rowheader">Where the money goes</span><span role="cell">64 % generation, 17 % correction</span><span role="cell">12 % generation, 70 % correction</span></div>
+    <div class="compare-scroll" role="region" aria-label="Comparison of lines A to D, scrolls sideways on small screens" tabindex="0">
+    <div class="compare four" role="table" aria-label="Lines A, B, C and D compared">
+      <div class="row head" role="row"><span role="columnheader"></span><span role="columnheader">Line A · Anthropic</span><span role="columnheader">Line B · Gemini</span><span role="columnheader">Line C · DeepSeek (running)</span><span role="columnheader">Line D · Vertex AI (running)</span></div>
+      <div class="row" role="row"><span role="rowheader">Delivered of the projects in the run so far</span><span role="cell">100 of 100</span><span role="cell">100 of 100</span><span role="cell">41 of 45</span><span role="cell">7 of 13</span></div>
+      <div class="row" role="row"><span role="rowheader">Delivered by the pipeline alone (no human fix)</span><span role="cell">100</span><span role="cell">81</span><span role="cell">41</span><span role="cell">7</span></div>
+      <div class="row" role="row"><span role="rowheader">API cost per delivered project</span><span role="cell">$0.94</span><span role="cell">$0.27</span><span role="cell">$0.11</span><span role="cell">$1.74</span></div>
+      <div class="row" role="row"><span role="rowheader">Median time from submission to pull request</span><span role="cell">2.6 h</span><span role="cell">0.3 h</span><span role="cell">0.6 h</span><span role="cell">1.0 h</span></div>
+      <div class="row" role="row"><span role="rowheader">Average lines per project (code / tests)</span><span role="cell">662 / 610</span><span role="cell">479 / 366</span><span role="cell">385 / 387</span><span role="cell">875 / 417</span></div>
+      <div class="row" role="row"><span role="rowheader">Where the money goes</span><span role="cell">64 % generation, 17 % correction</span><span role="cell">12 % generation, 70 % correction</span><span role="cell">43 % generation, 25 % correction</span><span role="cell">31 % generation, 64 % correction</span></div>
     </div>
-    <p class="note">Gemini generates almost for free, so its cost sits in correction. Its low-cost correction model ran out of turns on 16 projects whose defects were a few lines each; they were finished by hand. Gemini's audit was also far cheaper and reported fewer findings, which reads as a less demanding reviewer rather than better code.</p>
+    </div>
+    <p class="note">Gemini generates almost for free, so its cost sits in correction. On 19 projects its low-cost correction model could not close defects of a few lines; they were finished by hand, and each hand fix is recorded as an intervention (this page said 84 by the pipeline alone before later fixes were recorded). Gemini's audit was also far cheaper and reported fewer findings, which reads as a less demanding reviewer rather than better code.</p>
+    <p class="note">DeepSeek runs only in its off-peak price window, at half price, and is the cheapest line so far. Line D puts code quality before cost: generation runs on a stronger model, which shows in larger projects. Its figures include early infrastructure problems fixed the same day (stalled connections and a per-project budget set too low), so its cost per project is expected to fall. Lines C and D are still running; their figures cover the projects processed so far.</p>
+    <p class="note">All times use one definition: the median from submission to the model until the pull request opens, recomputed from the ledger. Earlier figures on this page were computed differently and are replaced.</p>
+    <div class="models">
+      <h3>Models and versions</h3>
+      <p class="note" style="margin-top:0">The model used per role on each line. List prices in USD per 1M tokens, input / output, as of 2026-11-10.</p>
+      <div class="lines">
+        <div class="card"><h4>Line A · Anthropic</h4><ul><li>Generation and correction: <code>claude-sonnet-5-5</code></li><li>Documentation: <code>claude-haiku-5-5</code></li></ul></div>
+        <div class="card"><h4>Line B · Google Gemini (AI Studio)</h4><ul><li>Generation and correction: <code>gemini-3.8-flash</code> · $0.75 / $3.75, promotional until 2026-12-31; generation in batch at half price</li><li>Audit and documentation: <code>gemini-3.1-flash-lite</code> · $0.25 / $1.50</li></ul></div>
+        <div class="card"><h4>Line C · DeepSeek</h4><ul><li>Generation: <code>deepseek-v4-pro</code>, served by DeepSeek-V4-Pro-0813 · $1.32 / $3.96 before the 50 % off-peak discount</li><li>Correction, audit and documentation: <code>deepseek-flash</code>, served by DeepSeek-V4.1-Flash-1017 · $0.30 / $1.20</li></ul></div>
+        <div class="card"><h4>Line D · Google Vertex AI</h4><ul><li>Generation: <code>google/gemini-4-argon</code> (GA) · $4.00 / $20.00, streamed, three requests in parallel</li><li>Correction and audit: <code>google/gemini-3.8-flash</code> · $0.75 / $3.75</li><li>Documentation: <code>google/gemini-3.1-flash-lite</code> · $0.25 / $1.50</li></ul></div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -425,14 +458,15 @@ footer { padding: 32px 0 48px; color: var(--muted); font-size: 13px; border-top:
   <div class="wrap">
     <p class="kicker">Assembly lines</p>
     <h2>One factory, any model provider.</h2>
-    <p class="sub">Each assembly line binds the same pipeline, gates and audit to a different provider, with its own models per role, prices, budget and price window. Each line runs with its own driver and lock: a line that is missing a key or over budget simply stands still; it never stops another line.</p>
+    <p class="sub">Each assembly line binds the same pipeline, gates and audit to a different provider, with its own models per role, prices, budget and price window. Each line runs with its own driver and lock: a line that is missing a key or over budget simply stands still; it never stops another line. Four lines have run; three more are built and waiting.</p>
     <div class="lines">
       <div class="card line"><span class="tag ok">delivered 104</span><h3>Line A · Anthropic</h3><p>Claude models through the Batch API. Built the first run of 100 utilities and 4 Unreal Engine agent toolsets.</p></div>
       <div class="card line"><span class="tag ok">delivered 110</span><h3>Line B · Google Gemini</h3><p>Gemini Flash through the Gemini Batch API at half price. Built the second run of 100 utilities and the 10-project challenge.</p></div>
-      <div class="card line"><span class="tag plan">built</span><h3>Line C · DeepSeek</h3><p>Calls only in the off-peak window, at half price, including fixes and audits.</p></div>
-      <div class="card line"><span class="tag plan">built</span><h3>Line D · Multi-model</h3><p>One router, many providers: the cheapest compliant endpoint per request, no data collection.</p></div>
-      <div class="card line"><span class="tag plan">built</span><h3>Line E · Self-hosted</h3><p>Open-weight models on local hardware: zero marginal cost for the roles they handle well.</p></div>
-      <div class="card line"><span class="tag plan">built</span><h3>Line F · Vertex AI</h3><p>Google Cloud at flex pricing, switched off automatically when its trial credits expire.</p></div>
+      <div class="card line"><span class="tag plan">running · 41 delivered</span><h3>Line C · DeepSeek</h3><p>DeepSeek V4 models, called only in the off-peak window at half price, including fixes and audits. Building its run of 100 utilities.</p></div>
+      <div class="card line"><span class="tag plan">running · 7 delivered</span><h3>Line D · Google Vertex AI</h3><p>Gemini on Vertex AI with generation on a stronger model, putting code quality before cost. Generations are streamed, three requests in parallel.</p></div>
+      <div class="card line"><span class="tag">built · next</span><h3>OpenRouter</h3><p>One router, many providers, starting with <code>qwen/qwen3.7-plus</code>.</p></div>
+      <div class="card line"><span class="tag">built · next</span><h3>Self-hosted · cloud GPU</h3><p>Open-weight models on a rented GPU, with its own budget of USD 15.</p></div>
+      <div class="card line"><span class="tag">built · next</span><h3>Self-hosted · local GPU</h3><p>Open-weight models on a laptop GPU: no API cost. Independent from the cloud line.</p></div>
     </div>
   </div>
 </section>
@@ -463,7 +497,7 @@ footer { padding: 32px 0 48px; color: var(--muted); font-size: 13px; border-top:
   <div class="wrap">
     <p class="kicker">Catalog</p>
     <h2>Full catalog: 214 projects.</h2>
-    <p class="sub">Every delivered project of every run, grouped by domain. Each links to its public repository.</p>
+    <p class="sub">Every delivered project of runs 1 to 4, grouped by domain. Each links to its public repository. Projects of lines C and D are added here as their runs finish.</p>
     <h3 class="run-title"><span class="tag">Run 1 · Line A · Anthropic</span> 100 utilities</h3>
     <details><summary>LLM engineering <span>12 utilities</span></summary>
       <ul>
@@ -800,7 +834,7 @@ footer { padding: 32px 0 48px; color: var(--muted); font-size: 13px; border-top:
   <div class="wrap">
     <p class="kicker">Questions</p>
     <h2>Frequently asked.</h2>
-    <details><summary>Which models does it use?</summary><p>Production runs have used Anthropic Claude (line A) and Google Gemini (line B). Lines for DeepSeek, a multi-provider router, self-hosted open-weight models and Vertex AI are built and use the same pipeline and gates.</p></details>
+    <details><summary>Which models does it use?</summary><p>Production runs have used Anthropic Claude (line A), Google Gemini (line B), DeepSeek (line C) and Gemini on Google Vertex AI (line D); lines C and D are still running. Lines for OpenRouter and two independent self-hosted lines, one on a rented cloud GPU and one on a local laptop GPU, are built and use the same pipeline and gates.</p></details>
     <details><summary>Does confidential code leave my control?</summary><p>Each project declares its distribution. Client and internal projects are routed only to providers that do not train on inputs and offer zero data retention; the planner refuses any other route.</p></details>
     <details><summary>What does the human actually do?</summary><p>Approves every specification before anything is built, and reviews and merges every pull request. The factory never pushes to a main branch.</p></details>
     <details><summary>What do the cost figures include?</summary><p>They are the measured model API cost per delivered project, including generation, corrections, audit and documentation. They are not a price quote for client work.</p></details>
