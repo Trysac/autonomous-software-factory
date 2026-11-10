@@ -20,7 +20,7 @@ production-grade software overnight, with a human approving what gets built and 
 - Challenge run (line B): 10 size-L systems; 1 fit in one generation, 6 after fixing the line, all 10 after the
   architect re-planned the last 4 into 22 modules; 5 of the 10 were delivered with no human fix.
 - Unreal Engine agent toolsets (line A): 4 of 4 delivered by the pipeline alone, USD 4.52 in total.
-- Overall: 262 projects delivered. Runs 1 to 4: 82 % of all 245 items with no human fix. Every hand fix is recorded as an
+- Overall: 262 projects delivered. 82 % of all 303 items delivered with no human fix (249). Every hand fix is recorded as an
   intervention and excluded from that rate.
 - The page also describes the factory's roles: analyst, architect, generator, fixer, auditor, docs writer,
   security engineer and visual QA, and the deterministic planner, gates, publisher, release manager and
