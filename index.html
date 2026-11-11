@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Autonomous Software Factory</title>
-<meta name="description" content="An autonomous software factory that designs, builds, tests, audits and documents production-grade software overnight, with a human approving what gets built and reviewing every pull request.">
-<meta property="og:title" content="Autonomous Software Factory">
-<meta property="og:description" content="286 production-grade open-source projects built overnight on four assembly lines, from $0.11 of API cost per project, every gate and token measured.">
+<title>Autonomous Software Factory · José Miguel Gómez</title>
+<meta name="description" content="A case study by José Miguel Gómez: an autonomous software factory he designed and operates, with 286 tested and audited open-source projects delivered across four model providers.">
+<meta property="og:title" content="Autonomous Software Factory · José Miguel Gómez">
+<meta property="og:description" content="286 tested and audited open-source projects, 82% of the work delivered with no human fix, measured on four model providers. A case study in AI engineering.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://trysac.github.io/autonomous-software-factory/">
 <meta property="og:image" content="https://trysac.github.io/autonomous-software-factory/og.png">
@@ -16,7 +16,7 @@
 <meta name="author" content="José Miguel Gómez">
 <meta property="article:author" content="https://www.linkedin.com/in/jose-miguel-gomez-architect">
 <meta property="article:published_time" content="2026-11-06T03:25:20-05:00">
-<meta property="article:modified_time" content="2026-11-10T17:39:18-05:00">
+<meta property="article:modified_time" content="2026-11-11T10:36:15-05:00">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://trysac.github.io/autonomous-software-factory/og.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -50,6 +50,7 @@ nav a { color: var(--muted); margin-left: 18px; font-size: 14px; font-weight: 50
 nav a:hover { color: var(--text); text-decoration: none; }
 nav a.hire { color: var(--on-accent); background: var(--accent); padding: 7px 12px; border-radius: 8px; font-weight: 600; white-space: nowrap; }
 @media (max-width: 760px) { nav .opt { display: none; } }
+@media (max-width: 420px) { .brand { font-size: 14px; } nav a.hire { margin-left: 8px; } }
 
 /* Hero */
 .hero { position: relative; padding: 72px 0 56px; overflow: hidden; }
@@ -72,8 +73,13 @@ h1 em { font-style: normal; background: linear-gradient(90deg, var(--accent), va
 .btn.primary { background: var(--accent); color: var(--on-accent); border-color: transparent; box-shadow: 0 8px 28px -10px color-mix(in srgb, var(--accent) 80%, transparent); }
 .btn.ghost { background: transparent; }
 .btn:hover { text-decoration: none; transform: translateY(-1px); filter: brightness(1.06); }
-.byline { margin-top: 22px; font-size: 14px; color: var(--muted); }
-.byline strong { color: var(--text); }
+.byline { margin: 0 0 18px; font-size: 16px; color: var(--muted); }
+.byline strong { display: block; color: var(--text); font-size: clamp(20px, 2.2vw, 24px); font-weight: 700; letter-spacing: -0.01em; line-height: 1.25; }
+.stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 30px; }
+@media (max-width: 520px) { .stats { grid-template-columns: 1fr; } }
+.stat { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 16px 18px; }
+.stat b { display: block; font-size: clamp(28px, 3.4vw, 38px); letter-spacing: -0.03em; font-weight: 800; line-height: 1.15; background: linear-gradient(90deg, var(--text), color-mix(in srgb, var(--accent) 70%, var(--text))); -webkit-background-clip: text; background-clip: text; color: transparent; font-variant-numeric: tabular-nums; }
+.stat span { color: var(--muted); font-size: 14px; }
 
 /* Terminal replay */
 .term { background: var(--term); color: #d7e0ec; border: 1px solid var(--line); border-radius: 14px; box-shadow: 0 30px 80px -30px color-mix(in srgb, var(--accent-2) 55%, transparent); overflow: hidden; }
@@ -84,6 +90,7 @@ h1 em { font-style: normal; background: linear-gradient(90deg, var(--accent), va
 .term ol { list-style: none; margin: 0; padding: 16px 18px 18px; font: 13px/1.75 "JetBrains Mono", monospace; min-height: 330px; }
 .term li { white-space: pre-wrap; }
 .term .t { color: #7d8aa0; } .term .ok { color: #34d399; } .term .hu { color: #fbbf24; } .term .ac { color: #5eead4; } .term .em { color: #fff; font-weight: 600; }
+/* The first five lines are in the HTML already shown; the rest start hidden and the script reveals them within 3 s. */
 .js .term li { opacity: 0; transform: translateY(4px); transition: opacity .25s ease, transform .25s ease; }
 .js .term li.on { opacity: 1; transform: none; }
 .caret { display: inline-block; width: 8px; height: 15px; background: #5eead4; vertical-align: -2px; animation: blink 1s steps(1) infinite; }
@@ -95,25 +102,6 @@ h2 { font-size: clamp(27px, 3.4vw, 38px); letter-spacing: -0.025em; margin: 0 0 
 .kicker { font: 600 12px/1 "JetBrains Mono", monospace; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); margin: 0 0 12px; }
 .sub { color: var(--muted); margin: 0 0 34px; max-width: 760px; font-size: 17px; }
 
-/* Trust strip */
-.strip { padding: 34px 0; border-top: 1px solid var(--line); background: linear-gradient(180deg, color-mix(in srgb, var(--bg-2) 70%, transparent), transparent); }
-.strip .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
-@media (max-width: 860px) { .strip .stats { grid-template-columns: repeat(2, 1fr); } }
-.stat { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 20px; }
-.stat b { display: block; font-size: clamp(28px, 3.6vw, 40px); letter-spacing: -0.03em; font-weight: 800; background: linear-gradient(90deg, var(--text), color-mix(in srgb, var(--accent) 70%, var(--text))); -webkit-background-clip: text; background-clip: text; color: transparent; font-variant-numeric: tabular-nums; }
-.stat span { color: var(--muted); font-size: 14px; }
-.facts { display: flex; flex-wrap: wrap; gap: 8px 22px; margin-top: 18px; color: var(--muted); font-size: 14px; }
-.facts b { color: var(--text); }
-
-/* Problem */
-.pains { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
-@media (max-width: 860px) { .pains { grid-template-columns: 1fr; } }
-.pain { border-left: 3px solid var(--warn); padding: 4px 0 4px 16px; }
-.pain h3 { margin: 0 0 6px; font-size: 17px; }
-.pain p { margin: 0; color: var(--muted); font-size: 15px; }
-.answer { margin-top: 30px; padding: 22px 24px; border-radius: var(--radius); border: 1px solid color-mix(in srgb, var(--accent) 40%, var(--line)); background: color-mix(in srgb, var(--accent) 7%, var(--card)); font-size: 17px; }
-.answer strong { color: var(--accent); }
-
 /* Cards */
 .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
 @media (max-width: 860px) { .grid { grid-template-columns: 1fr; } }
@@ -121,8 +109,15 @@ h2 { font-size: clamp(27px, 3.4vw, 38px); letter-spacing: -0.025em; margin: 0 0 
 .card:hover { border-color: color-mix(in srgb, var(--accent) 45%, var(--line)); }
 .card h3 { margin: 0 0 8px; font-size: 18px; }
 .card p { margin: 0; color: var(--muted); font-size: 15px; }
+.large { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+@media (max-width: 760px) { .large { grid-template-columns: 1fr; } }
+.large a.card, .featured a.card { color: var(--text); display: block; }
+.large a.card:hover, .featured a.card:hover { border-color: var(--accent); text-decoration: none; transform: translateY(-2px); }
+.large code { font: 600 12.5px "JetBrains Mono", monospace; color: var(--accent); overflow-wrap: anywhere; }
+.honest { margin-top: 18px; padding: 18px 22px; border-radius: var(--radius); border: 1px solid color-mix(in srgb, var(--warn) 40%, var(--line)); background: color-mix(in srgb, var(--warn) 6%, var(--card)); color: var(--muted); font-size: 15px; }
+.honest b { color: var(--text); }
 
-/* Animated pipeline */
+/* Pipeline */
 .pipe { position: relative; display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; counter-reset: step; }
 @media (max-width: 860px) { .pipe { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 520px) { .pipe { grid-template-columns: 1fr; } }
@@ -137,40 +132,28 @@ h2 { font-size: clamp(27px, 3.4vw, 38px); letter-spacing: -0.025em; margin: 0 0 
 .step.human.lit { border-color: var(--warn); box-shadow: 0 0 0 1px var(--warn), 0 10px 40px -14px color-mix(in srgb, var(--warn) 70%, transparent); }
 .step { transition: border-color .3s ease, box-shadow .3s ease; }
 .track { height: 4px; border-radius: 4px; margin: 0 0 18px; background: var(--line); position: relative; overflow: hidden; }
-.track i { position: absolute; inset: 0 auto 0 0; width: 0; background: linear-gradient(90deg, var(--warn), var(--accent), var(--accent-2), var(--warn)); transition: width .5s ease; }
+.track i { position: absolute; inset: 0 auto 0 0; width: 100%; background: linear-gradient(90deg, var(--warn), var(--accent), var(--accent-2), var(--warn)); transition: width .5s ease; }
+.roles ul { margin: 0; padding: 0 20px 18px 38px; color: var(--muted); font-size: 15px; }
+.roles li { margin: 5px 0; }
+.roles li b { color: var(--text); }
 
 /* Comparison */
-.vs { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 18px; }
-@media (max-width: 760px) { .vs { grid-template-columns: 1fr; } }
-.vs .card b { display: block; font-size: 44px; letter-spacing: -0.03em; font-weight: 800; line-height: 1.1; margin: 4px 0 2px; }
-.bar2 { height: 12px; border-radius: 6px; background: var(--line); margin: 14px 0 6px; overflow: hidden; }
-.bar2 i { display: block; height: 100%; border-radius: 6px; width: var(--w); background: linear-gradient(90deg, var(--accent-2), var(--accent)); }
-.js .bar2 i { width: 0; transition: width 1.2s cubic-bezier(.2,.8,.2,1); }
-.js .in .bar2 i { width: var(--w); }
 .compare { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
-.compare .row { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 14px; padding: 12px 20px; border-top: 1px solid var(--line); font-size: 15px; }
+.compare .row { display: grid; grid-template-columns: 1.3fr repeat(4, 1fr); gap: 14px; padding: 12px 20px; border-top: 1px solid var(--line); font-size: 15px; }
 .compare .row:first-child { border-top: 0; }
 .compare .head { font: 600 12px/1.4 "JetBrains Mono", monospace; letter-spacing: .06em; text-transform: uppercase; color: var(--accent); }
 .compare [role="rowheader"] { color: var(--muted); }
 .compare [role="cell"] { font-weight: 600; }
-@media (max-width: 640px) { .compare .row { grid-template-columns: 1fr 1fr; } .compare [role="rowheader"] { grid-column: 1 / -1; } .compare .head span:first-child { display: none; } }
-.vs.four { grid-template-columns: repeat(4, 1fr); }
-.vs.four .card b { font-size: 36px; }
-.vs .model { display: block; font: 600 12px/1.4 "JetBrains Mono", monospace; color: var(--accent); overflow-wrap: anywhere; }
-@media (max-width: 960px) { .vs.four { grid-template-columns: 1fr 1fr; } }
-@media (max-width: 420px) { .vs.four .card b { font-size: 30px; } }
 .compare-scroll { overflow-x: auto; border-radius: var(--radius); -webkit-overflow-scrolling: touch; }
 .compare-scroll:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
-.compare.four .row { grid-template-columns: 1.3fr repeat(4, 1fr); }
-@media (max-width: 640px) { .compare.four { min-width: 640px; } .compare.four .row { padding: 12px 14px; font-size: 14px; } .compare.four [role="rowheader"] { grid-column: auto; } .compare.four .head span:first-child { display: block; } }
-.models { margin-top: 26px; }
-.models .lines { grid-template-columns: repeat(2, 1fr); }
-@media (max-width: 640px) { .models .lines { grid-template-columns: 1fr; } }
-.models h3 { font-size: 18px; margin: 0 0 4px; }
-.models .lines h4 { font-size: 15px; margin: 6px 0; }
-.models ul { margin: 0; padding-left: 18px; font-size: 14px; color: var(--muted); }
-.models li { margin: 4px 0; }
-.models code { font: 600 12.5px "JetBrains Mono", monospace; color: var(--accent); overflow-wrap: anywhere; }
+@media (max-width: 640px) { .compare { min-width: 640px; } .compare .row { padding: 12px 14px; font-size: 14px; } }
+.method { margin-top: 18px; }
+.method .body { padding: 0 20px 18px; color: var(--muted); font-size: 14px; }
+.method h4 { color: var(--text); font-size: 15px; margin: 14px 0 6px; }
+.method ul { margin: 0; padding-left: 18px; }
+.method li { margin: 4px 0; }
+.method code { font: 600 12.5px "JetBrains Mono", monospace; color: var(--accent); overflow-wrap: anywhere; }
+.method p { margin: 8px 0; }
 
 /* Case study */
 .case { display: grid; grid-template-columns: 1fr 1.1fr; gap: 28px; align-items: start; }
@@ -187,23 +170,27 @@ h2 { font-size: clamp(27px, 3.4vw, 38px); letter-spacing: -0.025em; margin: 0 0 
 .receipt div { display: flex; justify-content: space-between; border-bottom: 1px dashed var(--line); }
 .receipt div.total { border-bottom: 0; font-weight: 700; color: var(--accent); padding-top: 4px; }
 
+/* What this shows */
+.shows { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+@media (max-width: 860px) { .shows { grid-template-columns: 1fr; } }
+.shows div { border-left: 3px solid var(--accent); padding: 4px 0 4px 16px; }
+.shows h3 { margin: 0 0 6px; font-size: 17px; }
+.shows p { margin: 0; color: var(--muted); font-size: 15px; }
+
 .tag { display: inline-block; font: 600 11px/1 "JetBrains Mono", monospace; padding: 5px 7px; border-radius: 6px; margin: 2px 4px 2px 0; border: 1px solid var(--line); color: var(--muted); }
 .tag.ok { color: var(--ok); border-color: color-mix(in srgb, var(--ok) 40%, transparent); }
 .tag.plan { color: var(--warn); border-color: color-mix(in srgb, var(--warn) 40%, transparent); }
-.gates { display: flex; flex-wrap: wrap; gap: 8px; }
-.gates .tag { font-size: 13px; padding: 8px 10px; }
-.lines { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
-@media (max-width: 960px) { .lines { grid-template-columns: 1fr 1fr; } }
-@media (max-width: 520px) { .lines { grid-template-columns: 1fr; } }
-.line h3 { font-size: 16px; margin: 6px 0; }
 .featured { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
 @media (max-width: 860px) { .featured { grid-template-columns: 1fr; } }
-.featured a.card { color: var(--text); display: block; }
-.featured a.card:hover { border-color: var(--accent); text-decoration: none; transform: translateY(-2px); }
 .featured code, .catalog code { font: 600 13px "JetBrains Mono", monospace; color: var(--accent); }
 details { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); margin-bottom: 10px; }
 summary { cursor: pointer; padding: 16px 20px; font-weight: 600; display: flex; justify-content: space-between; gap: 12px; list-style: none; }
 summary::-webkit-details-marker { display: none; }
+summary { align-items: center; }
+summary::after { content: ""; flex: none; width: 9px; height: 9px; margin-left: 4px; border-right: 2px solid var(--accent); border-bottom: 2px solid var(--accent); transform: translateY(-2px) rotate(45deg); transition: transform .2s ease; }
+details[open] > summary::after { transform: translateY(2px) rotate(-135deg); }
+summary:hover { color: var(--accent); }
+summary > span { margin-left: auto; }
 summary span { color: var(--muted); font-weight: 500; font-size: 14px; }
 .catalog ul { list-style: none; margin: 0; padding: 0 20px 14px; }
 .catalog li { padding: 10px 0; border-top: 1px solid var(--line); display: grid; grid-template-columns: 260px 1fr 150px; gap: 14px; font-size: 14px; }
@@ -212,20 +199,18 @@ summary span { color: var(--muted); font-weight: 500; font-size: 14px; }
 .run-title:first-of-type { margin-top: 0; }
 .run-title .tag { font-size: 12px; padding: 7px 9px; }
 @media (max-width: 760px) { .catalog li { grid-template-columns: 1fr; gap: 4px; } }
-.faq details p { margin: 0; padding: 0 20px 18px; color: var(--muted); }
+.more { margin-top: 20px; font-weight: 600; }
 .final { text-align: center; position: relative; overflow: hidden; background: linear-gradient(135deg, color-mix(in srgb, var(--accent) 16%, var(--card)), color-mix(in srgb, var(--accent-2) 18%, var(--card))); border: 1px solid var(--line); border-radius: 22px; padding: 56px 24px; }
 .final h2 { font-size: clamp(28px, 4vw, 44px); }
 .final p { color: var(--muted); max-width: 640px; margin: 0 auto 26px; font-size: 17px; }
+.final .cta { justify-content: center; }
 footer { padding: 32px 0 48px; color: var(--muted); font-size: 13px; border-top: 1px solid var(--line); }
 .note { font-size: 13px; color: var(--muted); margin-top: 14px; }
 
-/* Reveal on scroll: hidden state only when JS is running (see script), final state without motion. */
-.js .reveal { opacity: 0; transform: translateY(14px); transition: opacity .55s ease, transform .55s ease; }
-.js .reveal.in { opacity: 1; transform: none; }
+/* Sections are never hidden: content renders with or without JS, and screenshots taken without scrolling are complete. */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
-  .js .reveal, .js .term li { opacity: 1; transform: none; }
-  .js .bar2 i { width: var(--w); }
+  .js .term li { opacity: 1; transform: none; }
 }
 </style>
 <script>document.documentElement.classList.add("js");</script>
@@ -235,13 +220,12 @@ footer { padding: 32px 0 48px; color: var(--muted); font-size: 13px; border-top:
   <div class="wrap">
     <a class="brand" href="#">Autonomous <span>Software Factory</span></a>
     <nav aria-label="Sections">
+      <a class="opt" href="#large">Large systems</a>
       <a class="opt" href="#how">How it works</a>
-      <a class="opt" href="#roles">Roles</a>
-      <a class="opt" href="#compare">Anthropic vs Gemini</a>
-      <a class="opt" href="#bigger">Bigger projects</a>
       <a class="opt" href="#case">Case study</a>
-      <a class="opt" href="#catalog">Catalog</a>
-      <a class="hire" href="https://www.linkedin.com/in/jose-miguel-gomez-architect">Hire me</a>
+      <a class="opt" href="#compare">Providers</a>
+      <a class="opt" href="catalog.html">Catalog</a>
+      <a class="hire" href="mailto:jmgomezsac@gmail.com">Contact me</a>
     </nav>
   </div>
 </header>
@@ -250,23 +234,28 @@ footer { padding: 32px 0 48px; color: var(--muted); font-size: 13px; border-top:
 <div class="hero">
   <div class="wrap">
     <div>
-      <span class="eyebrow"><i class="pulse" aria-hidden="true"></i>6 production runs · 286 projects · Nov 2026</span>
+      <p class="byline"><strong>José Miguel Gómez</strong> Senior Software Engineer and AI Engineer. Open to senior roles and consulting.</p>
+      <span class="eyebrow"><i class="pulse" aria-hidden="true"></i>Portfolio case study · figures as of 2026-11-10</span>
       <h1>Software that ships <em>while you sleep</em>.</h1>
-      <p class="lead">You approve a specification at night. By morning there is a tested, audited and documented pull request waiting for your review, built by an autonomous factory that runs on any model provider and measures every token it spends.</p>
+      <p class="lead">An autonomous software factory I designed and operate: 286 tested and audited open-source projects, 82% of the work delivered with no human fix, across four model providers.</p>
       <div class="cta">
-        <a class="btn primary" href="https://www.linkedin.com/in/jose-miguel-gomez-architect">Hire me to build yours</a>
-        <a class="btn ghost" href="https://github.com/Trysac?tab=repositories&q=topic%3Aautonomous-software-factory">See the repos on GitHub</a>
+        <a class="btn primary" href="mailto:jmgomezsac@gmail.com">Contact me</a>
+        <a class="btn ghost" href="https://github.com/Trysac?tab=repositories&q=topic%3Aautonomous-software-factory">See the code</a>
       </div>
-      <p class="byline">Designed and operated by <strong>José Miguel Gómez</strong>, Senior Software Engineer and AI Engineer.</p>
+      <div class="stats">
+        <div class="stat"><b data-count="286">286</b><span>open-source projects delivered as pull requests</span></div>
+        <div class="stat"><b data-count="82" data-suffix="%">82%</b><span>of 331 work items (projects, relaunches and modules) delivered with no human intervention</span></div>
+        <div class="stat"><b data-count="10">10</b><span>large systems, from a SQL engine to a WebAssembly interpreter</span></div>
+      </div>
     </div>
     <div class="term" aria-label="Replay of one real factory run">
       <div class="bar" aria-hidden="true"><i></i><i></i><i></i><span>fabrica · u010-prompt-injection-guard</span></div>
       <ol id="replay">
-        <li><span class="t">23:25</span> <span class="hu">human</span> approved spec · prompt-injection-guard (Python)</li>
-        <li><span class="t">23:25</span> budget reserved · expected $0.63, worst case $0.74</li>
-        <li><span class="t">23:26</span> batch submitted at half price</li>
-        <li><span class="t">23:45</span> code, tests and docs generated</li>
-        <li><span class="t">00:02</span> gates: lint · format · types · tests · coverage · secrets · audit</li>
+        <li class="on"><span class="t">23:25</span> <span class="hu">human</span> approved spec · prompt-injection-guard (Python)</li>
+        <li class="on"><span class="t">23:25</span> budget reserved · expected $0.63, worst case $0.74</li>
+        <li class="on"><span class="t">23:26</span> batch submitted at half price</li>
+        <li class="on"><span class="t">23:45</span> code, tests and docs generated</li>
+        <li class="on"><span class="t">00:02</span> gates: lint · format · types · tests · coverage · secrets · audit</li>
         <li><span class="t">00:03</span> 4 correction rounds, file tools only, no shell</li>
         <li><span class="t">00:04</span> <span class="ok">✓ all gates passed</span></li>
         <li><span class="t">00:04</span> <span class="ac">pull request #1 opened</span> · 1 squashed commit</li>
@@ -277,37 +266,32 @@ footer { padding: 32px 0 48px; color: var(--muted); font-size: 13px; border-top:
   </div>
 </div>
 
-<div class="strip">
+<section id="large">
   <div class="wrap">
-    <div class="stats">
-      <div class="stat"><b data-count="286">286</b><span>open-source projects delivered as pull requests, on four assembly lines</span></div>
-      <div class="stat"><b data-count="0.11" data-prefix="$" data-decimals="2">$0.11</b><span>API cost per project on the cheapest line so far, measured</span></div>
-      <div class="stat"><b data-count="80" data-prefix="≥ " data-suffix="%">≥ 80%</b><span>test coverage enforced on every utility</span></div>
-      <div class="stat"><b data-count="1576">1,576</b><span>model calls, each logged with tokens and cost</span></div>
+    <p class="kicker">Large systems</p>
+    <h2>10 systems where one generation is not enough.</h2>
+    <p class="sub">Each is a public repository with tests, CI and documentation. Most did not fit in a single model generation, so the factory grew an architect role that splits a system into modules with frozen interfaces and builds them in dependency order.</p>
+    <div class="large">
+      <a class="card" href="https://github.com/Trysac/u401-lsm-kv-engine"><h3>LSM key-value engine</h3><p>Pure Go embedded log-structured merge-tree key-value engine with write-ahead log, memtable, SSTables, Bloom filters, and crash recovery.</p><p style="margin-top:10px"><span class="tag">Go</span><code>u401-lsm-kv-engine</code></p></a>
+      <a class="card" href="https://github.com/Trysac/u402-linearizability-checker"><h3>Linearizability checker</h3><p>Deterministic linearizability checker for concurrent execution histories using Wing and Gong search with Lowe pruning, key partitioning, and minimal counterexample generation.</p><p style="margin-top:10px"><span class="tag">Go</span><code>u402-linearizability-checker</code></p></a>
+      <a class="card" href="https://github.com/Trysac/u403-wasm-interpreter"><h3>WebAssembly interpreter</h3><p>Zero-dependency WebAssembly MVP binary decoder, validator, and stack-based interpreter with explicit fuel metering and host imports.</p><p style="margin-top:10px"><span class="tag">Go</span><code>u403-wasm-interpreter</code></p></a>
+      <a class="card" href="https://github.com/Trysac/u404-cdcl-sat-solver"><h3>CDCL SAT solver</h3><p>Pure-Python CDCL SAT solver with two-watched-literals, 1-UIP learning, DRAT proofs, and assumptions.</p><p style="margin-top:10px"><span class="tag">Python</span><code>u404-cdcl-sat-solver</code></p></a>
+      <a class="card" href="https://github.com/Trysac/u405-crdt-json"><h3>JSON CRDT</h3><p>Conflict-free replicated JSON document with maps, RGA sequences, PN-counters, state-vector sync, and binary encoding.</p><p style="margin-top:10px"><span class="tag">TypeScript</span><code>u405-crdt-json</code></p></a>
+      <a class="card" href="https://github.com/Trysac/u406-linear-regex"><h3>Linear-time regex engine</h3><p>Linear-time regular expression engine in TypeScript implementing a ReDoS-safe RE2 subset via Pike VM and lazy DFA.</p><p style="margin-top:10px"><span class="tag">TypeScript</span><code>u406-linear-regex</code></p></a>
+      <a class="card" href="https://github.com/Trysac/u407-formula-engine"><h3>Spreadsheet formula engine</h3><p>Zero-dependency spreadsheet formula engine in TypeScript with A1 reference parsing, incremental recalculation via dependency DAG, and cycle detection.</p><p style="margin-top:10px"><span class="tag">TypeScript</span><code>u407-formula-engine</code></p></a>
+      <a class="card" href="https://github.com/Trysac/u408-datalog-engine"><h3>Datalog engine</h3><p>In-memory stratified Datalog engine in pure Python with semi-naive evaluation, DRed incremental view updates, aggregates, and derivation explanations.</p><p style="margin-top:10px"><span class="tag">Python</span><code>u408-datalog-engine</code></p></a>
+      <a class="card" href="https://github.com/Trysac/u409-columnar-sql-engine"><h3>Columnar SQL engine</h3><p>Embeddable columnar SQL query engine in Go with vectorized batch execution, a rule-based optimizer, CSV tables and three-valued NULL logic.</p><p style="margin-top:10px"><span class="tag">Go</span><code>u409-columnar-sql-engine</code></p></a>
+      <a class="card" href="https://github.com/Trysac/u410-git-objects"><h3>Git object store</h3><p>Pure Python zero-dependency reader and writer for Git object stores, packed refs, and packfiles v2.</p><p style="margin-top:10px"><span class="tag">Python</span><code>u410-git-objects</code></p></a>
     </div>
-    <div class="facts"><span><b>127,184</b> lines of code and tests in the first run</span><span><b>3</b> languages: Python, TypeScript, Go</span><span><b>12</b> engineering domains</span><span><b>1,133</b> tests guard the factory itself</span><span><b>82%</b> of all items delivered with no human fix (272 of 331)</span></div>
-  </div>
-</div>
-
-<section id="problem" class="reveal">
-  <div class="wrap">
-    <p class="kicker">The problem</p>
-    <h2>Your backlog of useful tools never gets built.</h2>
-    <p class="sub">Every team has a list of small, valuable pieces of software that nobody has time to write properly. AI can write code, but not code you can trust in production without someone checking every line.</p>
-    <div class="pains">
-      <div class="pain"><h3>Senior time goes to plumbing</h3><p>Parsers, validators, CLIs and integrations eat weeks that should go to the product.</p></div>
-      <div class="pain"><h3>AI output is unverified</h3><p>A chat assistant writes plausible code; nobody runs the tests, the audit or the security scan.</p></div>
-      <div class="pain"><h3>Costs are a guess</h3><p>Model spend is invisible until the invoice arrives, and one provider means one point of failure.</p></div>
-    </div>
-    <p class="answer">The factory treats models as workers, not oracles: <strong>a deterministic pipeline decides what is accepted</strong>, under a hard budget, and a human approves the work before it starts and reviews it before it merges.</p>
+    <p class="honest"><b>What happened, as it happened.</b> All 10 were delivered: 1 in one generation, 6 after fixing gaps in the line itself, and the last 4 only after the architect re-planned them into 22 modules. 5 of the 10 were delivered by the line with no human fix; 4 conformance modules are held for review. Every hand fix is recorded as an intervention, 32 so far across all runs, and excluded from the autonomous rate. Model API cost of all 10: $34.</p>
   </div>
 </section>
 
-<section id="how" class="reveal">
+<section id="how">
   <div class="wrap">
     <p class="kicker">How it works</p>
     <h2>Eight steps, two of them human.</h2>
-    <p class="sub">The models write and correct code; the factory decides what is accepted. Nothing reaches a repository without passing the same gates a senior team would demand.</p>
+    <p class="sub">The models write and correct code; deterministic code decides what is accepted. Nothing reaches a repository without passing the gates a senior team would demand.</p>
     <div class="track" aria-hidden="true"><i id="track"></i></div>
     <div class="pipe" id="pipe">
       <div class="step human"><h3>Approve</h3><p>A human selects and approves each specification before anything is built.</p></div>
@@ -319,91 +303,27 @@ footer { padding: 32px 0 48px; color: var(--muted); font-size: 13px; border-top:
       <div class="step"><h3>Publish</h3><p>One clean, squashed commit per pull request; the factory never pushes to main.</p></div>
       <div class="step human"><h3>Review</h3><p>A human reviews and merges. CI re-runs the gates on Linux and Windows.</p></div>
     </div>
+    <details class="roles" style="margin-top:22px">
+      <summary>The twelve roles behind the steps <span>models with narrow permissions, and deterministic code</span></summary>
+      <ul>
+        <li><b>Analyst</b> (model): turns an idea into a specification with testable acceptance criteria.</li>
+        <li><b>Architect</b> (model): splits a large system into modules with frozen interfaces.</li>
+        <li><b>Generator</b> (model): writes the code, tests and documentation of one item in one batch request.</li>
+        <li><b>Fixer</b> (model): repairs failing gates in bounded rounds, with file tools only.</li>
+        <li><b>Auditor</b> (model): a read-only reviewer, separate from the author, that checks against the spec.</li>
+        <li><b>Docs writer</b> (model): rewrites the documentation to match the code actually delivered.</li>
+        <li><b>Security engineer</b> (model): Semgrep, OSV-Scanner and a STRIDE review where there is auth or user data.</li>
+        <li><b>Visual QA</b> (model): screenshots web apps at two widths and checks contrast; evidence, never a gate.</li>
+        <li><b>Planner</b> (deterministic): estimates each item and reserves its worst case against the budget.</li>
+        <li><b>Quality and security gates</b> (deterministic): the checks every pull request must pass.</li>
+        <li><b>Publisher and release manager</b> (deterministic): one pull request per item; tags only after a human merge.</li>
+        <li><b>Maintenance</b> (deterministic): merges only patch dependency updates whose CI passed.</li>
+      </ul>
+    </details>
   </div>
 </section>
 
-
-<section id="roles" class="reveal">
-  <div class="wrap">
-    <p class="kicker">Roles</p>
-    <h2>A team of specialised roles, not one prompt.</h2>
-    <p class="sub">Like a human engineering team, the factory splits the work into roles. Some are models with narrow permissions; the rest are deterministic code that no model can talk its way around. Each role is versioned, and each line can bind a different model to it.</p>
-    <div class="grid">
-      <div class="card"><span class="tag">model</span><h3>Analyst</h3><p>Turns an idea into a specification with testable acceptance criteria. It never queues work: a human approves the specification first.</p></div>
-      <div class="card"><span class="tag">model</span><h3>Architect</h3><p>Splits a project too large for one generation into modules with frozen interfaces, built and gated one by one in dependency order.</p></div>
-      <div class="card"><span class="tag">model</span><h3>Generator</h3><p>Writes the code, tests and documentation of one utility or module in a single batch request.</p></div>
-      <div class="card"><span class="tag">model</span><h3>Fixer</h3><p>Repairs failing gates in bounded rounds, with file tools only: no shell, no network and no edits outside the allowed paths.</p></div>
-      <div class="card"><span class="tag">model</span><h3>Auditor</h3><p>A read-only reviewer, separate from the author, that checks the result against its specification and reports findings in the pull request.</p></div>
-      <div class="card"><span class="tag">model</span><h3>Docs writer</h3><p>Rewrites the documentation so it describes the code that was actually delivered.</p></div>
-      <div class="card"><span class="tag ok">deterministic</span><h3>Planner</h3><p>Estimates every item, reserves its worst case against the line budget and refuses routes the project distribution forbids.</p></div>
-      <div class="card"><span class="tag ok">deterministic</span><h3>Quality and security gates</h3><p>Formatters, linters, types, tests, coverage, documentation standard, secret scan, dependency audit and static security analysis.</p></div>
-      <div class="card"><span class="tag ok">deterministic</span><h3>Publisher and release manager</h3><p>One clean pull request per item, never a push to main; releases are tagged only after a human merges.</p></div>
-      <div class="card"><span class="tag">model</span><h3>Security engineer</h3><p>Our own Semgrep rules and OSV-Scanner on every project, plus a read-only threat-model review (STRIDE per entry point) for anything with authentication or user data.</p></div>
-      <div class="card"><span class="tag">model</span><h3>Visual QA</h3><p>Screenshots every page of a web app at desktop and phone widths, checks contrast with axe and, when its line has an image-capable model, attaches a critique against a written rubric: evidence for the reviewer, never a gate.</p></div>
-      <div class="card"><span class="tag ok">deterministic</span><h3>Maintenance</h3><p>Classifies the dependency updates across every delivered repository and merges only patch updates whose CI passed, after a dry run.</p></div>
-    </div>
-    <p class="note">Two fields: libraries, and web applications built with Vite and React under end-to-end, accessibility and Lighthouse budget gates.</p>
-  </div>
-</section>
-
-<section id="compare" class="reveal">
-  <div class="wrap">
-    <p class="kicker">Measured side by side</p>
-    <h2>Same pipeline, same gates, four providers.</h2>
-    <p class="sub">The factory is model-agnostic. Four lines run the same specifications format, quality gates and audit; only the models change. Lines A and B have finished 100 projects each; lines C and D are still running. Every figure below comes from the factory's ledger, not from price sheets.</p>
-    <div class="vs four">
-      <div class="card"><span class="tag">Line A · Anthropic</span><b>$0.94</b><span class="note">API cost per delivered project</span><span class="model">claude-sonnet-5-5</span><div class="bar2" aria-hidden="true"><i style="--w:48%"></i></div></div>
-      <div class="card"><span class="tag ok">Line B · Gemini</span><b>$0.27</b><span class="note">API cost per delivered project</span><span class="model">gemini-3.8-flash</span><div class="bar2" aria-hidden="true"><i style="--w:14%"></i></div></div>
-      <div class="card"><span class="tag plan">Line C · DeepSeek · running</span><b>$0.11</b><span class="note">API cost per delivered project</span><span class="model">deepseek-v4-pro</span><div class="bar2" aria-hidden="true"><i style="--w:6%"></i></div></div>
-      <div class="card"><span class="tag plan">Line D · Vertex AI · running</span><b>$1.97</b><span class="note">API cost per delivered project</span><span class="model">google/gemini-4-argon</span><div class="bar2" aria-hidden="true"><i style="--w:100%"></i></div></div>
-    </div>
-    <div class="compare-scroll" role="region" aria-label="Comparison of lines A to D, scrolls sideways on small screens" tabindex="0">
-    <div class="compare four" role="table" aria-label="Lines A, B, C and D compared">
-      <div class="row head" role="row"><span role="columnheader"></span><span role="columnheader">Line A · Anthropic</span><span role="columnheader">Line B · Gemini</span><span role="columnheader">Line C · DeepSeek (running)</span><span role="columnheader">Line D · Vertex AI (running)</span></div>
-      <div class="row" role="row"><span role="rowheader">Delivered of the projects in the run so far</span><span role="cell">100 of 100</span><span role="cell">100 of 100</span><span role="cell">61 of 68</span><span role="cell">11 of 18</span></div>
-      <div class="row" role="row"><span role="rowheader">Delivered by the pipeline alone (no human fix)</span><span role="cell">100</span><span role="cell">81</span><span role="cell">61</span><span role="cell">11</span></div>
-      <div class="row" role="row"><span role="rowheader">API cost per delivered project</span><span role="cell">$0.94</span><span role="cell">$0.27</span><span role="cell">$0.11</span><span role="cell">$1.97</span></div>
-      <div class="row" role="row"><span role="rowheader">Median time from submission to pull request</span><span role="cell">2.6 h</span><span role="cell">0.3 h</span><span role="cell">0.6 h</span><span role="cell">1.4 h</span></div>
-      <div class="row" role="row"><span role="rowheader">Average lines per project (code / tests)</span><span role="cell">662 / 610</span><span role="cell">479 / 366</span><span role="cell">413 / 399</span><span role="cell">995 / 518</span></div>
-      <div class="row" role="row"><span role="rowheader">Where the money goes</span><span role="cell">64 % generation, 17 % correction</span><span role="cell">12 % generation, 70 % correction</span><span role="cell">44 % generation, 23 % correction</span><span role="cell">36 % generation, 57 % correction</span></div>
-    </div>
-    </div>
-    <p class="note">Gemini generates almost for free, so its cost sits in correction. On 19 projects its low-cost correction model could not close defects of a few lines; they were finished by hand, and each hand fix is recorded as an intervention (this page said 84 by the pipeline alone before later fixes were recorded). Gemini's audit was also far cheaper and reported fewer findings, which reads as a less demanding reviewer rather than better code.</p>
-    <p class="note">DeepSeek runs only in its off-peak price window, at half price, and is the cheapest line so far. Line D puts code quality before cost: generation runs on a stronger model, which shows in larger projects. Its figures include early infrastructure problems fixed the same day (stalled connections and a per-project budget set too low), so its cost per project is expected to fall. Lines C and D are still running; their figures cover the projects processed so far.</p>
-    <p class="note">All times use one definition: the median from submission to the model until the pull request opens, recomputed from the ledger. Earlier figures on this page were computed differently and are replaced.</p>
-    <div class="models">
-      <h3>Models and versions</h3>
-      <p class="note" style="margin-top:0">The model used per role on each line. List prices in USD per 1M tokens, input / output, as of 2026-11-10.</p>
-      <div class="lines">
-        <div class="card"><h4>Line A · Anthropic</h4><ul><li>Generation and correction: <code>claude-sonnet-5-5</code></li><li>Documentation: <code>claude-haiku-5-5</code></li></ul></div>
-        <div class="card"><h4>Line B · Google Gemini (AI Studio)</h4><ul><li>Generation and correction: <code>gemini-3.8-flash</code> · $0.75 / $3.75, promotional until 2026-12-31; generation in batch at half price</li><li>Audit and documentation: <code>gemini-3.1-flash-lite</code> · $0.25 / $1.50</li></ul></div>
-        <div class="card"><h4>Line C · DeepSeek</h4><ul><li>Generation: <code>deepseek-v4-pro</code>, served by DeepSeek-V4-Pro-0813 · $1.32 / $3.96 before the 50 % off-peak discount</li><li>Correction, audit and documentation: <code>deepseek-flash</code>, served by DeepSeek-V4.1-Flash-1017 · $0.30 / $1.20</li></ul></div>
-        <div class="card"><h4>Line D · Google Vertex AI</h4><ul><li>Generation: <code>google/gemini-4-argon</code> (GA) · $4.00 / $20.00, streamed, three requests in parallel</li><li>Correction and audit: <code>google/gemini-3.8-flash</code> · $0.75 / $3.75</li><li>Documentation: <code>google/gemini-3.1-flash-lite</code> · $0.25 / $1.50</li></ul></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<section id="bigger" class="reveal">
-  <div class="wrap">
-    <p class="kicker">Bigger projects</p>
-    <h2>Where one generation stops, the architect takes over.</h2>
-    <p class="sub">Ten size-L systems were attempted on line B: a storage engine, a WebAssembly interpreter, a SAT solver, a CRDT, a regex engine, a spreadsheet formula engine, a Datalog engine, a SQL engine, a Git object store and a linearizability checker. The results are reported as they happened, including the work done by hand.</p>
-    <div class="compare" role="table" aria-label="Challenge run">
-      <div class="row head" role="row"><span role="columnheader">Step</span><span role="columnheader">Projects delivered</span><span role="columnheader">What it taught</span></div>
-      <div class="row" role="row"><span role="rowheader">One generation each</span><span role="cell">1 of 10</span><span role="cell">A large project does not fit in one generation plus a few corrections.</span></div>
-      <div class="row" role="row"><span role="rowheader">After fixing the line itself</span><span role="cell">6 of 10</span><span role="cell">Complexity first exposed gaps in the factory, such as dependencies that were never installed.</span></div>
-      <div class="row" role="row"><span role="rowheader">Re-planned by the architect</span><span role="cell">10 of 10</span><span role="cell">The last 4 became 22 modules: 18 delivered, 8 of them by the line alone; 4 conformance modules are held for review.</span></div>
-    </div>
-    <p class="note">5 of the 10 projects were delivered by the line with no human fix. Every hand fix is recorded in the ledger as an intervention, 32 so far across all runs, and is excluded from the autonomous success rate. Model API cost of the whole challenge: $34.</p>
-    <div class="grid" style="margin-top:24px">
-      <div class="card"><span class="tag">Line A · Anthropic</span><h3>Unreal Engine agent toolsets</h3><p>4 toolsets for the Unreal Engine 5.8 MCP server (asset intake, captures, render profiles, performance probes), delivered by the line with no human fix for $4.52 in total. The pure logic is tested in CI; packaging as editor plugins is a supervised step.</p></div>
-    </div>
-  </div>
-</section>
-
-<section id="case" class="reveal">
+<section id="case">
   <div class="wrap">
     <p class="kicker">Anatomy of one utility</p>
     <h2>From specification to merged repository in two hours.</h2>
@@ -424,595 +344,98 @@ footer { padding: 32px 0 48px; color: var(--muted); font-size: 13px; border-top:
           <div><span>4 correction rounds</span><span>$0.12</span></div>
           <div><span>independent audit</span><span>$0.17</span></div>
           <div><span>documentation</span><span>$0.08</span></div>
-          <div class="total"><span>total API cost</span><span>$0.75</span></div>
+          <div class="total"><span>total API cost, measured</span><span>$0.75</span></div>
         </div>
-        <p class="note">7 model calls, 485k input tokens (59% served from cache). Every utility in the catalog has the same ledger.</p>
+        <p class="note">Each line is rounded to the cent, so they add up to $0.76; the ledger total is $0.7528. 7 model calls, 485k input tokens (59% served from cache). Every utility in the catalog has the same ledger.</p>
       </div>
     </div>
   </div>
 </section>
 
-<section class="reveal">
+<section id="compare">
   <div class="wrap">
-    <p class="kicker">Quality</p>
-    <h2>Engineered like production software.</h2>
-    <p class="sub">The utilities are small, but they are built to the standard of systems that handle real data and real money.</p>
-    <div class="grid">
-      <div class="card"><h3>Security by default</h3><p>Defences against SSRF, zip bombs and malicious XML entities, strict size limits, errors that never leak secrets, and a written threat model per utility.</p></div>
-      <div class="card"><h3>Zero runtime dependencies</h3><p>Most utilities depend only on the standard library, which keeps the supply-chain surface small and the code easy to audit.</p></div>
-      <div class="card"><h3>Documentation that answers questions</h3><p>Each README states the problem, installation, a real example, the public API, error codes and when not to use it, backed by architecture decision records.</p></div>
-      <div class="card"><h3>Guardrails on the factory itself</h3><p>Path allowlists, protected configuration, secret redaction in every log, history scans before publishing and a hard spending cap that pauses the queue.</p></div>
-      <div class="card"><h3>Measured, not estimated</h3><p>Tokens, calls, cost per phase, gate time, fix rounds and lead time are recorded per utility and rolled into analytics after every run.</p></div>
-      <div class="card"><h3>It learns from every run</h3><p>Each run produces written lessons; it pauses every few projects for review, and the lessons that repeat become rules or checks before the next run.</p></div>
+    <p class="kicker">Measured on four providers</p>
+    <h2>Same pipeline, same gates, different models.</h2>
+    <p class="sub">The factory is model-agnostic, tested on four providers. Each assembly line runs the same specification format, gates and audit; only the models change. Lines C and D are still running. Every figure comes from the factory's ledger, not from price sheets.</p>
+    <div class="compare-scroll" role="region" aria-label="Comparison of lines A to D, scrolls sideways on small screens" tabindex="0">
+    <div class="compare" role="table" aria-label="Lines A, B, C and D compared">
+      <div class="row head" role="row"><span role="columnheader"></span><span role="columnheader">A · Anthropic</span><span role="columnheader">B · Gemini</span><span role="columnheader">C · DeepSeek (running)</span><span role="columnheader">D · Vertex AI (running)</span></div>
+      <div class="row" role="row"><span role="rowheader">Delivered of the projects started</span><span role="cell">100 of 100</span><span role="cell">100 of 100</span><span role="cell">61 of 68</span><span role="cell">11 of 18</span></div>
+      <div class="row" role="row"><span role="rowheader">Delivered with no human fix</span><span role="cell">100</span><span role="cell">81</span><span role="cell">61</span><span role="cell">11</span></div>
+      <div class="row" role="row"><span role="rowheader">Model API cost per project</span><span role="cell">$0.94</span><span role="cell">$0.27</span><span role="cell">$0.11</span><span role="cell">$1.97</span></div>
+      <div class="row" role="row"><span role="rowheader">Median time to pull request</span><span role="cell">2.6 h</span><span role="cell">0.3 h</span><span role="cell">0.6 h</span><span role="cell">1.4 h</span></div>
     </div>
-    <h3 style="margin:36px 0 12px">Quality gates on every pull request</h3>
-    <div class="gates">
-      <span class="tag ok">lint</span><span class="tag ok">format</span><span class="tag ok">static types</span><span class="tag ok">tests</span><span class="tag ok">coverage ≥ 80%</span><span class="tag ok">documentation standard</span><span class="tag ok">secret scan</span><span class="tag ok">dependency vulnerability audit</span><span class="tag ok">independent spec audit</span><span class="tag ok">CI on Linux and Windows</span>
+    </div>
+    <p class="note">Cost is the measured model API spend per delivered project: generation, corrections, audit and documentation. It is not a price quote for client work.</p>
+    <details class="method">
+      <summary>Methodology <span>models, prices, definitions and notes</span></summary>
+      <div class="body">
+        <h4>Models per role</h4>
+        <ul>
+          <li>Line A · Anthropic: generation and correction <code>claude-sonnet-5-5</code>; documentation <code>claude-haiku-5-5</code>.</li>
+          <li>Line B · Gemini (AI Studio): generation and correction <code>gemini-3.8-flash</code> at $0.75 / $3.75, promotional until 2026-12-31, generation in batch at half price; audit and documentation <code>gemini-3.1-flash-lite</code> at $0.25 / $1.50.</li>
+          <li>Line C · DeepSeek: generation <code>deepseek-v4-pro</code> (DeepSeek-V4-Pro-0813) at $1.32 / $3.96 before the 50 % off-peak discount; correction, audit and documentation <code>deepseek-flash</code> (DeepSeek-V4.1-Flash-1017) at $0.30 / $1.20.</li>
+          <li>Line D · Vertex AI: generation <code>google/gemini-4-argon</code> at $4.00 / $20.00, streamed, three requests in parallel; correction and audit <code>google/gemini-3.8-flash</code>; documentation <code>google/gemini-3.1-flash-lite</code>.</li>
+        </ul>
+        <p>List prices in USD per 1M tokens, input / output, as of 2026-11-10.</p>
+        <h4>Work items</h4>
+        <p>A work item is one entry in the factory's ledger: each project a line started (286 in the table above), each relaunch of a project (9), each large system (10) and each of the 22 modules its architect planned, and each Unreal Engine toolset (4), 331 in all. 272 of them were delivered with no human fix (82%). The table counts only the projects each line started, so it shows 253 of 286.</p>
+        <h4>More measured figures</h4>
+        <ul>
+          <li>Average lines per project (code / tests): A 662 / 610, B 479 / 366, C 413 / 399, D 995 / 518.</li>
+          <li>Where the money goes: A 64 % generation, 17 % correction; B 12 % generation, 70 % correction; C 44 % generation, 23 % correction; D 36 % generation, 57 % correction.</li>
+          <li>2,104 model calls in all, each logged with tokens and cost; 1,133 tests guard the factory itself.</li>
+          <li>Output languages: Python, TypeScript and Go; web applications are built with Vite and React under end-to-end, accessibility and Lighthouse gates.</li>
+        </ul>
+        <h4>Notes</h4>
+        <p>Gemini generates almost for free, so its cost sits in correction. On 19 projects its low-cost correction model could not close defects of a few lines; they were finished by hand, and each hand fix is recorded as an intervention (this page said 84 by the pipeline alone before later fixes were recorded). Gemini's audit was also far cheaper and reported fewer findings, which reads as a less demanding reviewer rather than better code.</p>
+        <p>DeepSeek runs only in its off-peak price window, at half price, and is the cheapest line so far. Line D puts code quality before cost: generation runs on a stronger model, which shows in larger projects. Its figures include early infrastructure problems fixed the same day (stalled connections and a per-project budget set too low), so its cost per project is expected to fall. Lines C and D are still running; their figures cover the projects processed so far.</p>
+        <p>All times use one definition: the median from submission to the model until the pull request opens, recomputed from the ledger. Earlier figures on this page were computed differently and are replaced.</p>
+        <p>Lines for OpenRouter and two self-hosted lines (a rented cloud GPU and a local laptop GPU) are built on the same pipeline and gates and have not run yet. Confidential client projects are routed only to providers that do not train on inputs and offer zero data retention, and every dependency is checked against a license profile.</p>
+      </div>
+    </details>
+  </div>
+</section>
+
+<section id="shows">
+  <div class="wrap">
+    <p class="kicker">What this shows</p>
+    <h2>How I work.</h2>
+    <div class="shows">
+      <div><h3>Models do the work, code decides</h3><p>I design systems where models write and correct, and deterministic code decides what ships: gates, budgets, permissions and an independent audit.</p></div>
+      <div><h3>I measure everything</h3><p>Cost, quality and autonomy are recorded per project, so every claim on this page comes from a ledger rather than an estimate.</p></div>
+      <div><h3>Failures are reported too</h3><p>Hand fixes, held modules and expensive lines are shown as clearly as the successes, and excluded from the rates they would flatter.</p></div>
     </div>
   </div>
 </section>
 
-<section id="trust" class="reveal">
+<section id="featured">
   <div class="wrap">
-    <p class="kicker">Client work</p>
-    <h2>Built for client work, not only open source.</h2>
-    <p class="sub">Every project declares how it will be distributed: public open source, private internal, built for a client, or a commercial product. The factory turns that into rules it enforces on its own, before any code leaves the machine.</p>
-    <div class="grid">
-      <div class="card"><h3>Client code stays with compliant providers</h3><p>Confidential projects are only routed to model providers that do not train on inputs and offer zero data retention. The planner refuses any other route.</p></div>
-      <div class="card"><h3>License gates on every dependency</h3><p>Each profile has an allow, review and deny list of licenses. Copyleft or non-commercial dependencies never slip into a product meant to be sold.</p></div>
-      <div class="card"><h3>Tools used, never shipped</h3><p>Scanners and test tools run inside the factory and are never bundled into deliverables, so their licenses stay with the factory.</p></div>
-    </div>
-  </div>
-</section>
-
-<section id="lines" class="reveal">
-  <div class="wrap">
-    <p class="kicker">Assembly lines</p>
-    <h2>One factory, any model provider.</h2>
-    <p class="sub">Each assembly line binds the same pipeline, gates and audit to a different provider, with its own models per role, prices, budget and price window. Each line runs with its own driver and lock: a line that is missing a key or over budget simply stands still; it never stops another line. Four lines have run; three more are built and waiting.</p>
-    <div class="lines">
-      <div class="card line"><span class="tag ok">delivered 104</span><h3>Line A · Anthropic</h3><p>Claude models through the Batch API. Built the first run of 100 utilities and 4 Unreal Engine agent toolsets.</p></div>
-      <div class="card line"><span class="tag ok">delivered 110</span><h3>Line B · Google Gemini</h3><p>Gemini Flash through the Gemini Batch API at half price. Built the second run of 100 utilities and the 10-project challenge.</p></div>
-      <div class="card line"><span class="tag plan">running · 61 delivered</span><h3>Line C · DeepSeek</h3><p>DeepSeek V4 models, called only in the off-peak window at half price, including fixes and audits. Building its run of 100 utilities.</p></div>
-      <div class="card line"><span class="tag plan">running · 11 delivered</span><h3>Line D · Google Vertex AI</h3><p>Gemini on Vertex AI with generation on a stronger model, putting code quality before cost. Generations are streamed, three requests in parallel.</p></div>
-      <div class="card line"><span class="tag">built · next</span><h3>OpenRouter</h3><p>One router, many providers, starting with <code>qwen/qwen3.7-plus</code>.</p></div>
-      <div class="card line"><span class="tag">built · next</span><h3>Self-hosted · cloud GPU</h3><p>Open-weight models on a rented GPU, with its own budget of USD 15.</p></div>
-      <div class="card line"><span class="tag">built · next</span><h3>Self-hosted · local GPU</h3><p>Open-weight models on a laptop GPU: no API cost. Independent from the cloud line.</p></div>
-    </div>
-  </div>
-</section>
-
-<section class="reveal">
-  <div class="wrap">
-    <p class="kicker">Featured</p>
-    <h2>Featured utilities.</h2>
-    <p class="sub">A sample of what the first run produced. Every one is a public repository with tests, CI and documentation.</p>
+    <p class="kicker">Featured utilities</p>
+    <h2>Smaller tools, same standard.</h2>
+    <p class="sub">A sample of the utilities, each a public repository with tests, CI and documentation, built to production standards.</p>
     <div class="featured">
       <a class="card" href="https://github.com/Trysac/u001-llm-structured-output"><code>u001-llm-structured-output</code><h3 style="margin:10px 0 6px">LLM engineering</h3><p>Validated structured output from LLM replies into Pydantic models, with linear JSON extraction, string-safe repairs and a bounded re-ask loop</p><p style="margin-top:10px"><span class="tag">Python</span></p></a>
-      <a class="card" href="https://github.com/Trysac/u010-prompt-injection-guard"><code>u010-prompt-injection-guard</code><h3 style="margin:10px 0 6px">LLM engineering</h3><p>Screen user input and retrieved content for prompt injection with explainable rules, Unicode obfuscation removal including tag characters, and an optional classifier that can only raise the score</p><p style="margin-top:10px"><span class="tag">Python</span></p></a>
-      <a class="card" href="https://github.com/Trysac/u009-pii-redactor"><code>u009-pii-redactor</code><h3 style="margin:10px 0 6px">LLM engineering</h3><p>Detect and mask emails, phones, Luhn-valid cards, ISO 13616 IBANs and IPv4 addresses before text reaches an LLM, with reversible placeholders and a written threat model</p><p style="margin-top:10px"><span class="tag">Python</span></p></a>
       <a class="card" href="https://github.com/Trysac/u021-mcp-server-template"><code>u021-mcp-server-template</code><h3 style="margin:10px 0 6px">Agents and MCP</h3><p>Hardened TypeScript MCP server template: zod tool schemas, Streamable HTTP on localhost with Origin checks, bearer tokens, size and rate limits, timeouts and tests</p><p style="margin-top:10px"><span class="tag">TypeScript</span></p></a>
       <a class="card" href="https://github.com/Trysac/u015-hybrid-search-lite"><code>u015-hybrid-search-lite</code><h3 style="margin:10px 0 6px">RAG and documents</h3><p>In-memory hybrid search fusing BM25 and cosine vector rankings with reciprocal rank fusion, metadata filters and pickle-free SQLite persistence</p><p style="margin-top:10px"><span class="tag">Python</span></p></a>
+      <a class="card" href="https://github.com/Trysac/u046-circuit-breaker"><code>u046-circuit-breaker</code><h3 style="margin:10px 0 6px">Backend architecture</h3><p>Context-first circuit breaker with closed, open and half-open states plus a bulkhead concurrency limiter and metrics snapshot, stdlib only</p><p style="margin-top:10px"><span class="tag">Go</span></p></a>
+      <a class="card" href="https://github.com/Trysac/u071-secrets-precommit"><code>u071-secrets-precommit</code><h3 style="margin:10px 0 6px">Security and compliance</h3><p>Fast secret detector for pre-commit hooks in Go: ten RE2 rules, JSON team rules, entropy checks, allowlists and output that never prints a secret</p><p style="margin-top:10px"><span class="tag">Go</span></p></a>
       <a class="card" href="https://github.com/Trysac/u032-llm-judge"><code>u032-llm-judge</code><h3 style="margin:10px 0 6px">AI evaluation and quality</h3><p>LLM-as-judge with versioned rubrics, strict per-criterion score parsing with one bounded re-ask, and quadratic weighted kappa calibration</p><p style="margin-top:10px"><span class="tag">Python</span></p></a>
-      <a class="card" href="https://github.com/Trysac/u044-idempotency-keys"><code>u044-idempotency-keys</code><h3 style="margin:10px 0 6px">Backend architecture</h3><p>Idempotency-Key middleware for Node HTTP servers following the IETF draft: request fingerprinting, response replay, in-flight locking and pluggable storage</p><p style="margin-top:10px"><span class="tag">TypeScript</span></p></a>
-      <a class="card" href="https://github.com/Trysac/u047-rate-limiter"><code>u047-rate-limiter</code><h3 style="margin:10px 0 6px">Backend architecture</h3><p>Token bucket and sliding window counter rate limiters with an injectable clock, a pluggable store, a bounded in-memory store and standard 429 headers</p><p style="margin-top:10px"><span class="tag">TypeScript</span></p></a>
-      <a class="card" href="https://github.com/Trysac/u049-webhook-verifier"><code>u049-webhook-verifier</code><h3 style="margin:10px 0 6px">Backend architecture</h3><p>Verify HMAC webhook signatures on the raw body with GitHub, Standard Webhooks and Stripe-style presets, timestamp tolerance, replay store and key rotation</p><p style="margin-top:10px"><span class="tag">TypeScript</span></p></a>
-      <a class="card" href="https://github.com/Trysac/u083-repo-health"><code>u083-repo-health</code><h3 style="margin:10px 0 6px">Developer experience, CI and documentation</h3><p>Score a local repository checkout on docs, tests, CI, security and maintenance with ten weighted offline checks and a grade</p><p style="margin-top:10px"><span class="tag">Python</span></p></a>
-      <a class="card" href="https://github.com/Trysac/u100-invoice-extractor"><code>u100-invoice-extractor</code><h3 style="margin:10px 0 6px">Audio and multimodal</h3><p>Extract invoices and receipts from text into validated JSON with Decimal arithmetic checks per ISO 4217 minor units and a bounded LLM repair loop</p><p style="margin-top:10px"><span class="tag">Python</span></p></a>
-      <a class="card" href="https://github.com/Trysac/u030-agent-sandbox"><code>u030-agent-sandbox</code><h3 style="margin:10px 0 6px">Agents and MCP</h3><p>Policy guard for agent shell commands: allow-listed absolute executables, path roots, process-tree timeout, capped output and scrubbed environment</p><p style="margin-top:10px"><span class="tag">Python</span></p></a>
     </div>
-  </div>
-</section>
-
-<section id="catalog" class="catalog reveal">
-  <div class="wrap">
-    <p class="kicker">Catalog</p>
-    <h2>Full catalog: 286 projects.</h2>
-    <p class="sub">Every delivered project of every run, grouped by domain. Each links to its public repository. Lines C and D are still running; their projects are added here as they are delivered.</p>
-    <h3 class="run-title"><span class="tag">Run 1 · Line A · Anthropic</span> 100 utilities</h3>
-    <details><summary>LLM engineering <span>12 utilities</span></summary>
-      <ul>
-        <li><a href="https://github.com/Trysac/u001-llm-structured-output"><code>u001-llm-structured-output</code></a><p>Validated structured output from LLM replies into Pydantic models, with linear JSON extraction, string-safe repairs and a bounded re-ask loop</p><span><span class="tag">Python</span></span></li>
-        <li><a href="https://github.com/Trysac/u002-json-repair"><code>u002-json-repair</code></a><p>Repair truncated or malformed JSON returned by an LLM with an iterative tolerant parser and an offset-annotated report of every fix, zero dependencies</p><span><span class="tag">TypeScript</span></span></li>
-        <li><a href="https://github.com/Trysac/u003-token-cost-estimator"><code>u003-token-cost-estimator</code></a><p>Estimate tokens and cost of an LLM request before sending it, from a dated, overridable pricing table with cached-input and cache-write rates, Decimal only</p><span><span class="tag">Python</span></span></li>
-        <li><a href="https://github.com/Trysac/u004-llm-cost-ledger"><code>u004-llm-cost-ledger</code></a><p>In-process ledger of tokens and cost per LLM call with daily and monthly caps in a chosen time zone, one-time warnings and a pre-call budget check</p><span><span class="tag">Python</span></span></li>
-        <li><a href="https://github.com/Trysac/u005-prompt-registry"><code>u005-prompt-registry</code></a><p>Versioned prompt files with typed variables, strict non-recursive rendering, unified diffs between versions and normalized sha256 hashes for traceability</p><span><span class="tag">Python</span></span></li>
-        <li><a href="https://github.com/Trysac/u006-model-router"><code>u006-model-router</code></a><p>Choose an LLM by cost, latency and quality rules over caller-supplied model profiles, with capability filters, explained exclusions and ordered fallback</p><span><span class="tag">Python</span></span></li>
-        <li><a href="https://github.com/Trysac/u007-llm-retry-fallback"><code>u007-llm-retry-fallback</code></a><p>Retries with capped exponential backoff and full jitter, RFC 9110 Retry-After parsing, an overall deadline and ordered provider fallback, all clock-injected</p><span><span class="tag">Python</span></span></li>
-        <li><a href="https://github.com/Trysac/u008-semantic-cache"><code>u008-semantic-cache</code></a><p>Cache LLM responses by embedding cosine similarity with an exact-key fast path, TTL, tenant namespaces, LRU eviction and explicit invalidation</p><span><span class="tag">Python</span></span></li>
-        <li><a href="https://github.com/Trysac/u009-pii-redactor"><code>u009-pii-redactor</code></a><p>Detect and mask emails, phones, Luhn-valid cards, ISO 13616 IBANs and IPv4 addresses before text reaches an LLM, with reversible placeholders and a written threat model</p><span><span class="tag">Python</span></span></li>
-        <li><a href="https://github.com/Trysac/u010-prompt-injection-guard"><code>u010-prompt-injection-guard</code></a><p>Screen user input and retrieved content for prompt injection with explainable rules, Unicode obfuscation removal including tag characters, and an optional classifier that can only raise the score</p><span><span class="tag">Python</span></span></li>
-        <li><a href="https://github.com/Trysac/u011-anthropic-batch-runner"><code>u011-anthropic-batch-runner</code></a><p>Run jobs on the Anthropic Message Batches API with cached system prompts, per-item state in an atomic local file, output validation and requeue of retryable failures</p><span><span class="tag">Python</span></span></li>
-        <li><a href="https://github.com/Trysac/u012-gemini-vertex-switch"><code>u012-gemini-vertex-switch</code></a><p>One Gemini generateContent client that targets AI Studio or Vertex AI from config or google-genai environment variables, with validated URL parts and injectable transport</p><span><span class="tag">Python</span></span></li>
-      </ul>
-    </details>
-    <details><summary>RAG and documents <span>8 utilities</span></summary>
-      <ul>
-        <li><a href="https://github.com/Trysac/u013-doc-to-markdown"><code>u013-doc-to-markdown</code></a><p>Convert HTML and DOCX into safe, structure-preserving Markdown with headings, lists, tables and links, bounded against zip bombs, XML entities and script URLs</p><span><span class="tag">Python</span></span></li>
-        <li><a href="https://github.com/Trysac/u014-smart-chunker"><code>u014-smart-chunker</code></a><p>Split CommonMark and GFM Markdown into retrieval chunks along headings, tables and code fences under a token budget, with sentence overlap and line-range metadata</p><span><span class="tag">Python</span></span></li>
-        <li><a href="https://github.com/Trysac/u015-hybrid-search-lite"><code>u015-hybrid-search-lite</code></a><p>In-memory hybrid search fusing BM25 and cosine vector rankings with reciprocal rank fusion, metadata filters and pickle-free SQLite persistence</p><span><span class="tag">Python</span></span></li>
-        <li><a href="https://github.com/Trysac/u016-citation-checker"><code>u016-citation-checker</code></a><p>Check that each claim in a generated answer is supported by the passages it cites, with deterministic lexical and numeric checks and an optional LLM judge for borderline claims</p><span><span class="tag">Python</span></span></li>
-        <li><a href="https://github.com/Trysac/u017-rag-eval"><code>u017-rag-eval</code></a><p>Evaluate a RAG system offline from golden and results JSONL files with recall, precision, MRR, nDCG and SQuAD-style answer metrics, and gate CI on thresholds</p><span><span class="tag">Python</span></span></li>
-        <li><a href="https://github.com/Trysac/u018-near-dup-detector"><code>u018-near-dup-detector</code></a><p>Detect near-duplicate documents with process-stable MinHash and LSH banding plus 64-bit SimHash, verified candidate pairs and deterministic clusters</p><span><span class="tag">Python</span></span></li>
-        <li><a href="https://github.com/Trysac/u019-query-rewriter"><code>u019-query-rewriter</code></a><p>Rewrite and expand retrieval queries with multi-query, HyDE and step-back prompts through the canonical LLM port, plus a no-model synonym expansion</p><span><span class="tag">Python</span></span></li>
-        <li><a href="https://github.com/Trysac/u020-embedding-cache"><code>u020-embedding-cache</code></a><p>SQLite disk cache for embeddings keyed by content hash, model id and dimension, with batched misses, bit-exact float64 storage and LRU eviction</p><span><span class="tag">Python</span></span></li>
-      </ul>
-    </details>
-    <details><summary>Agents and MCP <span>10 utilities</span></summary>
-      <ul>
-        <li><a href="https://github.com/Trysac/u021-mcp-server-template"><code>u021-mcp-server-template</code></a><p>Hardened TypeScript MCP server template: zod tool schemas, Streamable HTTP on localhost with Origin checks, bearer tokens, size and rate limits, timeouts and tests</p><span><span class="tag">TypeScript</span></span></li>
-        <li><a href="https://github.com/Trysac/u022-mcp-readonly-fs"><code>u022-mcp-readonly-fs</code></a><p>Read-only MCP filesystem server over allowlisted roots with realpath containment, deny globs on real paths, size and binary caps, and readOnlyHint tools</p><span><span class="tag">TypeScript</span></span></li>
-        <li><a href="https://github.com/Trysac/u023-mcp-schema-lint"><code>u023-mcp-schema-lint</code></a><p>Lint MCP tool definitions against the 2025-11-25 tool name rules, input schema structure, description quality and token budgets, with text and JSON reports</p><span><span class="tag">TypeScript</span></span></li>
-        <li><a href="https://github.com/Trysac/u024-agent-tool-tracer"><code>u024-agent-tool-tracer</code></a><p>Trace every tool call of an agent with redacted arguments, results, timing, cost and errors to JSONL, and render runs as escaped Mermaid sequence diagrams</p><span><span class="tag">Python</span></span></li>
-        <li><a href="https://github.com/Trysac/u025-hitl-approval-gate"><code>u025-hitl-approval-gate</code></a><p>Human approval gate for agent actions with side effects: payload-bound requests, expiry, single use, no self-approval and a hash-chained audit log</p><span><span class="tag">Python</span></span></li>
-        <li><a href="https://github.com/Trysac/u026-telegram-approvals"><code>u026-telegram-approvals</code></a><p>Human approval queue for agent actions with HMAC-signed Telegram inline buttons, approver allow list, expiry and a bounded audit trail</p><span><span class="tag">Python</span></span></li>
-        <li><a href="https://github.com/Trysac/u027-agent-memory-files"><code>u027-agent-memory-files</code></a><p>Agent memory stored as Markdown files with JSON-valued frontmatter, ranked keyword search, an index file and deterministic compaction</p><span><span class="tag">Python</span></span></li>
-        <li><a href="https://github.com/Trysac/u028-task-dag-runner"><code>u028-task-dag-runner</code></a><p>Run Python tasks in a dependency graph with bounded retries, injected sleep, deterministic order and resume from an atomic JSON state file</p><span><span class="tag">Python</span></span></li>
-        <li><a href="https://github.com/Trysac/u029-skill-linter"><code>u029-skill-linter</code></a><p>Lint agent skill folders (SKILL.md) against the Agent Skills format: frontmatter, name rules, description limits, trigger cues and broken links</p><span><span class="tag">Python</span></span></li>
-        <li><a href="https://github.com/Trysac/u030-agent-sandbox"><code>u030-agent-sandbox</code></a><p>Policy guard for agent shell commands: allow-listed absolute executables, path roots, process-tree timeout, capped output and scrubbed environment</p><span><span class="tag">Python</span></span></li>
-      </ul>
-    </details>
-    <details><summary>AI evaluation and quality <span>7 utilities</span></summary>
-      <ul>
-        <li><a href="https://github.com/Trysac/u031-eval-harness-mini"><code>u031-eval-harness-mini</code></a><p>Minimal evaluation harness: golden JSONL datasets, built-in scorers, CI pass thresholds, a stable JSON report and an opt-in pytest plugin</p><span><span class="tag">Python</span></span></li>
-        <li><a href="https://github.com/Trysac/u032-llm-judge"><code>u032-llm-judge</code></a><p>LLM-as-judge with versioned rubrics, strict per-criterion score parsing with one bounded re-ask, and quadratic weighted kappa calibration</p><span><span class="tag">Python</span></span></li>
-        <li><a href="https://github.com/Trysac/u033-prompt-regression"><code>u033-prompt-regression</code></a><p>Compare recorded outputs of two prompt versions over the same dataset and report unchanged, changed, improved, regressed, added and removed cases</p><span><span class="tag">Python</span></span></li>
-        <li><a href="https://github.com/Trysac/u034-ab-significance"><code>u034-ab-significance</code></a><p>Pure-Python significance tests for prompt or model variants: Wilson and Newcombe intervals, two-proportion z, Welch t, seeded permutation tests</p><span><span class="tag">Python</span></span></li>
-        <li><a href="https://github.com/Trysac/u035-redteam-suite"><code>u035-redteam-suite</code></a><p>Run a versioned battery of benign prompt injection, system prompt leak and jailbreak probes against a target you own and report findings</p><span><span class="tag">Python</span></span></li>
-        <li><a href="https://github.com/Trysac/u036-eval-report-html"><code>u036-eval-report-html</code></a><p>Generate one self-contained, script-free static HTML report from evaluation result JSON files, with per-run tables and SVG trend lines</p><span><span class="tag">Python</span></span></li>
-        <li><a href="https://github.com/Trysac/u037-golden-set-builder"><code>u037-golden-set-builder</code></a><p>Build golden evaluation datasets from production JSONL logs: dedup, regex PII scrubbing with typed placeholders, seeded stratified sampling, annotation files</p><span><span class="tag">Python</span></span></li>
-      </ul>
-    </details>
-    <details><summary>Observability <span>6 utilities</span></summary>
-      <ul>
-        <li><a href="https://github.com/Trysac/u038-otel-genai"><code>u038-otel-genai</code></a><p>OpenTelemetry spans and metrics following the GenAI semantic conventions for LLM calls and tool executions, depending only on opentelemetry-api</p><span><span class="tag">Python</span></span></li>
-        <li><a href="https://github.com/Trysac/u039-redacting-logger"><code>u039-redacting-logger</code></a><p>JSON log formatter and filter for stdlib logging that redacts secrets and personal data by key name and by bounded value patterns</p><span><span class="tag">Python</span></span></li>
-        <li><a href="https://github.com/Trysac/u040-trace-to-sequence"><code>u040-trace-to-sequence</code></a><p>Convert OTLP JSON or simple span JSON traces into Mermaid sequence diagrams of calls and returns between services, with safe label escaping</p><span><span class="tag">Python</span></span></li>
-        <li><a href="https://github.com/Trysac/u041-slo-burn-rate"><code>u041-slo-burn-rate</code></a><p>SLO error budget math and Google SRE multi-window multi-burn-rate alert evaluation as a pure library and a CLI over timestamped good and bad counts</p><span><span class="tag">Python</span></span></li>
-        <li><a href="https://github.com/Trysac/u042-correlation-id"><code>u042-correlation-id</code></a><p>Framework-agnostic correlation id middleware for node:http with W3C Trace Context traceparent parsing, AsyncLocalStorage context and Express and Fastify adapters</p><span><span class="tag">TypeScript</span></span></li>
-        <li><a href="https://github.com/Trysac/u043-health-aggregator"><code>u043-health-aggregator</code></a><p>Aggregate dependency health checks concurrently with per-check timeouts, critical versus optional checks, a degraded state, caching and an HTTP handler</p><span><span class="tag">Go</span></span></li>
-      </ul>
-    </details>
-    <details><summary>Backend architecture <span>13 utilities</span></summary>
-      <ul>
-        <li><a href="https://github.com/Trysac/u044-idempotency-keys"><code>u044-idempotency-keys</code></a><p>Idempotency-Key middleware for Node HTTP servers following the IETF draft: request fingerprinting, response replay, in-flight locking and pluggable storage</p><span><span class="tag">TypeScript</span></span></li>
-        <li><a href="https://github.com/Trysac/u045-transactional-outbox"><code>u045-transactional-outbox</code></a><p>Transactional outbox: enqueue events in the caller&#x27;s database transaction and relay them at least once with leases, jittered backoff and dead-lettering</p><span><span class="tag">Python</span></span></li>
-        <li><a href="https://github.com/Trysac/u046-circuit-breaker"><code>u046-circuit-breaker</code></a><p>Context-first circuit breaker with closed, open and half-open states plus a bulkhead concurrency limiter and metrics snapshot, stdlib only</p><span><span class="tag">Go</span></span></li>
-        <li><a href="https://github.com/Trysac/u047-rate-limiter"><code>u047-rate-limiter</code></a><p>Token bucket and sliding window counter rate limiters with an injectable clock, a pluggable store, a bounded in-memory store and standard 429 headers</p><span><span class="tag">TypeScript</span></span></li>
-        <li><a href="https://github.com/Trysac/u048-feature-flags-files"><code>u048-feature-flags-files</code></a><p>Feature flags from a JSON file with typed variants, segment rules and sticky FNV-1a percentage rollouts, evaluated locally with OpenFeature-style reasons</p><span><span class="tag">TypeScript</span></span></li>
-        <li><a href="https://github.com/Trysac/u049-webhook-verifier"><code>u049-webhook-verifier</code></a><p>Verify HMAC webhook signatures on the raw body with GitHub, Standard Webhooks and Stripe-style presets, timestamp tolerance, replay store and key rotation</p><span><span class="tag">TypeScript</span></span></li>
-        <li><a href="https://github.com/Trysac/u050-schema-compat"><code>u050-schema-compat</code></a><p>Detect breaking changes between two JSON Schema versions of an event under backward, forward or full compatibility, with JSON pointer paths</p><span><span class="tag">Python</span></span></li>
-        <li><a href="https://github.com/Trysac/u051-saga-orchestrator"><code>u051-saga-orchestrator</code></a><p>In-process saga orchestrator: ordered steps, reverse-order compensations, bounded retries and resumable persisted state</p><span><span class="tag">Python</span></span></li>
-        <li><a href="https://github.com/Trysac/u052-cursor-pagination"><code>u052-cursor-pagination</code></a><p>Opaque HMAC-signed keyset pagination cursors with expiry, key rotation, query binding and a parameterised SQL keyset predicate builder</p><span><span class="tag">TypeScript</span></span></li>
-        <li><a href="https://github.com/Trysac/u053-problem-details"><code>u053-problem-details</code></a><p>RFC 9457 problem+json errors from a typed catalog with templated details, leak-safe error mapping, spec-compliant parsing and Markdown docs</p><span><span class="tag">TypeScript</span></span></li>
-        <li><a href="https://github.com/Trysac/u054-money-decimal"><code>u054-money-decimal</code></a><p>Exact money arithmetic on bigint minor units with an ISO 4217 table, seven named rounding modes including banker&#x27;s rounding and lossless allocation</p><span><span class="tag">TypeScript</span></span></li>
-        <li><a href="https://github.com/Trysac/u055-hex-scaffold"><code>u055-hex-scaffold</code></a><p>CLI that generates a hexagonal module (domain, port, application service, in-memory adapter, tests) as byte-stable, importable Python</p><span><span class="tag">Python</span></span></li>
-        <li><a href="https://github.com/Trysac/u056-typed-config"><code>u056-typed-config</code></a><p>Typed configuration from environment, .env and JSON files into frozen dataclasses, with aggregated errors, masked secrets and generated docs</p><span><span class="tag">Python</span></span></li>
-      </ul>
-    </details>
-    <details><summary>APIs and contracts <span>8 utilities</span></summary>
-      <ul>
-        <li><a href="https://github.com/Trysac/u057-openapi-diff"><code>u057-openapi-diff</code></a><p>Diff two OpenAPI 3.0 or 3.1 documents and classify each change as breaking, warning or info with ten rules, as a library and a CI CLI</p><span><span class="tag">TypeScript</span></span></li>
-        <li><a href="https://github.com/Trysac/u058-openapi-mock"><code>u058-openapi-mock</code></a><p>Mock HTTP handler from an OpenAPI 3.x document with examples, deterministic schema bodies, RFC 7240 Prefer control and seeded errors</p><span><span class="tag">TypeScript</span></span></li>
-        <li><a href="https://github.com/Trysac/u059-contract-tests-gen"><code>u059-contract-tests-gen</code></a><p>Generate readable pytest contract tests from an OpenAPI 3.x document, injection-safe, with a small schema validator, injectable transport and drift check</p><span><span class="tag">Python</span></span></li>
-        <li><a href="https://github.com/Trysac/u060-http-cassette"><code>u060-http-cassette</code></a><p>Record and replay HTTP interactions through an injectable transport, redacting credentials in headers, URLs, JSON and form bodies before disk</p><span><span class="tag">Python</span></span></li>
-        <li><a href="https://github.com/Trysac/u061-schema-codegen"><code>u061-schema-codegen</code></a><p>Generate Pydantic v2 models and TypeScript types from one JSON Schema model graph, injection-safe, with a CI check mode for stale outputs</p><span><span class="tag">Python</span></span></li>
-        <li><a href="https://github.com/Trysac/u062-jira-cloud-lite"><code>u062-jira-cloud-lite</code></a><p>Minimal Jira Cloud REST v3 client in Go for enhanced JQL search, issue transitions and issue properties, with safe retries and no redirects</p><span><span class="tag">Go</span></span></li>
-        <li><a href="https://github.com/Trysac/u063-adf-markdown"><code>u063-adf-markdown</code></a><p>Convert Atlassian Document Format JSON to compact, safe Markdown for a core node subset, with canonical normalization</p><span><span class="tag">Go</span></span></li>
-        <li><a href="https://github.com/Trysac/u064-metricool-client"><code>u064-metricool-client</code></a><p>Typed Python client core for the Metricool API: schedule posts, page through comments, export them to CSV with formula-injection protection</p><span><span class="tag">Python</span></span></li>
-      </ul>
-    </details>
-    <details><summary>Security and compliance <span>7 utilities</span></summary>
-      <ul>
-        <li><a href="https://github.com/Trysac/u065-tamper-evident-log"><code>u065-tamper-evident-log</code></a><p>Append-only audit log chained by SHA-256 or HMAC-SHA256 over a restricted canonical JSON, with ordered integrity checks and checkpoint anchoring</p><span><span class="tag">Python</span></span></li>
-        <li><a href="https://github.com/Trysac/u066-rbac-abac"><code>u066-rbac-abac</code></a><p>Role and attribute based permission evaluator with deny-overrides, fail-closed three-valued JSON conditions, role inheritance and an exportable matrix</p><span><span class="tag">TypeScript</span></span></li>
-        <li><a href="https://github.com/Trysac/u067-jwt-inspector"><code>u067-jwt-inspector</code></a><p>Inspect and verify JWTs locally with WebCrypto per RFC 7519, 7515 and 8725: explicit algorithm allowlist, key binding and a per-check report</p><span><span class="tag">TypeScript</span></span></li>
-        <li><a href="https://github.com/Trysac/u068-license-auditor"><code>u068-license-auditor</code></a><p>Audit dependency licenses against an allowlist policy with SPDX license expressions, PEP 639 metadata and conservative classifier mapping</p><span><span class="tag">Python</span></span></li>
-        <li><a href="https://github.com/Trysac/u069-sbom-diff"><code>u069-sbom-diff</code></a><p>Compare two CycloneDX 1.4-1.6 JSON SBOMs: added, removed, upgraded, downgraded components and license changes keyed by normalised purl, with CI exit codes</p><span><span class="tag">Python</span></span></li>
-        <li><a href="https://github.com/Trysac/u070-owasp-llm-checklist"><code>u070-owasp-llm-checklist</code></a><p>Static checklist for the OWASP Top 10 for LLM Applications 2025 over a repository: ten pattern hints plus answered questions, as Markdown or JSON</p><span><span class="tag">Python</span></span></li>
-        <li><a href="https://github.com/Trysac/u071-secrets-precommit"><code>u071-secrets-precommit</code></a><p>Fast secret detector for pre-commit hooks in Go: ten RE2 rules, JSON team rules, entropy checks, allowlists and output that never prints a secret</p><span><span class="tag">Go</span></span></li>
-      </ul>
-    </details>
-    <details><summary>Data <span>6 utilities</span></summary>
-      <ul>
-        <li><a href="https://github.com/Trysac/u072-csv-profiler"><code>u072-csv-profiler</code></a><p>Profile a CSV or XLSX sheet: inferred types, nulls, duplicates, ranges, top values and warnings, as JSON or a script-free self-contained HTML page</p><span><span class="tag">Python</span></span></li>
-        <li><a href="https://github.com/Trysac/u073-pii-scan-datasets"><code>u073-pii-scan-datasets</code></a><p>Detect columns holding personal data in CSV, TSV and JSONL datasets with checksum-validated detectors and header hints, never printing cell values</p><span><span class="tag">Python</span></span></li>
-        <li><a href="https://github.com/Trysac/u074-data-contract"><code>u074-data-contract</code></a><p>Validate tabular datasets against a JSON data contract: schema, types, ranges, uniqueness, SQL-style row rules and a freshness SLA with an injected clock</p><span><span class="tag">Python</span></span></li>
-        <li><a href="https://github.com/Trysac/u075-synthetic-data"><code>u075-synthetic-data</code></a><p>Seeded synthetic tabular data from a declarative schema: ten column types, uniqueness, nullability, foreign keys across tables and CSV or JSONL export</p><span><span class="tag">Python</span></span></li>
-        <li><a href="https://github.com/Trysac/u076-sql-migration-lint"><code>u076-sql-migration-lint</code></a><p>Lint PostgreSQL migration files for operations that lock or rewrite tables or lose data, with line numbers, rule ids and suppressions</p><span><span class="tag">Python</span></span></li>
-        <li><a href="https://github.com/Trysac/u077-excel-normalizer"><code>u077-excel-normalizer</code></a><p>Normalize messy Excel sheets with multi-row headers and merged cells into clean tables, with zip-bomb limits and CSV injection escaping</p><span><span class="tag">Python</span></span></li>
-      </ul>
-    </details>
-    <details><summary>Developer experience, CI and documentation <span>9 utilities</span></summary>
-      <ul>
-        <li><a href="https://github.com/Trysac/u078-docs-standard-check"><code>u078-docs-standard-check</code></a><p>CI check that a repository meets a declared documentation standard: required files, headings, forbidden placeholders and relative links</p><span><span class="tag">TypeScript</span></span></li>
-        <li><a href="https://github.com/Trysac/u079-adr-cli"><code>u079-adr-cli</code></a><p>Create, list, link and supersede Architecture Decision Records in the adr-tools Markdown format, with exclusive creates and atomic updates</p><span><span class="tag">Python</span></span></li>
-        <li><a href="https://github.com/Trysac/u080-c4-from-yaml"><code>u080-c4-from-yaml</code></a><p>Generate C4 context, container and component diagrams in Mermaid syntax from one validated YAML architecture model with safe loading</p><span><span class="tag">Python</span></span></li>
-        <li><a href="https://github.com/Trysac/u081-changelog-conventional"><code>u081-changelog-conventional</code></a><p>Compute the next semantic version and write a Keep a Changelog section from Conventional Commits 1.0, with an injectable git port</p><span><span class="tag">TypeScript</span></span></li>
-        <li><a href="https://github.com/Trysac/u082-llms-txt-gen"><code>u082-llms-txt-gen</code></a><p>Generate llms.txt and llms-full.txt from a repository README and docs folder per the llms.txt proposal, with a check mode for CI drift</p><span><span class="tag">Python</span></span></li>
-        <li><a href="https://github.com/Trysac/u083-repo-health"><code>u083-repo-health</code></a><p>Score a local repository checkout on docs, tests, CI, security and maintenance with ten weighted offline checks and a grade</p><span><span class="tag">Python</span></span></li>
-        <li><a href="https://github.com/Trysac/u084-gha-lint"><code>u084-gha-lint</code></a><p>Estimate the billable minutes of GitHub Actions workflows and lint them for token permissions, unpinned actions and script injection</p><span><span class="tag">Go</span></span></li>
-        <li><a href="https://github.com/Trysac/u085-affected-tests"><code>u085-affected-tests</code></a><p>Select the Python test files affected by changed files using a static ast import graph, with conservative run-all triggers</p><span><span class="tag">Python</span></span></li>
-        <li><a href="https://github.com/Trysac/u086-mermaid-check"><code>u086-mermaid-check</code></a><p>Find Mermaid diagrams in Markdown and lint them for common structural mistakes without a browser, with an optional external renderer</p><span><span class="tag">TypeScript</span></span></li>
-      </ul>
-    </details>
-    <details><summary>Integration and automation <span>9 utilities</span></summary>
-      <ul>
-        <li><a href="https://github.com/Trysac/u087-md-knowledge-graph"><code>u087-md-knowledge-graph</code></a><p>Build an INDEX.md and a JSON graph from Markdown notes with YAML frontmatter and wiki links, reporting broken links and orphans</p><span><span class="tag">Python</span></span></li>
-        <li><a href="https://github.com/Trysac/u088-multi-notifier"><code>u088-multi-notifier</code></a><p>Send one notification to ntfy, Telegram and Standard Webhooks endpoints through a typed interface with bounded retries, secret-safe errors and fakes</p><span><span class="tag">Python</span></span></li>
-        <li><a href="https://github.com/Trysac/u089-research-brief-schema"><code>u089-research-brief-schema</code></a><p>Typed contracts and a dependency-free validator for research briefs and monitored topics, with cross-field rules and JSON Schema 2020-12 export</p><span><span class="tag">Python</span></span></li>
-        <li><a href="https://github.com/Trysac/u090-feed-aggregator"><code>u090-feed-aggregator</code></a><p>Aggregate RSS 2.0, RSS 1.0, Atom and Hacker News items into normalized entries with DTD-free XML parsing, canonical URLs and deduplication</p><span><span class="tag">Python</span></span></li>
-        <li><a href="https://github.com/Trysac/u091-polite-scraper"><code>u091-polite-scraper</code></a><p>Fetch web pages politely with RFC 9309 robots.txt, per-host pacing, conditional caching, SSRF guards, size limits and text extraction</p><span><span class="tag">Python</span></span></li>
-        <li><a href="https://github.com/Trysac/u092-cron-explain"><code>u092-cron-explain</code></a><p>Parse Vixie cron expressions, explain them in plain English and compute next run times in IANA time zones with an explicit DST policy</p><span><span class="tag">TypeScript</span></span></li>
-        <li><a href="https://github.com/Trysac/u093-expiry-engine"><code>u093-expiry-engine</code></a><p>Track expirations by date, usage count or time after first use, generate reminders from rules and export them as RFC 5545 iCalendar</p><span><span class="tag">Python</span></span></li>
-        <li><a href="https://github.com/Trysac/u094-status-workflow"><code>u094-status-workflow</code></a><p>Typed configurable state machine for business statuses with guards, immutable audit history, optimistic versioning and Mermaid export</p><span><span class="tag">TypeScript</span></span></li>
-        <li><a href="https://github.com/Trysac/u095-pdf-templates"><code>u095-pdf-templates</code></a><p>Render letters, reports and certificates from safe text templates to deterministic PDFs, with a pure layout engine and a renderer port</p><span><span class="tag">TypeScript</span></span></li>
-      </ul>
-    </details>
-    <details><summary>Audio and multimodal <span>5 utilities</span></summary>
-      <ul>
-        <li><a href="https://github.com/Trysac/u096-audio-device-router"><code>u096-audio-device-router</code></a><p>Policy layer that classifies audio devices, resolves capture and playback roles to devices with sticky choices, and reports hot-plug changes</p><span><span class="tag">Python</span></span></li>
-        <li><a href="https://github.com/Trysac/u097-vad-segmenter"><code>u097-vad-segmenter</code></a><p>Pure-Python adaptive energy-based voice activity detection that turns streamed audio samples into speech segments for live transcription</p><span><span class="tag">Python</span></span></li>
-        <li><a href="https://github.com/Trysac/u098-meeting-minutes"><code>u098-meeting-minutes</code></a><p>Turn meeting transcripts into validated minutes with summary, decisions and action items with owner and due date through an LLM port</p><span><span class="tag">Python</span></span></li>
-        <li><a href="https://github.com/Trysac/u099-alt-text"><code>u099-alt-text</code></a><p>Lint and generate image alt text following WCAG 2.2 and the WAI alt decision tree, with HTML scanning and a vision LLM port</p><span><span class="tag">Python</span></span></li>
-        <li><a href="https://github.com/Trysac/u100-invoice-extractor"><code>u100-invoice-extractor</code></a><p>Extract invoices and receipts from text into validated JSON with Decimal arithmetic checks per ISO 4217 minor units and a bounded LLM repair loop</p><span><span class="tag">Python</span></span></li>
-      </ul>
-    </details>
-    <h3 class="run-title"><span class="tag ok">Run 2 · Line B · Gemini</span> 100 utilities</h3>
-    <details><summary>LLM engineering <span>9 utilities</span></summary>
-      <ul>
-        <li><a href="https://github.com/Trysac/u101-prompt-compressor"><code>u101-prompt-compressor</code></a><p>Deterministic prompt compression that keeps instructions, code and entities byte-exact, removes filler and redundant context, and reports token savings per rule</p><span><span class="tag">Python</span></span></li>
-        <li><a href="https://github.com/Trysac/u102-llm-output-diff"><code>u102-llm-output-diff</code></a><p>Diff two LLM outputs by JSON field, number and claim: RFC 6901 paths for structured replies, aligned sentences with changed numbers for prose</p><span><span class="tag">Python</span></span></li>
-        <li><a href="https://github.com/Trysac/u103-llm-sse-parser"><code>u103-llm-sse-parser</code></a><p>Spec-compliant Server-Sent Events parser for LLM streams with byte-safe chunking, typed Anthropic, OpenAI and Gemini text deltas and Last-Event-ID reconnection</p><span><span class="tag">TypeScript</span></span></li>
-        <li><a href="https://github.com/Trysac/u104-model-catalog"><code>u104-model-catalog</code></a><p>Versioned, validated catalog of LLM models with context window, Decimal prices and capabilities, point-in-time lookups and filter queries over caller-supplied data</p><span><span class="tag">Python</span></span></li>
-        <li><a href="https://github.com/Trysac/u105-few-shot-selector"><code>u105-few-shot-selector</code></a><p>Select few-shot examples by similarity and diversity with maximal marginal relevance, a deterministic hashing embedder, token budgets and duplicate suppression</p><span><span class="tag">Python</span></span></li>
-        <li><a href="https://github.com/Trysac/u106-llm-gateway-lite"><code>u106-llm-gateway-lite</code></a><p>Minimal WSGI LLM gateway: OpenAI-compatible chat endpoint over injected providers, hashed virtual keys, per-key model lists, rate and monthly token caps, content-free audit events</p><span><span class="tag">Python</span></span></li>
-        <li><a href="https://github.com/Trysac/u107-chat-transcript-format"><code>u107-chat-transcript-format</code></a><p>Convert chat transcripts between OpenAI chat, Anthropic Messages and Gemini contents formats with text and base64 images, explicit errors for anything lossy</p><span><span class="tag">TypeScript</span></span></li>
-        <li><a href="https://github.com/Trysac/u108-output-moderation-hooks"><code>u108-output-moderation-hooks</code></a><p>Moderate LLM output with configurable regex and term rules, categories, block, redact and flag actions, optional classifiers and streaming holdback</p><span><span class="tag">Python</span></span></li>
-        <li><a href="https://github.com/Trysac/u109-llm-dev-proxy"><code>u109-llm-dev-proxy</code></a><p>Local HTTP proxy for LLM APIs that caches exact responses on disk for development: canonical JSON keys, auth headers never stored, record, replay and passthrough modes</p><span><span class="tag">Go</span></span></li>
-      </ul>
-    </details>
-    <details><summary>RAG, documents and search <span>8 utilities</span></summary>
-      <ul>
-        <li><a href="https://github.com/Trysac/u110-pdf-layout-extract"><code>u110-pdf-layout-extract</code></a><p>Reading-order text from positioned PDF words: recursive XY-cut for columns, three-column-plus aligned regions as tables, hyphen joins, input shaped like pdfplumber words</p><span><span class="tag">Python</span></span></li>
-        <li><a href="https://github.com/Trysac/u111-doc-metadata-enricher"><code>u111-doc-metadata-enricher</code></a><p>Extract title, author, date, language and email, URL and date entities from text, Markdown and HTML with explicit provenance per field and bounded input</p><span><span class="tag">Python</span></span></li>
-        <li><a href="https://github.com/Trysac/u112-vector-store-lite"><code>u112-vector-store-lite</code></a><p>Embedded vector store on stdlib sqlite3 with float32 blobs, metadata filters compiled to parameterised SQL, exact search and seeded random-hyperplane LSH</p><span><span class="tag">Python</span></span></li>
-        <li><a href="https://github.com/Trysac/u113-rag-pipeline-yaml"><code>u113-rag-pipeline-yaml</code></a><p>Declarative RAG pipelines in YAML: registered components, typed variable interpolation, static checks before any step runs, alias-free safe loading and content-free traces</p><span><span class="tag">Python</span></span></li>
-        <li><a href="https://github.com/Trysac/u114-search-ui-kit"><code>u114-search-ui-kit</code></a><p>Headless search UI kit: diacritic-insensitive highlighting, facet counts and filters, a search state reducer and escaped, accessible HTML renderers with safe links</p><span><span class="tag">TypeScript</span></span></li>
-        <li><a href="https://github.com/Trysac/u115-language-detect-lite"><code>u115-language-detect-lite</code></a><p>Dependency-free language detection with character trigram profiles and the Cavnar-Trenkle out-of-place distance, six bundled languages and trainable custom profiles</p><span><span class="tag">Python</span></span></li>
-        <li><a href="https://github.com/Trysac/u116-kg-triple-extract"><code>u116-kg-triple-extract</code></a><p>Extract grounded subject-predicate-object triples from text with an injected LLM, verbatim evidence checks, predicate allowlists and a merged, normalised knowledge graph</p><span><span class="tag">Python</span></span></li>
-        <li><a href="https://github.com/Trysac/u117-faq-from-docs"><code>u117-faq-from-docs</code></a><p>Generate FAQ entries from Markdown documentation with an injected LLM, one cited section per answer, verbatim quote checks, question deduplication and Markdown output</p><span><span class="tag">Python</span></span></li>
-      </ul>
-    </details>
-    <details><summary>Agents and MCP <span>9 utilities</span></summary>
-      <ul>
-        <li><a href="https://github.com/Trysac/u118-mcp-client-cli"><code>u118-mcp-client-cli</code></a><p>Command-line MCP client to inspect and smoke-test servers over stdio or Streamable HTTP: list tools, call them with JSON args, check schemas, with timeouts and sanitised output</p><span><span class="tag">TypeScript</span></span></li>
-        <li><a href="https://github.com/Trysac/u119-mcp-sqlite-readonly"><code>u119-mcp-sqlite-readonly</code></a><p>Read-only MCP server over a SQLite file loaded into memory with sql.js: query_only pragma, single SELECT statements, bound parameters, row, cell and size caps</p><span><span class="tag">TypeScript</span></span></li>
-        <li><a href="https://github.com/Trysac/u120-agent-loop-mini"><code>u120-agent-loop-mini</code></a><p>Minimal tool-using agent loop over a text-only LLM port: JSON actions, step, time and context budgets, loop detection, escaped tool results and content-free events</p><span><span class="tag">Python</span></span></li>
-        <li><a href="https://github.com/Trysac/u121-tool-registry"><code>u121-tool-registry</code></a><p>Versioned registry of agent tools with a bounded JSON Schema subset validator, semver resolution, permission checks before every call and MCP-shaped export</p><span><span class="tag">Python</span></span></li>
-        <li><a href="https://github.com/Trysac/u122-agent-checkpoint"><code>u122-agent-checkpoint</code></a><p>Checkpoint and resume agent runs from an append-only JSONL log: recorded steps replay without re-execution, divergence detection, torn-tail recovery and terminal states</p><span><span class="tag">Python</span></span></li>
-        <li><a href="https://github.com/Trysac/u123-multi-agent-router"><code>u123-multi-agent-router</code></a><p>Route tasks to specialist agents by rules, lexical intent scores and an optional LLM classifier, with fallback, explained decisions and bounded handoffs</p><span><span class="tag">Python</span></span></li>
-        <li><a href="https://github.com/Trysac/u124-a2a-agent-card"><code>u124-a2a-agent-card</code></a><p>Build and validate A2A protocol Agent Cards against the v1.0.0 field rules, with JSON-path issues, media type and URL checks and the well-known discovery URL</p><span><span class="tag">Python</span></span></li>
-        <li><a href="https://github.com/Trysac/u125-browser-task-recorder"><code>u125-browser-task-recorder</code></a><p>Turn recorded browser steps, including Chrome DevTools Recorder JSON exports, into reproducible Playwright Python scripts with safe literals and secrets moved to environment variables</p><span><span class="tag">Python</span></span></li>
-        <li><a href="https://github.com/Trysac/u126-agent-exec-sandbox"><code>u126-agent-exec-sandbox</code></a><p>Bounded command executor for agents in Go: allow-listed absolute executables, env allow-list, timeout, output caps and a concurrency limit, stdlib only</p><span><span class="tag">Go</span></span></li>
-      </ul>
-    </details>
-    <details><summary>AI evaluation and quality <span>7 utilities</span></summary>
-      <ul>
-        <li><a href="https://github.com/Trysac/u127-eval-dataset-splitter"><code>u127-eval-dataset-splitter</code></a><p>Split golden evaluation datasets into train, dev and test partitions by stratum with seeded hashing, group-aware and near-duplicate leakage prevention</p><span><span class="tag">Python</span></span></li>
-        <li><a href="https://github.com/Trysac/u128-pairwise-judge"><code>u128-pairwise-judge</code></a><p>Pairwise LLM-as-judge comparing two responses in both orders to cancel position bias, with strict verdict parsing and win-rate summaries</p><span><span class="tag">Python</span></span></li>
-        <li><a href="https://github.com/Trysac/u129-classification-metrics"><code>u129-classification-metrics</code></a><p>Classification metrics without numpy: confusion matrix, per-class precision, recall and F1, macro and micro F1, and seeded percentile bootstrap intervals</p><span><span class="tag">Python</span></span></li>
-        <li><a href="https://github.com/Trysac/u130-agent-trajectory-eval"><code>u130-agent-trajectory-eval</code></a><p>Evaluate recorded agent trajectories against expectations: tool sequence modes, forbidden tools, step budgets, repeated calls, argument and final-answer checks</p><span><span class="tag">Python</span></span></li>
-        <li><a href="https://github.com/Trysac/u131-eval-run-ledger"><code>u131-eval-run-ledger</code></a><p>Append-only JSONL ledger of evaluation runs: duration from an injected clock, case count, tokens and Decimal cost per run, with a summary CLI</p><span><span class="tag">Python</span></span></li>
-        <li><a href="https://github.com/Trysac/u132-eval-dashboard-static"><code>u132-eval-dashboard-static</code></a><p>Static, script-free HTML dashboard comparing the latest evaluation run of each model against a baseline, with per-metric deltas and regression flags</p><span><span class="tag">TypeScript</span></span></li>
-        <li><a href="https://github.com/Trysac/u133-counterfactual-bias-probe"><code>u133-counterfactual-bias-probe</code></a><p>Counterfactual bias probes: expand templates over paired attribute values, score each prompt through an injected scorer and report per-group gaps</p><span><span class="tag">Python</span></span></li>
-      </ul>
-    </details>
-    <details><summary>Observability <span>6 utilities</span></summary>
-      <ul>
-        <li><a href="https://github.com/Trysac/u134-log-pattern-miner"><code>u134-log-pattern-miner</code></a><p>Online log template mining with the Drain fixed-depth tree, deterministic cluster ids, JSON state and a CLI that reports patterns missing from a baseline</p><span><span class="tag">Python</span></span></li>
-        <li><a href="https://github.com/Trysac/u135-exporter-kit"><code>u135-exporter-kit</code></a><p>Write Prometheus exporters without client_golang: collect-on-scrape collectors, byte-exact text format 0.0.4, per-collector timeouts and up gauges</p><span><span class="tag">Go</span></span></li>
-        <li><a href="https://github.com/Trysac/u136-otel-span-lint"><code>u136-otel-span-lint</code></a><p>Lint OpenTelemetry spans from OTLP JSON against a bundled table of HTTP semantic conventions v1.26.0: required, deprecated and malformed attributes</p><span><span class="tag">Python</span></span></li>
-        <li><a href="https://github.com/Trysac/u137-web-vitals-reporter"><code>u137-web-vitals-reporter</code></a><p>Compute Core Web Vitals from normalized performance entries, rate them with the web.dev thresholds and send batched metrics through an injected transport</p><span><span class="tag">TypeScript</span></span></li>
-        <li><a href="https://github.com/Trysac/u138-alert-rule-lint"><code>u138-alert-rule-lint</code></a><p>Lint Prometheus alerting rule files for structure and team policy: required labels and annotations, severity values, durations, unknown keys and naming</p><span><span class="tag">Python</span></span></li>
-        <li><a href="https://github.com/Trysac/u139-cost-per-request"><code>u139-cost-per-request</code></a><p>Allocate infrastructure cost buckets to customers by requests, duration or bytes with Decimal largest-remainder rounding, then report cost per request</p><span><span class="tag">Python</span></span></li>
-      </ul>
-    </details>
-    <details><summary>Backend architecture <span>9 utilities</span></summary>
-      <ul>
-        <li><a href="https://github.com/Trysac/u140-pg-job-queue"><code>u140-pg-job-queue</code></a><p>Postgres job queue core for TypeScript: exact SKIP LOCKED SQL behind an injected client, leases, attempt fencing, exponential backoff and an in-memory twin</p><span><span class="tag">TypeScript</span></span></li>
-        <li><a href="https://github.com/Trysac/u141-event-sourcing-mini"><code>u141-event-sourcing-mini</code></a><p>Minimal event sourcing: append-only streams with optimistic concurrency, global positions, projections with checkpoints and snapshots, in memory or SQLite</p><span><span class="tag">Python</span></span></li>
-        <li><a href="https://github.com/Trysac/u142-distributed-lock"><code>u142-distributed-lock</code></a><p>Lease-based locks with monotonic fencing tokens in Go: a Store interface, an in-memory store with an injected clock, a blocking Locker and a fence checker</p><span><span class="tag">Go</span></span></li>
-        <li><a href="https://github.com/Trysac/u143-retry-policies"><code>u143-retry-policies</code></a><p>Composable retry policies for TypeScript: constant, exponential, full-jitter and decorrelated-jitter backoff, caps, deadlines, retry predicates and AbortSignal</p><span><span class="tag">TypeScript</span></span></li>
-        <li><a href="https://github.com/Trysac/u144-multi-tenant-kit"><code>u144-multi-tenant-kit</code></a><p>Row-level multi-tenancy helpers: contextvar tenant scope, exact Postgres RLS policy SQL, transaction-local tenant binding and a WSGI tenant middleware</p><span><span class="tag">Python</span></span></li>
-        <li><a href="https://github.com/Trysac/u145-inbox-dedup"><code>u145-inbox-dedup</code></a><p>Inbox pattern for idempotent message consumers: record message ids in the handler&#x27;s transaction so redelivered messages are skipped, in SQLite or memory</p><span><span class="tag">Python</span></span></li>
-        <li><a href="https://github.com/Trysac/u146-api-versioning"><code>u146-api-versioning</code></a><p>Framework-agnostic API version resolution from path or header, with RFC 9745 Deprecation, RFC 8594 Sunset and Link headers and 410 after sunset</p><span><span class="tag">TypeScript</span></span></li>
-        <li><a href="https://github.com/Trysac/u147-workflow-engine-lite"><code>u147-workflow-engine-lite</code></a><p>Durable workflow instances as validated state machines: persisted state, event transitions, timeout timers fired by tick, event dedup and optimistic concurrency</p><span><span class="tag">Python</span></span></li>
-        <li><a href="https://github.com/Trysac/u148-config-hot-reload"><code>u148-config-hot-reload</code></a><p>Hot-reload a configuration file in Go: content-hash change detection, parse and validate before swap, atomic reads, change callbacks and an injected tick source</p><span><span class="tag">Go</span></span></li>
-      </ul>
-    </details>
-    <details><summary>APIs and integrations <span>7 utilities</span></summary>
-      <ul>
-        <li><a href="https://github.com/Trysac/u149-openapi-style-lint"><code>u149-openapi-style-lint</code></a><p>Style lint for OpenAPI 3.0 and 3.1 JSON documents with ten rules, RFC 6901 pointers, safe idempotent autofixes and a CLI</p><span><span class="tag">TypeScript</span></span></li>
-        <li><a href="https://github.com/Trysac/u150-graphql-cost-limit"><code>u150-graphql-cost-limit</code></a><p>Schema-aware cost and depth limits for GraphQL queries before execution: slicing-argument multipliers, fragment cycle detection and pre-parse nesting guards</p><span><span class="tag">Python</span></span></li>
-        <li><a href="https://github.com/Trysac/u151-oauth2-pkce-client"><code>u151-oauth2-pkce-client</code></a><p>OAuth 2.0 authorization code client with PKCE S256, constant-time state check, bounded token parsing and single-refresh token renewal over an injected transport</p><span><span class="tag">Python</span></span></li>
-        <li><a href="https://github.com/Trysac/u152-slack-bot-kit"><code>u152-slack-bot-kit</code></a><p>Framework-free Slack bot kit: v0 request signature verification, slash command parsing and routing, url_verification handling and typed responses</p><span><span class="tag">TypeScript</span></span></li>
-        <li><a href="https://github.com/Trysac/u153-sheets-sync"><code>u153-sheets-sync</code></a><p>Schema-driven one-way sync of keyed records into a Google Sheets tab: pure diff plan with A1 ranges, typed cell serialisation and a port for the API</p><span><span class="tag">Python</span></span></li>
-        <li><a href="https://github.com/Trysac/u154-github-api-lite"><code>u154-github-api-lite</code></a><p>Minimal GitHub REST client over an injected transport: Link header pagination, primary and secondary rate limit handling and same-origin page links</p><span><span class="tag">Python</span></span></li>
-        <li><a href="https://github.com/Trysac/u155-webhook-relay"><code>u155-webhook-relay</code></a><p>Store-and-forward webhook relay: verify an inbound HMAC-SHA256 signature, queue in bounded memory and deliver with re-signing, exponential backoff and a dead-letter list</p><span><span class="tag">Go</span></span></li>
-      </ul>
-    </details>
-    <details><summary>Security <span>8 utilities</span></summary>
-      <ul>
-        <li><a href="https://github.com/Trysac/u156-dependency-risk-score"><code>u156-dependency-risk-score</code></a><p>Score dependency risk from offline facts: release staleness, maintainer count, deprecation, known vulnerabilities and license category, with reasons and CI exit codes</p><span><span class="tag">Python</span></span></li>
-        <li><a href="https://github.com/Trysac/u157-dockerfile-audit"><code>u157-dockerfile-audit</code></a><p>Audit Dockerfiles for security mistakes with nine rules: unpinned bases, root user, remote ADD, secrets in ENV or ARG, curl piped to shell and more, with text and JSON output</p><span><span class="tag">Go</span></span></li>
-        <li><a href="https://github.com/Trysac/u158-csp-builder"><code>u158-csp-builder</code></a><p>Build Content-Security-Policy headers from a typed policy with source validation, nonces and a strict preset, and parse CSP violation reports in both formats</p><span><span class="tag">TypeScript</span></span></li>
-        <li><a href="https://github.com/Trysac/u159-password-policy-nist"><code>u159-password-policy-nist</code></a><p>Password verifier checks after NIST SP 800-63B-4: length by code points after NFKC, blocklist and context words, and a k-anonymity breach lookup through a port</p><span><span class="tag">Python</span></span></li>
-        <li><a href="https://github.com/Trysac/u160-sast-rules-mini"><code>u160-sast-rules-mini</code></a><p>Lightweight static analysis for Python: ten AST security rules with import alias tracking, inline suppressions, text output and SARIF 2.1.0 with code point columns</p><span><span class="tag">Python</span></span></li>
-        <li><a href="https://github.com/Trysac/u161-generated-code-sandbox"><code>u161-generated-code-sandbox</code></a><p>Run LLM-generated Python snippets in a separate isolated interpreter with an AST import policy, timeout, output caps, scrubbed environment and POSIX resource limits</p><span><span class="tag">Python</span></span></li>
-        <li><a href="https://github.com/Trysac/u162-tls-check"><code>u162-tls-check</code></a><p>Inspect TLS certificate chains and handshakes: expiry, hostname, weak keys and signatures, validity length, trust and protocol version, with stable finding codes</p><span><span class="tag">Go</span></span></li>
-        <li><a href="https://github.com/Trysac/u163-audit-event-schema"><code>u163-audit-event-schema</code></a><p>A strict audit event model with canonical JSON: who did what to which target with what outcome, validated fields, UTC millisecond time and a refusal of secret attributes</p><span><span class="tag">Python</span></span></li>
-      </ul>
-    </details>
-    <details><summary>Data <span>8 utilities</span></summary>
-      <ul>
-        <li><a href="https://github.com/Trysac/u164-schema-inference"><code>u164-schema-inference</code></a><p>Infer a JSON Schema 2020-12 from JSON records or CSV rows: merged types, nullability, required keys, nested objects and arrays, date and date-time formats</p><span><span class="tag">Python</span></span></li>
-        <li><a href="https://github.com/Trysac/u165-record-dedupe"><code>u165-record-dedupe</code></a><p>Find duplicate records with weighted fuzzy field rules: Jaro-Winkler, Levenshtein, exact and numeric tolerance, blocking keys, union-find clusters and survivorship merge</p><span><span class="tag">Python</span></span></li>
-        <li><a href="https://github.com/Trysac/u166-etl-mini"><code>u166-etl-mini</code></a><p>Declarative in-process ETL: a JSON pipeline of named steps forming a DAG, four built-in transforms, typed retries with injected sleep, and per-step lineage with row fingerprints</p><span><span class="tag">Python</span></span></li>
-        <li><a href="https://github.com/Trysac/u167-parquet-tools"><code>u167-parquet-tools</code></a><p>Inspect, validate and convert Parquet files: schema, row groups and column statistics, expected-schema checks with nullability, and bounded conversion to and from CSV or JSONL</p><span><span class="tag">Python</span></span></li>
-        <li><a href="https://github.com/Trysac/u168-timeseries-resample"><code>u168-timeseries-resample</code></a><p>Resample irregular time series into fixed UTC buckets with seven aggregations and fill gaps by forward, backward, linear time-weighted or zero fill with limits</p><span><span class="tag">Python</span></span></li>
-        <li><a href="https://github.com/Trysac/u169-fx-rates-cache"><code>u169-fx-rates-cache</code></a><p>Convert amounts between currencies with Decimal using dated rates from a pluggable source, bounded LRU caching, weekend lookback and cross rates through the base</p><span><span class="tag">Python</span></span></li>
-        <li><a href="https://github.com/Trysac/u170-data-grid-lite"><code>u170-data-grid-lite</code></a><p>Headless data grid core: stable multi-column sort with nulls last, ten typed filter operators, index-preserving views and fixed-height virtual scrolling windows</p><span><span class="tag">TypeScript</span></span></li>
-        <li><a href="https://github.com/Trysac/u171-sql-format-lint"><code>u171-sql-format-lint</code></a><p>Format SQL deterministically with a quote-aware tokenizer, one clause per line and uppercase keywords, and lint queries for six common mistakes with line and column</p><span><span class="tag">Python</span></span></li>
-      </ul>
-    </details>
-    <details><summary>Developer experience, CI and documentation <span>8 utilities</span></summary>
-      <ul>
-        <li><a href="https://github.com/Trysac/u172-commit-msg-lint"><code>u172-commit-msg-lint</code></a><p>Validate commit messages against Conventional Commits 1.0.0 with ten rules, git comment and scissors handling, and conservative automatic fix suggestions for a commit-msg hook</p><span><span class="tag">Python</span></span></li>
-        <li><a href="https://github.com/Trysac/u173-monorepo-graph"><code>u173-monorepo-graph</code></a><p>Build the dependency graph of a JavaScript workspace monorepo from package.json files: topological order, cycles, dependents, affected packages and DOT output</p><span><span class="tag">TypeScript</span></span></li>
-        <li><a href="https://github.com/Trysac/u174-readme-score"><code>u174-readme-score</code></a><p>Score a README on ten documented checks: title, summary, install and usage sections, tagged code blocks, license, placeholders, relative links, length and image alt text</p><span><span class="tag">Python</span></span></li>
-        <li><a href="https://github.com/Trysac/u175-dev-env-doctor"><code>u175-dev-env-doctor</code></a><p>Diagnose a development environment from a JSON config: required tools and version ranges, environment variables and files, with an injectable command runner and CI exit codes</p><span><span class="tag">Go</span></span></li>
-        <li><a href="https://github.com/Trysac/u176-codeowners-gen"><code>u176-codeowners-gen</code></a><p>Suggest a CODEOWNERS file from git log numstat output, weighting authors by changed lines per directory, with a handle map and deterministic output</p><span><span class="tag">Python</span></span></li>
-        <li><a href="https://github.com/Trysac/u177-component-a11y-audit"><code>u177-component-a11y-audit</code></a><p>Static accessibility audit of rendered component HTML with nine axe-style rules mapped to WCAG 2.2, a bounded tolerant tokenizer and text or JSON output</p><span><span class="tag">TypeScript</span></span></li>
-        <li><a href="https://github.com/Trysac/u178-code-symbol-index"><code>u178-code-symbol-index</code></a><p>Symbol index for Python codebases built from ast: definitions with signatures, ranked fuzzy search, incremental updates by hash and a stable JSON format</p><span><span class="tag">Python</span></span></li>
-        <li><a href="https://github.com/Trysac/u179-devcontainer-gen"><code>u179-devcontainer-gen</code></a><p>Generate devcontainer.json for Python, Node and Go projects from marker files, with versions from version files, an overridable image table and golden output</p><span><span class="tag">Python</span></span></li>
-      </ul>
-    </details>
-    <details><summary>Platform and FinOps <span>6 utilities</span></summary>
-      <ul>
-        <li><a href="https://github.com/Trysac/u180-cloud-cost-analyzer"><code>u180-cloud-cost-analyzer</code></a><p>Analyze FOCUS 1.0 cloud cost CSV exports with Decimal arithmetic: grouped totals by day or month, period comparison and tag coverage</p><span><span class="tag">Python</span></span></li>
-        <li><a href="https://github.com/Trysac/u181-tf-plan-summary"><code>u181-tf-plan-summary</code></a><p>Summarize terraform show -json plans by risk: replace and delete detection, protected resource rules, attribute names without values, Markdown or JSON</p><span><span class="tag">Go</span></span></li>
-        <li><a href="https://github.com/Trysac/u182-gcp-billing-analyzer"><code>u182-gcp-billing-analyzer</code></a><p>Analyze Google Cloud billing exports in newline-delimited JSON: gross, credits and net cost by project, service, SKU, region or label with exact Decimal sums</p><span><span class="tag">Python</span></span></li>
-        <li><a href="https://github.com/Trysac/u183-status-page-static"><code>u183-status-page-static</code></a><p>Render a static, script-free HTML status page from a JSON document of components and incidents, with escaping, UTC times and an injected clock</p><span><span class="tag">TypeScript</span></span></li>
-        <li><a href="https://github.com/Trysac/u184-compose-lint"><code>u184-compose-lint</code></a><p>Lint docker-compose files with ten security and correctness rules, line numbers from the YAML node tree, bounded parsing and values never echoed</p><span><span class="tag">Python</span></span></li>
-        <li><a href="https://github.com/Trysac/u185-backup-verifier"><code>u185-backup-verifier</code></a><p>Verify backup archives against a SHA-256 manifest, test restores safely into an empty directory and check freshness with an injected clock</p><span><span class="tag">Python</span></span></li>
-      </ul>
-    </details>
-    <details><summary>Privacy and compliance <span>5 utilities</span></summary>
-      <ul>
-        <li><a href="https://github.com/Trysac/u186-consent-ledger"><code>u186-consent-ledger</code></a><p>Append-only consent records per subject and purpose with policy versions, point-in-time status, stale consent detection, idempotent events and JSON export</p><span><span class="tag">Python</span></span></li>
-        <li><a href="https://github.com/Trysac/u187-policy-text-diff"><code>u187-policy-text-diff</code></a><p>Section-aware diff of privacy policy and terms versions: headings matched across renumbering, word-level changes, review keyword flags, Markdown or JSON</p><span><span class="tag">Python</span></span></li>
-        <li><a href="https://github.com/Trysac/u188-k-anonymizer"><code>u188-k-anonymizer</code></a><p>Check k-anonymity of tabular data over quasi-identifiers and find minimal full-domain generalisation levels with bounded suppression</p><span><span class="tag">Python</span></span></li>
-        <li><a href="https://github.com/Trysac/u189-consent-banner-lite"><code>u189-consent-banner-lite</code></a><p>Tracking-free cookie consent core for the browser: opt-in by default, equal accept and reject buttons, accessible static markup and an exact cookie format</p><span><span class="tag">TypeScript</span></span></li>
-        <li><a href="https://github.com/Trysac/u190-eu-ai-act-checklist"><code>u190-eu-ai-act-checklist</code></a><p>EU AI Act checklist (2024/1689 as amended by 2026/1744): prohibited, high-risk, transparency and GPAI triggers mapped to obligations and dates</p><span><span class="tag">Python</span><span class="tag plan">in review</span></span></li>
-      </ul>
-    </details>
-    <details><summary>Testing <span>5 utilities</span></summary>
-      <ul>
-        <li><a href="https://github.com/Trysac/u191-property-strategies"><code>u191-property-strategies</code></a><p>Hypothesis strategies for common data that always satisfy their format: emails, http URLs, semver, JSON values, RFC 3339 datetimes and slugs</p><span><span class="tag">Python</span></span></li>
-        <li><a href="https://github.com/Trysac/u192-flaky-test-detector"><code>u192-flaky-test-detector</code></a><p>Detect flaky tests from JUnit XML histories: same-commit pass and fail, Surefire flakyFailure, flip rate over runs and a bounded safe XML reader</p><span><span class="tag">TypeScript</span></span></li>
-        <li><a href="https://github.com/Trysac/u193-mutation-lite"><code>u193-mutation-lite</code></a><p>Lightweight ast-based mutation testing for Python: seven operators, stable mutant ids, span-exact source edits and a pluggable test runner</p><span><span class="tag">Python</span></span></li>
-        <li><a href="https://github.com/Trysac/u194-golden-files"><code>u194-golden-files</code></a><p>Golden file assertions for Go tests: update via a flag field, normalizers for line endings and volatile text, line diffs and safe names</p><span><span class="tag">Go</span></span></li>
-        <li><a href="https://github.com/Trysac/u195-contract-mock-server"><code>u195-contract-mock-server</code></a><p>Mock HTTP server from consumer contract files: request matching with path templates, query, headers and JSON subset bodies, mismatch reports and unused checks</p><span><span class="tag">Python</span></span></li>
-      </ul>
-    </details>
-    <details><summary>Multimodal <span>5 utilities</span></summary>
-      <ul>
-        <li><a href="https://github.com/Trysac/u196-exif-stripper"><code>u196-exif-stripper</code></a><p>Strip EXIF, GPS, XMP, IPTC and comments from JPEG, PNG and WebP by rewriting container segments byte-exactly, without decoding pixels</p><span><span class="tag">Python</span></span></li>
-        <li><a href="https://github.com/Trysac/u197-ocr-pipeline"><code>u197-ocr-pipeline</code></a><p>OCR pipeline core: decode PNM and PNG to grayscale, median, Otsu and deskew preprocessing, an injected OCR engine port and line assembly</p><span><span class="tag">Python</span></span></li>
-        <li><a href="https://github.com/Trysac/u198-subtitle-tools"><code>u198-subtitle-tools</code></a><p>Parse, convert and retime SRT and WebVTT subtitles: exact millisecond timing, tag and entity handling, shift and frame-rate retiming, and readability checks</p><span><span class="tag">Python</span></span></li>
-        <li><a href="https://github.com/Trysac/u199-image-annotate-web"><code>u199-image-annotate-web</code></a><p>Browser image annotation core: boxes, polygons and points with clamping, undo and redo, hit testing, view transforms and COCO or YOLO export</p><span><span class="tag">TypeScript</span></span></li>
-        <li><a href="https://github.com/Trysac/u200-vision-structured-extract"><code>u200-vision-structured-extract</code></a><p>Extract schema-validated JSON from images through an injected vision model port: header-only image checks, a JSON Schema subset and a bounded re-ask loop</p><span><span class="tag">Python</span></span></li>
-      </ul>
-    </details>
-    <h3 class="run-title"><span class="tag">Runs 3 and 4 · Challenge and Unreal</span> 14 projects</h3>
-    <details><summary>Systems projects (challenge) <span>10 projects</span></summary>
-      <ul>
-        <li><a href="https://github.com/Trysac/u401-lsm-kv-engine"><code>u401-lsm-kv-engine</code></a><p>Pure Go embedded log-structured merge-tree key-value engine with write-ahead log, memtable, SSTables, Bloom filters, and crash recovery.</p><span><span class="tag">Go</span></span></li>
-        <li><a href="https://github.com/Trysac/u402-linearizability-checker"><code>u402-linearizability-checker</code></a><p>Deterministic linearizability checker for concurrent execution histories using Wing and Gong search with Lowe pruning, key partitioning, and minimal counterexample generation.</p><span><span class="tag">Go</span></span></li>
-        <li><a href="https://github.com/Trysac/u403-wasm-interpreter"><code>u403-wasm-interpreter</code></a><p>Zero-dependency WebAssembly MVP binary decoder, validator, and stack-based interpreter with explicit fuel metering and host imports.</p><span><span class="tag">Go</span></span></li>
-        <li><a href="https://github.com/Trysac/u404-cdcl-sat-solver"><code>u404-cdcl-sat-solver</code></a><p>Pure-Python CDCL SAT solver with two-watched-literals, 1-UIP learning, DRAT proofs, and assumptions.</p><span><span class="tag">Python</span></span></li>
-        <li><a href="https://github.com/Trysac/u405-crdt-json"><code>u405-crdt-json</code></a><p>Conflict-free replicated JSON document with maps, RGA sequences, PN-counters, state-vector sync, and binary encoding.</p><span><span class="tag">TypeScript</span></span></li>
-        <li><a href="https://github.com/Trysac/u406-linear-regex"><code>u406-linear-regex</code></a><p>Linear-time regular expression engine in TypeScript implementing a ReDoS-safe RE2 subset via Pike VM and lazy DFA.</p><span><span class="tag">TypeScript</span></span></li>
-        <li><a href="https://github.com/Trysac/u407-formula-engine"><code>u407-formula-engine</code></a><p>Zero-dependency spreadsheet formula engine in TypeScript with A1 reference parsing, incremental recalculation via dependency DAG, and cycle detection.</p><span><span class="tag">TypeScript</span></span></li>
-        <li><a href="https://github.com/Trysac/u408-datalog-engine"><code>u408-datalog-engine</code></a><p>In-memory stratified Datalog engine in pure Python with semi-naive evaluation, DRed incremental view updates, aggregates, and derivation explanations.</p><span><span class="tag">Python</span></span></li>
-        <li><a href="https://github.com/Trysac/u409-columnar-sql-engine"><code>u409-columnar-sql-engine</code></a><p>Embeddable columnar SQL query engine in Go with vectorized batch execution, a rule-based optimizer, CSV tables and three-valued NULL logic.</p><span><span class="tag">Go</span></span></li>
-        <li><a href="https://github.com/Trysac/u410-git-objects"><code>u410-git-objects</code></a><p>Pure Python zero-dependency reader and writer for Git object stores, packed refs, and packfiles v2.</p><span><span class="tag">Python</span></span></li>
-      </ul>
-    </details>
-    <details><summary>Unreal Engine agent toolsets <span>4 projects</span></summary>
-      <ul>
-        <li><a href="https://github.com/Trysac/u801-ue-asset-intake-toolset"><code>u801-ue-asset-intake-toolset</code></a><p>Unreal MCP toolset that imports, validates and normalizes 3D assets and textures with a provenance log.</p><span><span class="tag">Python</span></span></li>
-        <li><a href="https://github.com/Trysac/u802-ue-capture-toolset"><code>u802-ue-capture-toolset</code></a><p>Unreal MCP toolset for reproducible captures with JSON sidecars, bug evidence and Markdown contact sheets.</p><span><span class="tag">Python</span></span></li>
-        <li><a href="https://github.com/Trysac/u803-ue-render-profiles-toolset"><code>u803-ue-render-profiles-toolset</code></a><p>Unreal MCP toolset for versioned render profiles (CVars and scalability) with apply, diff, revert and ini export.</p><span><span class="tag">Python</span></span></li>
-        <li><a href="https://github.com/Trysac/u804-ue-perf-probe-toolset"><code>u804-ue-perf-probe-toolset</code></a><p>Unreal MCP toolset that records CSV Profiler captures, computes frame statistics against budgets and reports build size.</p><span><span class="tag">Python</span></span></li>
-      </ul>
-    </details>
-    <h3 class="run-title"><span class="tag plan">Run 5 · Line C · DeepSeek · running</span> 61 utilities</h3>
-    <details><summary>LLM engineering <span>8 utilities</span></summary>
-      <ul>
-        <li><a href="https://github.com/Trysac/u201-context-window-packer"><code>u201-context-window-packer</code></a><p>Pack messages and documents into an LLM context window by priority, keep pinned items and input order, and truncate safely at word and code fence boundaries</p><span><span class="tag">Python</span><span class="tag plan">in review</span></span></li>
-        <li><a href="https://github.com/Trysac/u202-response-format-enforcer"><code>u202-response-format-enforcer</code></a><p>Validate LLM replies as CSV with typed columns, read-only SQLite SELECT statements or a full-match regex, and re-ask with a bounded correction loop</p><span><span class="tag">Python</span><span class="tag plan">in review</span></span></li>
-        <li><a href="https://github.com/Trysac/u203-token-stream-assembler"><code>u203-token-stream-assembler</code></a><p>Assemble streamed LLM deltas from OpenAI chat chunks or Anthropic message events into one complete message with text, parsed tool call arguments and stop reason</p><span><span class="tag">TypeScript</span><span class="tag plan">in review</span></span></li>
-        <li><a href="https://github.com/Trysac/u204-rate-limit-planner"><code>u204-rate-limit-planner</code></a><p>Plan safe request concurrency and pacing for LLM providers from their RPM and TPM limits, average token use and latency</p><span><span class="tag">Python</span><span class="tag plan">in review</span></span></li>
-        <li><a href="https://github.com/Trysac/u205-prompt-ab-router"><code>u205-prompt-ab-router</code></a><p>Assign prompt variants to users with a stable salted SHA-256 hash, log first exposures with bounded memory and check the sample ratio mismatch of an experiment</p><span><span class="tag">Python</span><span class="tag plan">in review</span></span></li>
-        <li><a href="https://github.com/Trysac/u207-prompt-template-ts"><code>u207-prompt-template-ts</code></a><p>Typed prompt templates for TypeScript: variable names and types inferred from the template string at compile time, strict runtime checks and non-recursive rendering</p><span><span class="tag">TypeScript</span><span class="tag plan">in review</span></span></li>
-        <li><a href="https://github.com/Trysac/u208-unsupported-claim-flagger"><code>u208-unsupported-claim-flagger</code></a><p>Flag answer sentences whose numbers, dates, quotes or proper names do not appear in the supplied context, without needing citations or an LLM</p><span><span class="tag">Python</span><span class="tag plan">in review</span></span></li>
-        <li><a href="https://github.com/Trysac/u209-llm-session-replay"><code>u209-llm-session-replay</code></a><p>Record LLM client calls to a JSONL session file and replay them strictly in order for deterministic Go tests, with request hashes, field-level mismatch errors and integrity checks</p><span><span class="tag">Go</span><span class="tag plan">in review</span></span></li>
-      </ul>
-    </details>
-    <details><summary>RAG, documents and search <span>7 utilities</span></summary>
-      <ul>
-        <li><a href="https://github.com/Trysac/u210-html-main-content"><code>u210-html-main-content</code></a><p>Extract the main content of an HTML page as clean text blocks: drop navigation, ads, hidden and boilerplate elements, then pick the article by structure or text density</p><span><span class="tag">Python</span><span class="tag plan">in review</span></span></li>
-        <li><a href="https://github.com/Trysac/u211-doc-section-diff"><code>u211-doc-section-diff</code></a><p>Compare two versions of a Markdown document section by section with stable section ids and content hashes, and report what a RAG index must add, drop, rename or re-embed</p><span><span class="tag">Python</span><span class="tag plan">in review</span></span></li>
-        <li><a href="https://github.com/Trysac/u213-retrieval-debugger"><code>u213-retrieval-debugger</code></a><p>Explain why a document was or was not retrieved for a query: its rank against the cutoff, per-term exact, accent and stem matches, missing terms and terms cut off by chunking</p><span><span class="tag">Python</span><span class="tag plan">in review</span></span></li>
-        <li><a href="https://github.com/Trysac/u214-autocomplete-index"><code>u214-autocomplete-index</code></a><p>In-memory autocomplete index for TypeScript: trie prefix search with typo tolerance by Levenshtein distance, diacritic-insensitive matching and weighted, deterministic ranking</p><span><span class="tag">TypeScript</span><span class="tag plan">in review</span></span></li>
-        <li><a href="https://github.com/Trysac/u215-text-normalizer"><code>u215-text-normalizer</code></a><p>Normalize text for indexing with an explicit, ordered rule set: zero-width removal, control characters, Unicode NFKC, curly quotes, dashes and whitespace, idempotent</p><span><span class="tag">Python</span><span class="tag plan">in review</span></span></li>
-        <li><a href="https://github.com/Trysac/u216-entity-linker"><code>u216-entity-linker</code></a><p>Link mentions in text to a catalog of entities by name and alias: token-aligned longest match, case and accent insensitive, context-term disambiguation and exact character offsets</p><span><span class="tag">Python</span><span class="tag plan">in review</span></span></li>
-        <li><a href="https://github.com/Trysac/u217-doc-qa-cli"><code>u217-doc-qa-cli</code></a><p>Answer questions about a folder of Markdown and text files with an injected LLM, lexical retrieval, escaped excerpts and citations whose verbatim quotes are verified</p><span><span class="tag">Python</span><span class="tag plan">in review</span></span></li>
-      </ul>
-    </details>
-    <details><summary>Agents and MCP <span>6 utilities</span></summary>
-      <ul>
-        <li><a href="https://github.com/Trysac/u220-planner-executor"><code>u220-planner-executor</code></a><p>Planner-executor agent pattern over a text-only LLM port: a validated JSON plan of tool steps, step references, bounded replanning after failures and content-free events</p><span><span class="tag">Python</span><span class="tag plan">in review</span></span></li>
-        <li><a href="https://github.com/Trysac/u221-tool-permission-policy"><code>u221-tool-permission-policy</code></a><p>Declarative allow, ask and deny policies for agent tool calls: tool name globs, argument constraints on paths, hosts, values and numbers, context conditions and fail-closed deny</p><span><span class="tag">Python</span><span class="tag plan">in review</span></span></li>
-        <li><a href="https://github.com/Trysac/u222-agent-budget-guard"><code>u222-agent-budget-guard</code></a><p>Framework-neutral budget guard for agent runs: caps on steps, tokens, tool calls per tool and elapsed time with an injected clock, nested sub-budgets and terminal exceeded state</p><span><span class="tag">Python</span><span class="tag plan">in review</span></span></li>
-        <li><a href="https://github.com/Trysac/u224-agent-manifest-lint"><code>u224-agent-manifest-lint</code></a><p>Lint agent manifests for least privilege: required fields, wildcard and sensitive permissions, tool permissions not declared, unused grants and inline secrets, with JSON pointers</p><span><span class="tag">Python</span><span class="tag plan">in review</span></span></li>
-        <li><a href="https://github.com/Trysac/u225-form-fill-kit"><code>u225-form-fill-kit</code></a><p>Fill forms from agent-proposed values with typed validation, a human confirmation summary bound to a SHA-256 digest of the exact values and single-use submission</p><span><span class="tag">Python</span><span class="tag plan">in review</span></span></li>
-        <li><a href="https://github.com/Trysac/u226-agent-task-queue"><code>u226-agent-task-queue</code></a><p>In-memory priority task queue for agent workers in Go: leases with tokens, retries with capped exponential backoff, a bounded dead list and an injected clock</p><span><span class="tag">Go</span><span class="tag plan">in review</span></span></li>
-      </ul>
-    </details>
-    <details><summary>AI evaluation and quality <span>5 utilities</span></summary>
-      <ul>
-        <li><a href="https://github.com/Trysac/u227-annotation-cli"><code>u227-annotation-cli</code></a><p>Label model outputs in the terminal with single-key choices, undo, resumable append-only JSONL storage, safe display of untrusted text and Cohen&#x27;s kappa agreement</p><span><span class="tag">Python</span><span class="tag plan">in review</span></span></li>
-        <li><a href="https://github.com/Trysac/u228-rubric-builder"><code>u228-rubric-builder</code></a><p>Build versioned grading rubrics from human-scored examples: anchors per score level, a content fingerprint, semver bumps from rubric diffs and an exact judge prompt</p><span><span class="tag">Python</span><span class="tag plan">in review</span></span></li>
-        <li><a href="https://github.com/Trysac/u231-eval-output-cache"><code>u231-eval-output-cache</code></a><p>Content-addressed cache of model outputs for repeatable evaluations: canonical request keys, a bounded on-disk store and a caching LLM port</p><span><span class="tag">Python</span><span class="tag plan">in review</span></span></li>
-        <li><a href="https://github.com/Trysac/u232-model-output-diff-viewer"><code>u232-model-output-diff-viewer</code></a><p>Render outputs of several models for the same prompts as one static, script-free HTML page with word-level diffs against a baseline model and similarity scores</p><span><span class="tag">TypeScript</span><span class="tag plan">in review</span></span></li>
-        <li><a href="https://github.com/Trysac/u233-toxicity-eval"><code>u233-toxicity-eval</code></a><p>Evaluate toxicity of model outputs with interchangeable classifiers: a classifier port, a lexicon baseline, an LLM classifier, thresholds and per-group flag rates</p><span><span class="tag">Python</span><span class="tag plan">in review</span></span></li>
-      </ul>
-    </details>
-    <details><summary>Observability <span>4 utilities</span></summary>
-      <ul>
-        <li><a href="https://github.com/Trysac/u235-synthetic-probe"><code>u235-synthetic-probe</code></a><p>Synthetic HTTP probes in Go with typed failure reasons, capped body reads, an injected clock and doer, and a rolling SLO tracker with error budget remaining</p><span><span class="tag">Go</span><span class="tag plan">in review</span></span></li>
-        <li><a href="https://github.com/Trysac/u237-frontend-error-capture"><code>u237-frontend-error-capture</code></a><p>Capture frontend errors with parsed stacks, breadcrumbs, redacted messages and URLs, stable fingerprints, dedup, rate limits and batching through an injected transport</p><span><span class="tag">TypeScript</span><span class="tag plan">in review</span></span></li>
-        <li><a href="https://github.com/Trysac/u238-runbook-linker"><code>u238-runbook-linker</code></a><p>Check that every Prometheus alert links to a runbook that exists: local files, heading anchors, base-URL mapping, path containment and suggested links for missing ones</p><span><span class="tag">Python</span><span class="tag plan">in review</span></span></li>
-        <li><a href="https://github.com/Trysac/u239-latency-budget"><code>u239-latency-budget</code></a><p>Per-stage latency budgets for request pipelines: nearest-rank percentiles per window, unbudgeted time, and alerts with trigger and clear hysteresis</p><span><span class="tag">Python</span><span class="tag plan">in review</span></span></li>
-      </ul>
-    </details>
-    <details><summary>Backend architecture <span>8 utilities</span></summary>
-      <ul>
-        <li><a href="https://github.com/Trysac/u240-cron-scheduler-ts"><code>u240-cron-scheduler-ts</code></a><p>In-process cron job scheduler for TypeScript: IANA time zones with explicit DST handling, one run per occurrence across instances through a lock port, overlap and catch-up policies</p><span><span class="tag">TypeScript</span><span class="tag plan">in review</span></span></li>
-        <li><a href="https://github.com/Trysac/u241-cqrs-kit"><code>u241-cqrs-kit</code></a><p>Typed command, query and event buses for Python: exact-type handler lookup, onion middleware, events published only after a command succeeds, bounded nesting</p><span><span class="tag">Python</span><span class="tag plan">in review</span></span></li>
-        <li><a href="https://github.com/Trysac/u242-leader-election"><code>u242-leader-election</code></a><p>Lease-based leader election for Go services over Postgres or Redis: exact SQL and Lua, monotonically increasing terms, step-down before the lease expires and an in-memory store</p><span><span class="tag">Go</span><span class="tag plan">in review</span></span></li>
-        <li><a href="https://github.com/Trysac/u243-promise-timeouts"><code>u243-promise-timeouts</code></a><p>Timeouts and cancellation for promises built on AbortSignal, with injectable timers, a cancellable sleep and a manual clock for tests</p><span><span class="tag">TypeScript</span><span class="tag plan">in review</span></span></li>
-        <li><a href="https://github.com/Trysac/u244-tenant-quota"><code>u244-tenant-quota</code></a><p>Per-tenant usage quotas over UTC calendar windows: plan limits with overrides, atomic check-and-consume through a store port, reservations, soft-limit events and reset times</p><span><span class="tag">Python</span><span class="tag plan">in review</span></span></li>
-        <li><a href="https://github.com/Trysac/u245-dead-letter-replayer"><code>u245-dead-letter-replayer</code></a><p>Replay dead-lettered messages safely: filters by topic, error, time and headers, dry runs, rate limits, a replay ledger against double replays and broker-agnostic ports</p><span><span class="tag">Python</span><span class="tag plan">in review</span></span></li>
-        <li><a href="https://github.com/Trysac/u246-etag-conditional"><code>u246-etag-conditional</code></a><p>ETags and conditional requests for TypeScript APIs per RFC 9110: strong and weak comparison, If-Match, If-None-Match and date preconditions in the standard order, with 304 and 412 results</p><span><span class="tag">TypeScript</span><span class="tag plan">in review</span></span></li>
-        <li><a href="https://github.com/Trysac/u248-graceful-shutdown"><code>u248-graceful-shutdown</code></a><p>Ordered graceful shutdown for Go services: readiness flip, pre-stop delay, phased hooks with per-hook timeouts, panic capture, second-signal force and HTTP draining</p><span><span class="tag">Go</span><span class="tag plan">in review</span></span></li>
-      </ul>
-    </details>
-    <details><summary>APIs and integrations <span>5 utilities</span></summary>
-      <ul>
-        <li><a href="https://github.com/Trysac/u249-openapi-examples-gen"><code>u249-openapi-examples-gen</code></a><p>Fill missing examples in OpenAPI 3.x documents with deterministic, realistic values from schemas, formats and property names, and validate the examples already written</p><span><span class="tag">TypeScript</span><span class="tag plan">in review</span></span></li>
-        <li><a href="https://github.com/Trysac/u250-grpc-health-kit"><code>u250-grpc-health-kit</code></a><p>The gRPC health checking protocol for Python without protoc or protobuf: a status registry, Check and Watch semantics, a hand-written wire codec and a grpcio handler adapter</p><span><span class="tag">Python</span><span class="tag plan">in review</span></span></li>
-        <li><a href="https://github.com/Trysac/u251-api-key-manager"><code>u251-api-key-manager</code></a><p>Issue, verify, rotate and revoke API keys: prefixed tokens with a CRC32 checksum, peppered HMAC-SHA256 digests at rest, grace-period rotation and a pluggable key store</p><span><span class="tag">Python</span><span class="tag plan">in review</span></span></li>
-        <li><a href="https://github.com/Trysac/u254-gitlab-api-lite"><code>u254-gitlab-api-lite</code></a><p>Minimal GitLab REST v4 client over an injected transport: offset and keyset pagination, encoded project paths, RateLimit and Retry-After handling and same-origin next links</p><span><span class="tag">Python</span><span class="tag plan">in review</span></span></li>
-        <li><a href="https://github.com/Trysac/u255-traffic-mock-recorder"><code>u255-traffic-mock-recorder</code></a><p>Record outbound HTTP traffic through a Go RoundTripper with redaction and caps, infer path templates from what was seen and serve the result as a mock http.Handler</p><span><span class="tag">Go</span><span class="tag plan">in review</span></span></li>
-      </ul>
-    </details>
-    <details><summary>Security <span>5 utilities</span></summary>
-      <ul>
-        <li><a href="https://github.com/Trysac/u258-security-headers-check"><code>u258-security-headers-check</code></a><p>Check HTTP response headers against OWASP Secure Headers guidance: HSTS grammar per RFC 6797, CSP presence, framing, nosniff, referrer, cookies and version leaks, with stable rule IDs</p><span><span class="tag">TypeScript</span><span class="tag plan">in review</span></span></li>
-        <li><a href="https://github.com/Trysac/u259-totp-kit"><code>u259-totp-kit</code></a><p>HOTP and TOTP per RFC 4226 and RFC 6238 with replay-safe verification windows, otpauth provisioning URIs and hashed single-use recovery codes</p><span><span class="tag">Python</span><span class="tag plan">in review</span></span></li>
-        <li><a href="https://github.com/Trysac/u261-system-prompt-leak-detector"><code>u261-system-prompt-leak-detector</code></a><p>Detect system prompt leakage in LLM outputs: canary tokens, verbatim word n-gram overlap and base64-encoded copies, with a score, signals and an event hook that never sees the text</p><span><span class="tag">Python</span><span class="tag plan">in review</span></span></li>
-        <li><a href="https://github.com/Trysac/u262-email-dns-audit"><code>u262-email-dns-audit</code></a><p>Audit a domain&#x27;s email DNS records over an injected resolver: SPF syntax and the 10-lookup limit per RFC 7208, DMARC policy per RFC 7489 and DKIM selector keys</p><span><span class="tag">Go</span><span class="tag plan">in review</span></span></li>
-        <li><a href="https://github.com/Trysac/u263-access-review-report"><code>u263-access-review-report</code></a><p>Build periodic access review reports from system account exports and an HR roster: terminated users with access, orphaned, dormant and never-used accounts, and privileged roles</p><span><span class="tag">Python</span><span class="tag plan">in review</span></span></li>
-      </ul>
-    </details>
-    <details><summary>Data <span>6 utilities</span></summary>
-      <ul>
-        <li><a href="https://github.com/Trysac/u264-schema-drift"><code>u264-schema-drift</code></a><p>Detect schema drift between data batches: profile records into a stored JSON baseline and report added or removed columns, type changes, null rate jumps, new categories and range breaks</p><span><span class="tag">Python</span><span class="tag plan">in review</span></span></li>
-        <li><a href="https://github.com/Trysac/u267-json-flatten"><code>u267-json-flatten</code></a><p>Flatten nested JSON records into relational tables: dotted columns for objects, child tables with parent keys for arrays, deterministic column order and RFC 4180 CSV output</p><span><span class="tag">Python</span><span class="tag plan">in review</span></span></li>
-        <li><a href="https://github.com/Trysac/u268-robust-outliers"><code>u268-robust-outliers</code></a><p>Robust outlier detection with modified z-scores from the median absolute deviation, Tukey fences on inclusive quartiles and a Hampel filter for series, with explicit bounds</p><span><span class="tag">Python</span><span class="tag plan">in review</span></span></li>
-        <li><a href="https://github.com/Trysac/u269-units-dimensional"><code>u269-units-dimensional</code></a><p>Parse quantities such as 9.81 m/s^2 and convert them between units with exact dimensional analysis over SI base dimensions</p><span><span class="tag">Python</span><span class="tag plan">in review</span></span></li>
-        <li><a href="https://github.com/Trysac/u270-accessible-chart-config"><code>u270-accessible-chart-config</code></a><p>Turn chart data into an accessible, library-neutral chart config: WCAG 3:1 contrast-checked colours, dash and marker redundancy, a generated text summary and a data table fallback</p><span><span class="tag">TypeScript</span><span class="tag plan">in review</span></span></li>
-        <li><a href="https://github.com/Trysac/u271-pg-plan-explainer"><code>u271-pg-plan-explainer</code></a><p>Explain PostgreSQL EXPLAIN ANALYZE JSON plans: exclusive time per node, the slowest nodes, and findings for filter-heavy scans, misestimates, disk sorts, hash batches and costly nested loops</p><span><span class="tag">Python</span><span class="tag plan">in review</span></span></li>
-      </ul>
-    </details>
-    <details><summary>Developer experience, CI and documentation <span>4 utilities</span></summary>
-      <ul>
-        <li><a href="https://github.com/Trysac/u272-pr-size-guard"><code>u272-pr-size-guard</code></a><p>Measure pull request size from git numstat or unified diffs, ignore lock and generated files, flag warn and fail thresholds and suggest how to split the change into reviewable slices</p><span><span class="tag">Python</span><span class="tag plan">in review</span></span></li>
-        <li><a href="https://github.com/Trysac/u273-version-bumper"><code>u273-version-bumper</code></a><p>Plan and apply coordinated version bumps across a JavaScript workspace: requested bumps, dependent patch bumps, fixed groups and internal range updates that keep package.json formatting</p><span><span class="tag">TypeScript</span><span class="tag plan">in review</span></span></li>
-        <li><a href="https://github.com/Trysac/u275-dotenv-schema"><code>u275-dotenv-schema</code></a><p>Validate .env files against a JSON schema in Go: strict dotenv parsing, typed rules for int, bool, enum, url, duration and pattern, secret-safe messages and a generated .env.example</p><span><span class="tag">Go</span><span class="tag plan">in review</span></span></li>
-        <li><a href="https://github.com/Trysac/u277-design-token-sync"><code>u277-design-token-sync</code></a><p>Build CSS custom properties and a typed TypeScript module from Design Tokens (DTCG) JSON, resolving aliases, inheriting types and checking outputs stay in sync</p><span><span class="tag">TypeScript</span><span class="tag plan">in review</span></span></li>
-      </ul>
-    </details>
-    <details><summary>Platform and FinOps <span>1 utility</span></summary>
-      <ul>
-        <li><a href="https://github.com/Trysac/u283-whats-new-widget"><code>u283-whats-new-widget</code></a><p>Framework-free core of an embeddable whats-new widget: validated changelog entries, unread counts from a stored last-seen id, and escaped accessible HTML</p><span><span class="tag">TypeScript</span><span class="tag plan">in review</span></span></li>
-      </ul>
-    </details>
-    <details><summary>Privacy and compliance <span>1 utility</span></summary>
-      <ul>
-        <li><a href="https://github.com/Trysac/u288-pseudonymizer"><code>u288-pseudonymizer</code></a><p>Keyed pseudonymization with HMAC-SHA256 tokens per domain, key ids for rotation and re-identification through a bounded vault port, with a stated threat model</p><span><span class="tag">Python</span><span class="tag plan">in review</span></span></li>
-      </ul>
-    </details>
-    <details><summary>Testing <span>1 utility</span></summary>
-      <ul>
-        <li><a href="https://github.com/Trysac/u294-fake-clock"><code>u294-fake-clock</code></a><p>A Clock interface for Go with a real implementation and a manual fake whose timers, tickers and sleeps fire only when a test advances time</p><span><span class="tag">Go</span><span class="tag plan">in review</span></span></li>
-      </ul>
-    </details>
-    <h3 class="run-title"><span class="tag plan">Run 6 · Line D · Vertex AI · running</span> 11 utilities</h3>
-    <details><summary>RAG, documents and search <span>1 utility</span></summary>
-      <ul>
-        <li><a href="https://github.com/Trysac/u903-pdf-form-filler"><code>u903-pdf-form-filler</code></a><p>Fill PDF AcroForm fields with validation against each field definition, write an incremental update and optionally flatten the result</p><span><span class="tag">Python</span><span class="tag plan">in review</span></span></li>
-      </ul>
-    </details>
-    <details><summary>AI evaluation and quality <span>1 utility</span></summary>
-      <ul>
-        <li><a href="https://github.com/Trysac/u904-experiment-tracker-lite"><code>u904-experiment-tracker-lite</code></a><p>File-based experiment tracker with a subset of the MLflow fluent API, run search with MLflow filter syntax and a reproducible static comparison site</p><span><span class="tag">Python</span><span class="tag plan">in review</span></span></li>
-      </ul>
-    </details>
-    <details><summary>Observability <span>1 utility</span></summary>
-      <ul>
-        <li><a href="https://github.com/Trysac/u922-log-shipper-lite"><code>u922-log-shipper-lite</code></a><p>Tail log files, parse and batch lines, and ship them over HTTP with retries, backpressure and checkpoints so restarts lose nothing</p><span><span class="tag">Go</span><span class="tag plan">in review</span></span></li>
-      </ul>
-    </details>
-    <details><summary>APIs and integrations <span>1 utility</span></summary>
-      <ul>
-        <li><a href="https://github.com/Trysac/u916-web-push-server"><code>u916-web-push-server</code></a><p>Web Push sender written on WebCrypto: RFC 8291 aes128gcm payload encryption, RFC 8292 VAPID ES256 tokens and RFC 8030 delivery with typed push service errors</p><span><span class="tag">TypeScript</span><span class="tag plan">in review</span></span></li>
-      </ul>
-    </details>
-    <details><summary>Security <span>1 utility</span></summary>
-      <ul>
-        <li><a href="https://github.com/Trysac/u923-signed-image-proxy"><code>u923-signed-image-proxy</code></a><p>Image proxy that resizes and crops on demand from HMAC-signed URLs, with an ETag-aware bounded cache and SSRF protection on every fetch</p><span><span class="tag">Go</span><span class="tag plan">in review</span></span></li>
-      </ul>
-    </details>
-    <details><summary>Data <span>5 utilities</span></summary>
-      <ul>
-        <li><a href="https://github.com/Trysac/u906-openlineage-collector"><code>u906-openlineage-collector</code></a><p>Emit and receive OpenLineage run events, validate them against the 2-0-2 spec and query upstream and downstream lineage of datasets and jobs</p><span><span class="tag">Python</span><span class="tag plan">in review</span></span></li>
-        <li><a href="https://github.com/Trysac/u908-geo-hex-toolkit"><code>u908-geo-hex-toolkit</code></a><p>Pure Python hierarchical hexagon grid on an equal-area projection with exact integer parent and child links, great-circle distances and polygon cover</p><span><span class="tag">Python</span><span class="tag plan">in review</span></span></li>
-        <li><a href="https://github.com/Trysac/u909-rich-text-model"><code>u909-rich-text-model</code></a><p>Framework-free rich text document model with a schema, invertible steps, transactions, mapped selections and a bounded undo/redo history</p><span><span class="tag">TypeScript</span><span class="tag plan">in review</span></span></li>
-        <li><a href="https://github.com/Trysac/u910-json-schema-forms"><code>u910-json-schema-forms</code></a><p>Accessible HTML forms generated from a JSON Schema 2020-12 subset, with if/then/else visibility and a hand-written validator with JSON Pointer errors</p><span><span class="tag">TypeScript</span><span class="tag plan">in review</span></span></li>
-        <li><a href="https://github.com/Trysac/u914-virtual-tree-view"><code>u914-virtual-tree-view</code></a><p>Virtualized tree view for 100,000 nodes with the full WAI-ARIA tree keyboard pattern, aria-activedescendant focus and recycled DOM rows</p><span><span class="tag">TypeScript</span><span class="tag plan">in review</span></span></li>
-      </ul>
-    </details>
-    <details><summary>Developer experience, CI and documentation <span>1 utility</span></summary>
-      <ul>
-        <li><a href="https://github.com/Trysac/u912-icu-messageformat"><code>u912-icu-messageformat</code></a><p>Hand-written ICU MessageFormat parser and formatter with ICU apostrophe quoting, plural with offset and exact matches, selectordinal, select and Intl numbers</p><span><span class="tag">TypeScript</span><span class="tag plan">in review</span></span></li>
-      </ul>
-    </details>
-  </div>
-</section>
-
-<section id="faq" class="faq reveal">
-  <div class="wrap">
-    <p class="kicker">Questions</p>
-    <h2>Frequently asked.</h2>
-    <details><summary>Which models does it use?</summary><p>Production runs have used Anthropic Claude (line A), Google Gemini (line B), DeepSeek (line C) and Gemini on Google Vertex AI (line D); lines C and D are still running. Lines for OpenRouter and two independent self-hosted lines, one on a rented cloud GPU and one on a local laptop GPU, are built and use the same pipeline and gates.</p></details>
-    <details><summary>Does confidential code leave my control?</summary><p>Each project declares its distribution. Client and internal projects are routed only to providers that do not train on inputs and offer zero data retention; the planner refuses any other route.</p></details>
-    <details><summary>What does the human actually do?</summary><p>Approves every specification before anything is built, and reviews and merges every pull request. The factory never pushes to a main branch.</p></details>
-    <details><summary>What do the cost figures include?</summary><p>They are the measured model API cost per delivered project, including generation, corrections, audit and documentation. They are not a price quote for client work.</p></details>
-    <details><summary>How are licenses handled?</summary><p>Every dependency is checked against the project's license profile, and factory tools are never bundled into deliverables. The open-source utilities on this page are MIT-licensed.</p></details>
+    <p class="more"><a href="catalog.html">See all 286 delivered projects in the catalog →</a></p>
   </div>
 </section>
 
 <section id="contact">
   <div class="wrap">
-    <div class="final reveal">
-      <h2>Build your next system with a factory behind it.</h2>
-      <p>I design AI-driven engineering systems like this one, and the production software they produce: agents, LLM integrations, evaluation, and the guardrails that make them safe to ship. Available for consulting, product engineering and senior roles.</p>
-      <a class="btn primary" href="https://www.linkedin.com/in/jose-miguel-gomez-architect">Hire me to build yours</a>
+    <div class="final">
+      <h2>Let's talk.</h2>
+      <p>I am looking for senior engineering roles and consulting work on AI systems: agents, LLM integrations, evaluation, and the guardrails that make them safe to ship.</p>
+      <div class="cta">
+        <a class="btn primary" href="mailto:jmgomezsac@gmail.com">jmgomezsac@gmail.com</a>
+        <a class="btn" href="https://www.linkedin.com/in/jose-miguel-gomez-architect">LinkedIn</a>
+        <a class="btn" href="https://github.com/Trysac">GitHub</a>
+      </div>
     </div>
   </div>
 </section>
@@ -1020,64 +443,47 @@ footer { padding: 32px 0 48px; color: var(--muted); font-size: 13px; border-top:
 
 <footer>
   <div class="wrap">
-    <div>Designed and operated by <strong>José Miguel Gómez</strong>, Senior Software Engineer and AI Engineer · <a href="https://github.com/Trysac">GitHub</a> · <a href="https://www.linkedin.com/in/jose-miguel-gomez-architect">LinkedIn</a></div>
-    <div class="note">The factory's source code, prompts, rules and operating data are private. Figures on this page come from the factory's measured ledger for the runs of 2026-11-06 to 2026-11-08.</div>
+    <div>Designed and operated by <strong>José Miguel Gómez</strong>, Senior Software Engineer and AI Engineer · <a href="mailto:jmgomezsac@gmail.com">Email</a> · <a href="https://github.com/Trysac">GitHub</a> · <a href="https://www.linkedin.com/in/jose-miguel-gomez-architect">LinkedIn</a></div>
+    <div class="note">The factory's source code, prompts, rules and operating data are private. Every figure on this page comes from the factory's measured ledger as of 2026-11-10.</div>
   </div>
 </footer>
 
 <script>
 (() => {
   const still = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const once = (el, fn, threshold = 0.25) => {
-    if (!("IntersectionObserver" in window)) { fn(el); return; }
-    const io = new IntersectionObserver((entries) => {
-      for (const e of entries) if (e.isIntersecting) { io.unobserve(e.target); fn(e.target); }
-    }, { threshold });
-    io.observe(el);
-  };
 
-  // Reveal sections as they enter the viewport.
-  document.querySelectorAll(".reveal").forEach((el) => once(el, (t) => t.classList.add("in"), 0.12));
-
-  // Terminal replay: one line every 420 ms, then hold.
-  const lines = [...document.querySelectorAll("#replay li")];
+  // Terminal replay: the first lines ship visible; the rest follow one every 420 ms on a timer, no scrolling needed.
+  const lines = [...document.querySelectorAll("#replay li:not(.on)")];
   if (still) lines.forEach((li) => li.classList.add("on"));
-  else lines.forEach((li, i) => setTimeout(() => li.classList.add("on"), 300 + i * 420));
+  else lines.forEach((li, i) => setTimeout(() => li.classList.add("on"), 600 + i * 420));
 
-  // Count-up for the trust strip; the final value is already in the HTML.
-  const fmt = (n, d) => n.toLocaleString("en-US", { minimumFractionDigits: d, maximumFractionDigits: d });
-  document.querySelectorAll("[data-count]").forEach((el) => {
-    if (still) return;
-    const end = parseFloat(el.dataset.count), d = parseInt(el.dataset.decimals || "0", 10);
-    const pre = el.dataset.prefix || "", suf = el.dataset.suffix || "", final = el.textContent;
-    once(el, () => {
-      const t0 = performance.now(), dur = 1100;
-      const tick = (t) => {
-        const p = Math.min(1, (t - t0) / dur), v = end * (1 - Math.pow(1 - p, 3));
-        el.textContent = p < 1 ? pre + fmt(v, d) + suf : final;
-        if (p < 1) requestAnimationFrame(tick);
-      };
-      requestAnimationFrame(tick);
-    }, 0.6);
+  // Count-up for the hero figures; the final value is already in the HTML and is restored at the end.
+  const fmt = (n) => Math.round(n).toLocaleString("en-US");
+  if (!still) document.querySelectorAll("[data-count]").forEach((el) => {
+    const end = parseFloat(el.dataset.count), suf = el.dataset.suffix || "", final = el.textContent;
+    const t0 = performance.now(), dur = 1100;
+    const tick = (t) => {
+      const p = Math.min(1, (t - t0) / dur);
+      el.textContent = p < 1 ? fmt(end * (1 - Math.pow(1 - p, 3))) + suf : final;
+      if (p < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
   });
 
-  // Pipeline: light each step in turn while the section is on screen.
+  // Pipeline: light each step in turn while the section is on screen; the track starts full without JS.
   const steps = [...document.querySelectorAll("#pipe .step")], bar = document.getElementById("track");
-  if (!still && steps.length) {
+  if (!still && steps.length && "IntersectionObserver" in window) {
     let i = 0, timer = null;
     const step = () => {
       steps.forEach((s, k) => s.classList.toggle("lit", k === i));
       bar.style.width = ((i + 1) / steps.length) * 100 + "%";
       i = (i + 1) % steps.length;
     };
-    const pipe = document.getElementById("pipe");
-    if ("IntersectionObserver" in window) {
-      new IntersectionObserver(([e]) => {
-        if (e.isIntersecting && !timer) { step(); timer = setInterval(step, 1100); }
-        else if (!e.isIntersecting && timer) { clearInterval(timer); timer = null; }
-      }, { threshold: 0.3 }).observe(pipe);
-    }
-  } else if (bar) bar.style.width = "100%";
+    new IntersectionObserver(([e]) => {
+      if (e.isIntersecting && !timer) { step(); timer = setInterval(step, 1100); }
+      else if (!e.isIntersecting && timer) { clearInterval(timer); timer = null; steps.forEach((s) => s.classList.remove("lit")); bar.style.width = "100%"; }
+    }, { threshold: 0.3 }).observe(document.getElementById("pipe"));
+  }
 })();
 </script>
 </body>
