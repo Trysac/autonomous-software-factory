@@ -4,9 +4,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Catalog · Autonomous Software Factory</title>
-<meta name="description" content="A case study by José Miguel Gómez: an autonomous software factory he designed and operates, with 330 tested and audited open-source projects delivered across four model providers.">
+<meta name="description" content="A case study by José Miguel Gómez: an autonomous software factory he designed and operates, with 374 tested and audited open-source projects delivered across four model providers.">
 <meta property="og:title" content="Autonomous Software Factory · José Miguel Gómez">
-<meta property="og:description" content="330 tested and audited open-source projects, 84% of the work delivered with no human fix, measured on four model providers. A case study in AI engineering.">
+<meta property="og:description" content="374 tested and audited open-source projects, 82% of the work delivered with no human fix, measured on four model providers. A case study in AI engineering.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://trysac.github.io/autonomous-software-factory/">
 <meta property="og:image" content="https://trysac.github.io/autonomous-software-factory/og.png">
@@ -16,7 +16,7 @@
 <meta name="author" content="José Miguel Gómez">
 <meta property="article:author" content="https://www.linkedin.com/in/jose-miguel-gomez-architect">
 <meta property="article:published_time" content="2026-11-06T03:25:20-05:00">
-<meta property="article:modified_time" content="2026-11-11T17:04:03-05:00">
+<meta property="article:modified_time" content="2026-11-18T19:14:43-05:00">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://trysac.github.io/autonomous-software-factory/og.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -226,9 +226,9 @@ footer { padding: 32px 0 48px; color: var(--muted); font-size: 13px; border-top:
 <section class="catalog" style="border-top:0">
   <div class="wrap">
     <p class="kicker">Catalog</p>
-    <h1 style="font-size:clamp(30px,4vw,44px)">Every delivered project: 330.</h1>
-    <p class="sub">Every project the factory delivered, by run and domain, each linked to its public repository. Projects marked in review have an open pull request. Line C is finished; line D is paused. Figures as of 2026-11-11.</p>
-    <h3 class="run-title"><span class="tag">Run 1 · Line A · Anthropic</span> 100 utilities</h3>
+    <h1 style="font-size:clamp(30px,4vw,44px)">Every delivered project: 374.</h1>
+    <p class="sub">Every project the factory delivered, by run and domain, each linked to its public repository. Projects marked in review have an open pull request. Figures as of 2026-11-18.</p>
+    <h3 class="run-title"><span class="tag">Run 1 · Anthropic</span> 100 utilities</h3>
     <details><summary>LLM engineering <span>12 utilities</span></summary>
       <ul>
         <li><a href="https://github.com/Trysac/u001-llm-structured-output"><code>u001-llm-structured-output</code></a><p>Validated structured output from LLM replies into Pydantic models, with linear JSON extraction, string-safe repairs and a bounded re-ask loop</p><span><span class="tag">Python</span></span></li>
@@ -377,7 +377,7 @@ footer { padding: 32px 0 48px; color: var(--muted); font-size: 13px; border-top:
         <li><a href="https://github.com/Trysac/u100-invoice-extractor"><code>u100-invoice-extractor</code></a><p>Extract invoices and receipts from text into validated JSON with Decimal arithmetic checks per ISO 4217 minor units and a bounded LLM repair loop</p><span><span class="tag">Python</span></span></li>
       </ul>
     </details>
-    <h3 class="run-title"><span class="tag ok">Run 2 · Line B · Gemini</span> 100 utilities</h3>
+    <h3 class="run-title"><span class="tag ok">Run 2 · Gemini</span> 100 utilities</h3>
     <details><summary>LLM engineering <span>9 utilities</span></summary>
       <ul>
         <li><a href="https://github.com/Trysac/u101-prompt-compressor"><code>u101-prompt-compressor</code></a><p>Deterministic prompt compression that keeps instructions, code and entities byte-exact, removes filler and redundant context, and reports token savings per rule</p><span><span class="tag">Python</span></span></li>
@@ -557,7 +557,7 @@ footer { padding: 32px 0 48px; color: var(--muted); font-size: 13px; border-top:
         <li><a href="https://github.com/Trysac/u804-ue-perf-probe-toolset"><code>u804-ue-perf-probe-toolset</code></a><p>Unreal MCP toolset that records CSV Profiler captures, computes frame statistics against budgets and reports build size.</p><span><span class="tag">Python</span></span></li>
       </ul>
     </details>
-    <h3 class="run-title"><span class="tag ok">Run 5 · Line C · DeepSeek</span> 100 utilities</h3>
+    <h3 class="run-title"><span class="tag ok">Run 5 · DeepSeek</span> 100 utilities</h3>
     <details><summary>LLM engineering <span>9 utilities</span></summary>
       <ul>
         <li><a href="https://github.com/Trysac/u201-context-window-packer"><code>u201-context-window-packer</code></a><p>Pack messages and documents into an LLM context window by priority, keep pinned items and input order, and truncate safely at word and code fence boundaries</p><span><span class="tag">Python</span></span></li>
@@ -714,10 +714,11 @@ footer { padding: 32px 0 48px; color: var(--muted); font-size: 13px; border-top:
         <li><a href="https://github.com/Trysac/u300-chart-to-data"><code>u300-chart-to-data</code></a><p>Recover numbers from raster bar and line chart images by pixel analysis: linear axis calibration, series color matching, bar edges, line sampling and dominant colors</p><span><span class="tag">Python</span></span></li>
       </ul>
     </details>
-    <h3 class="run-title"><span class="tag plan">Run 6 · Line D · Vertex AI · paused</span> 16 utilities</h3>
-    <details><summary>RAG, documents and search <span>1 utility</span></summary>
+    <h3 class="run-title"><span class="tag ok">Run 6 · Vertex AI, thirteen languages</span> 60 utilities</h3>
+    <details><summary>RAG, documents and search <span>2 utilities</span></summary>
       <ul>
         <li><a href="https://github.com/Trysac/u903-pdf-form-filler"><code>u903-pdf-form-filler</code></a><p>Fill PDF AcroForm fields with validation against each field definition, write an incremental update and optionally flatten the result</p><span><span class="tag">Python</span></span></li>
+        <li><a href="https://github.com/Trysac/u933-openxml-report-writer"><code>u933-openxml-report-writer</code></a><p>Write Excel xlsx reports from typed templates with hand-written SpreadsheetML: shared strings, number formats, row formulas, totals and byte-identical output</p><span><span class="tag">C#</span></span></li>
       </ul>
     </details>
     <details><summary>AI evaluation and quality <span>2 utilities</span></summary>
@@ -726,45 +727,108 @@ footer { padding: 32px 0 48px; color: var(--muted); font-size: 13px; border-top:
         <li><a href="https://github.com/Trysac/u905-bayesian-optimizer"><code>u905-bayesian-optimizer</code></a><p>Bayesian optimisation of expensive black-box functions with a hand-written Gaussian process and expected improvement or lower confidence bound</p><span><span class="tag">Python</span></span></li>
       </ul>
     </details>
-    <details><summary>Observability <span>1 utility</span></summary>
+    <details><summary>Observability <span>3 utilities</span></summary>
       <ul>
         <li><a href="https://github.com/Trysac/u922-log-shipper-lite"><code>u922-log-shipper-lite</code></a><p>Tail log files, parse and batch lines, and ship them over HTTP with retries, backpressure and checkpoints so restarts lose nothing</p><span><span class="tag">Go</span></span></li>
+        <li><a href="https://github.com/Trysac/u939-tui-log-viewer"><code>u939-tui-log-viewer</code></a><p>Terminal log viewer core that tails, pages and filters multi-gigabyte files through bounded reads, with level highlighting and a follow mode that survives truncation</p><span><span class="tag">Rust</span></span></li>
+        <li><a href="https://github.com/Trysac/u956-liveview-realtime-dashboard"><code>u956-liveview-realtime-dashboard</code></a><p>Real-time dashboard hub that folds metric updates into rolling bucketed windows and sends each subscriber one coalesced frame per tick, with acknowledgement-based flow control</p><span><span class="tag">Elixir</span></span></li>
       </ul>
     </details>
-    <details><summary>Backend architecture <span>1 utility</span></summary>
+    <details><summary>Backend architecture <span>11 utilities</span></summary>
       <ul>
         <li><a href="https://github.com/Trysac/u913-offline-sync-queue"><code>u913-offline-sync-queue</code></a><p>Offline-first operation queue with IndexedDB storage, idempotency keys, injectable backoff, conflict resolution and a service worker Background Sync hook</p><span><span class="tag">TypeScript</span></span></li>
+        <li><a href="https://github.com/Trysac/u924-rete-rule-engine"><code>u924-rete-rule-engine</code></a><p>Forward-chaining production rule engine built on a Rete network with a small rule DSL, salience and recency conflict resolution, checked against a naive evaluator</p><span><span class="tag">Java</span></span></li>
+        <li><a href="https://github.com/Trysac/u929-distributed-cache-cluster"><code>u929-distributed-cache-cluster</code></a><p>Replicated in-memory cache cluster with consistent hashing, SWIM-style gossip membership, quorum reads and writes and rebalancing, tested under a seeded fault-injecting network simulator</p><span><span class="tag">Java</span></span></li>
+        <li><a href="https://github.com/Trysac/u931-signalr-presence-hub"><code>u931-signalr-presence-hub</code></a><p>Track user presence and room membership across server instances through a pluggable backplane, with sequence-checked deltas, snapshot resync and heartbeat expiry</p><span><span class="tag">C#</span></span></li>
+        <li><a href="https://github.com/Trysac/u932-virtual-actors-lite"><code>u932-virtual-actors-lite</code></a><p>Run Orleans-style virtual actors in process with on-demand single activation per key, turn-based mailboxes, etag-checked persistent state and durable reminders</p><span><span class="tag">C#</span></span></li>
+        <li><a href="https://github.com/Trysac/u940-pg-connection-pooler"><code>u940-pg-connection-pooler</code></a><p>PostgreSQL transaction-mode connection pooler speaking the v3 wire protocol, with md5 client auth, bounded wait queues and server reuse at idle ReadyForQuery</p><span><span class="tag">Rust</span></span></li>
+        <li><a href="https://github.com/Trysac/u943-r2dbc-coroutines-service"><code>u943-r2dbc-coroutines-service</code></a><p>Coroutine data-access layer with a bounded suspending connection pool, cancellation-safe transactions, per-call timeouts and a guard that fails blocking calls on event-loop threads</p><span><span class="tag">Kotlin</span></span></li>
+        <li><a href="https://github.com/Trysac/u950-laravel-subscriptions"><code>u950-laravel-subscriptions</code></a><p>Payment-provider-agnostic subscription billing core with plans, trials, calendar-anchored periods, exact integer proration and sequential invoices, ready for a Laravel adapter</p><span><span class="tag">PHP</span></span></li>
+        <li><a href="https://github.com/Trysac/u952-wp-event-booking"><code>u952-wp-event-booking</code></a><p>Event booking core with seat capacity, FIFO waitlists, idempotent requests and atomic conditional updates that never oversell under concurrent bookings, ready for WordPress</p><span><span class="tag">PHP</span></span></li>
+        <li><a href="https://github.com/Trysac/u953-rails-onboarding-engine"><code>u953-rails-onboarding-engine</code></a><p>Multi-step onboarding flow engine with a declarative step DSL, conditional branches, progress percentages, versioned migrations and HMAC-signed resume tokens</p><span><span class="tag">Ruby</span></span></li>
+        <li><a href="https://github.com/Trysac/u960-flutter-focus-timer"><code>u960-flutter-focus-timer</code></a><p>Local-first Pomodoro engine rebuilt from an append-only event log, with suspend-safe catch-up on an injected clock, streak statistics and a versioned JSON export</p><span><span class="tag">Dart</span></span></li>
       </ul>
     </details>
-    <details><summary>APIs and integrations <span>1 utility</span></summary>
+    <details><summary>APIs and contracts <span>1 utility</span></summary>
+      <ul>
+        <li><a href="https://github.com/Trysac/u928-fhir-validator-lite"><code>u928-fhir-validator-lite</code></a><p>FHIR R4 JSON resource validator driven by StructureDefinition snapshots that checks cardinality, datatypes, choice types and required bindings and emits OperationOutcome</p><span><span class="tag">Java</span></span></li>
+      </ul>
+    </details>
+    <details><summary>APIs and integrations <span>6 utilities</span></summary>
       <ul>
         <li><a href="https://github.com/Trysac/u916-web-push-server"><code>u916-web-push-server</code></a><p>Web Push sender written on WebCrypto: RFC 8291 aes128gcm payload encryption, RFC 8292 VAPID ES256 tokens and RFC 8030 delivery with typed push service errors</p><span><span class="tag">TypeScript</span></span></li>
+        <li><a href="https://github.com/Trysac/u917-s3-lite-object-store"><code>u917-s3-lite-object-store</code></a><p>Object store server speaking a subset of the S3 REST API with SigV4 authentication, presigned URLs, multipart uploads and ListObjectsV2</p><span><span class="tag">Go</span></span></li>
+        <li><a href="https://github.com/Trysac/u921-tus-upload-server"><code>u921-tus-upload-server</code></a><p>Resumable upload server implementing the tus 1.0.0 protocol with creation, termination, expiration and checksum extensions on disk</p><span><span class="tag">Go</span></span></li>
+        <li><a href="https://github.com/Trysac/u925-iso20022-parser"><code>u925-iso20022-parser</code></a><p>Parse and validate ISO 20022 pacs.008 and camt.053 messages with hardened XML parsing, XSD validation and typed extraction of payment and statement fields</p><span><span class="tag">Java</span></span></li>
+        <li><a href="https://github.com/Trysac/u934-grpc-json-transcoding"><code>u934-grpc-json-transcoding</code></a><p>Transcode REST JSON requests to gRPC messages by the google.api.http rules: path templates, body and query binding, additional bindings and proto3 JSON names</p><span><span class="tag">C#</span></span></li>
+        <li><a href="https://github.com/Trysac/u955-webhook-inbox"><code>u955-webhook-inbox</code></a><p>Rack webhook inbox that captures, inspects and forwards requests with byte-exact bodies and preserved headers, signed with Standard Webhooks HMAC-SHA256 signatures</p><span><span class="tag">Ruby</span></span></li>
       </ul>
     </details>
-    <details><summary>Security <span>1 utility</span></summary>
+    <details><summary>Security <span>3 utilities</span></summary>
       <ul>
+        <li><a href="https://github.com/Trysac/u918-oidc-provider-lite"><code>u918-oidc-provider-lite</code></a><p>Embeddable OpenID Connect provider for the authorization code flow with mandatory PKCE, rotating refresh tokens, JWKS key rotation and discovery</p><span><span class="tag">Go</span></span></li>
         <li><a href="https://github.com/Trysac/u923-signed-image-proxy"><code>u923-signed-image-proxy</code></a><p>Image proxy that resizes and crops on demand from HMAC-signed URLs, with an ETag-aware bounded cache and SSRF protection on every fetch</p><span><span class="tag">Go</span></span></li>
+        <li><a href="https://github.com/Trysac/u949-lua-sandbox"><code>u949-lua-sandbox</code></a><p>Embed Lua 5.5 with enforced memory, instruction, call depth and output limits, a whitelisted standard library, text-only chunks and typed host function bindings</p><span><span class="tag">C++</span></span></li>
       </ul>
     </details>
-    <details><summary>Data <span>6 utilities</span></summary>
+    <details><summary>Data <span>16 utilities</span></summary>
       <ul>
+        <li><a href="https://github.com/Trysac/u901-incremental-compute-cache"><code>u901-incremental-compute-cache</code></a><p>Memoised function graph with a persistent cache invalidated by code and input hashes, recomputing only the dependents of what changed</p><span><span class="tag">Python</span></span></li>
+        <li><a href="https://github.com/Trysac/u902-feature-store-lite"><code>u902-feature-store-lite</code></a><p>Offline and online feature store on SQLite with point-in-time correct joins that never leak future values into training data</p><span><span class="tag">Python</span></span></li>
         <li><a href="https://github.com/Trysac/u906-openlineage-collector"><code>u906-openlineage-collector</code></a><p>Emit and receive OpenLineage run events, validate them against the 2-0-2 spec and query upstream and downstream lineage of datasets and jobs</p><span><span class="tag">Python</span></span></li>
         <li><a href="https://github.com/Trysac/u907-stream-processor-lite"><code>u907-stream-processor-lite</code></a><p>Event-time stream windows (tumbling, sliding, session) with watermarks, late-data side output and exactly-once file output across restarts</p><span><span class="tag">Python</span></span></li>
         <li><a href="https://github.com/Trysac/u908-geo-hex-toolkit"><code>u908-geo-hex-toolkit</code></a><p>Pure Python hierarchical hexagon grid on an equal-area projection with exact integer parent and child links, great-circle distances and polygon cover</p><span><span class="tag">Python</span></span></li>
         <li><a href="https://github.com/Trysac/u909-rich-text-model"><code>u909-rich-text-model</code></a><p>Framework-free rich text document model with a schema, invertible steps, transactions, mapped selections and a bounded undo/redo history</p><span><span class="tag">TypeScript</span></span></li>
         <li><a href="https://github.com/Trysac/u910-json-schema-forms"><code>u910-json-schema-forms</code></a><p>Accessible HTML forms generated from a JSON Schema 2020-12 subset, with if/then/else visibility and a hand-written validator with JSON Pointer errors</p><span><span class="tag">TypeScript</span></span></li>
         <li><a href="https://github.com/Trysac/u914-virtual-tree-view"><code>u914-virtual-tree-view</code></a><p>Virtualized tree view for 100,000 nodes with the full WAI-ARIA tree keyboard pattern, aria-activedescendant focus and recycled DOM rows</p><span><span class="tag">TypeScript</span></span></li>
+        <li><a href="https://github.com/Trysac/u926-jdbc-shard-router"><code>u926-jdbc-shard-router</code></a><p>JDBC shard router that routes statements by shard key with jump consistent hashing and merges scatter-gather results for ORDER BY, LIMIT, GROUP BY and aggregates</p><span><span class="tag">Java</span></span></li>
+        <li><a href="https://github.com/Trysac/u930-blazor-dashboard-kit"><code>u930-blazor-dashboard-kit</code></a><p>Render dashboard bar and line charts as accessible SVG with WCAG 2.2 contrast checks, nice axis ticks, data table fallbacks and typed filters, ready for Blazor markup</p><span><span class="tag">C#</span></span></li>
+        <li><a href="https://github.com/Trysac/u936-mvcc-btree-store"><code>u936-mvcc-btree-store</code></a><p>Embedded key-value store on a B+tree with MVCC snapshot isolation, first-committer-wins conflict detection and a CRC-checked write-ahead log that survives torn writes</p><span><span class="tag">Rust</span></span></li>
+        <li><a href="https://github.com/Trysac/u941-compression-bench"><code>u941-compression-bench</code></a><p>Benchmark CLI that compares zstd, lz4, brotli and gzip on your data for ratio, throughput and peak memory, with seeded corpora pinned by SHA-256 for reproducible reports</p><span><span class="tag">Rust</span></span></li>
+        <li><a href="https://github.com/Trysac/u942-android-offline-notes"><code>u942-android-offline-notes</code></a><p>Offline-first notes core for Kotlin with an outbox of idempotent operations, per-field last-writer-wins merge and duplicate-free sync against any backend port</p><span><span class="tag">Kotlin</span></span></li>
+        <li><a href="https://github.com/Trysac/u957-broadway-ingest-pipeline"><code>u957-broadway-ingest-pipeline</code></a><p>Broadway ingestion pipeline over a lease-based queue with idempotent Postgres-style batch upserts, exponential retry backoff and a dead-letter store that loses nothing on crashes</p><span><span class="tag">Elixir</span></span></li>
+        <li><a href="https://github.com/Trysac/u958-spark-data-quality"><code>u958-spark-data-quality</code></a><p>Deequ-style data quality checks with mergeable per-partition analyzer states, metric-history anomaly detection and JSON or Markdown verification reports</p><span><span class="tag">Scala</span></span></li>
+        <li><a href="https://github.com/Trysac/u959-pekko-streams-ingest"><code>u959-pekko-streams-ingest</code></a><p>Line-oriented file ingestion on Pekko Streams with backpressure from a slow sink, byte-bounded batches, a dead-letter channel and resumable offset checkpoints</p><span><span class="tag">Scala</span></span></li>
       </ul>
     </details>
-    <details><summary>Developer experience, CI and documentation <span>2 utilities</span></summary>
+    <details><summary>Developer experience, CI and documentation <span>7 utilities</span></summary>
       <ul>
+        <li><a href="https://github.com/Trysac/u911-dag-layout-engine"><code>u911-dag-layout-engine</code></a><p>Sugiyama layered graph layout written by hand: cycle removal, longest-path layers, barycenter crossing reduction, overlap-free coordinates and SVG output</p><span><span class="tag">TypeScript</span></span></li>
         <li><a href="https://github.com/Trysac/u912-icu-messageformat"><code>u912-icu-messageformat</code></a><p>Hand-written ICU MessageFormat parser and formatter with ICU apostrophe quoting, plural with offset and exact matches, selectordinal, select and Intl numbers</p><span><span class="tag">TypeScript</span></span></li>
         <li><a href="https://github.com/Trysac/u919-mini-ci-runner"><code>u919-mini-ci-runner</code></a><p>Run CI pipelines from a YAML file in containers with job dependencies, matrix expansion, content-keyed caches, artifacts and live logs</p><span><span class="tag">Go</span></span></li>
+        <li><a href="https://github.com/Trysac/u920-smtp-mail-catcher"><code>u920-smtp-mail-catcher</code></a><p>Development SMTP server that captures every message, parses MIME parts and attachments and shows them in a safe local web interface</p><span><span class="tag">Go</span></span></li>
+        <li><a href="https://github.com/Trysac/u937-fast-static-site"><code>u937-fast-static-site</code></a><p>Incremental static site generator with a hand-written CommonMark subset, strict templates and a dependency graph that rebuilds only the pages a change touches</p><span><span class="tag">Rust</span></span></li>
+        <li><a href="https://github.com/Trysac/u945-compose-desktop-kanban"><code>u945-compose-desktop-kanban</code></a><p>Kanban board core with keyboard-only drag and drop and screen reader announcements, WIP limits, undo and redo, and crash-safe persistence in a versioned line format</p><span><span class="tag">Kotlin</span></span></li>
+        <li><a href="https://github.com/Trysac/u951-gutenberg-block-library"><code>u951-gutenberg-block-library</code></a><p>Accessible server-rendered Gutenberg blocks with a WordPress block-grammar parser and serializer, attribute validation and markup that passes axe-core with zero violations</p><span><span class="tag">PHP</span></span></li>
       </ul>
     </details>
-    <details><summary>Multimodal <span>1 utility</span></summary>
+    <details><summary>Integration and automation <span>1 utility</span></summary>
+      <ul>
+        <li><a href="https://github.com/Trysac/u927-bpmn-executor-lite"><code>u927-bpmn-executor-lite</code></a><p>Token-based executor for a strict BPMN 2.0 subset with tasks, exclusive and parallel gateways and timer events, an injected clock and a replayable audit log</p><span><span class="tag">Java</span></span></li>
+      </ul>
+    </details>
+    <details><summary>Audio and multimodal <span>1 utility</span></summary>
+      <ul>
+        <li><a href="https://github.com/Trysac/u948-midi-sequencer"><code>u948-midi-sequencer</code></a><p>Read and write Standard MIDI Files byte for byte, preserving running status and unknown chunks, and merge tracks into a tempo-mapped event timeline in microseconds</p><span><span class="tag">C++</span></span></li>
+      </ul>
+    </details>
+    <details><summary>Testing <span>2 utilities</span></summary>
+      <ul>
+        <li><a href="https://github.com/Trysac/u944-android-a11y-checks"><code>u944-android-a11y-checks</code></a><p>Accessibility rule engine for Android view and Compose semantics snapshots that reports touch target, contrast and labelling problems with WCAG 2.2 success criterion references</p><span><span class="tag">Kotlin</span></span></li>
+        <li><a href="https://github.com/Trysac/u954-infra-spec-checks"><code>u954-infra-spec-checks</code></a><p>Declarative checks for servers and containers that verify listening ports, installed packages, running services and file modes from proc files, without a shell on the input</p><span><span class="tag">Ruby</span></span></li>
+      </ul>
+    </details>
+    <details><summary>Multimodal <span>2 utilities</span></summary>
       <ul>
         <li><a href="https://github.com/Trysac/u915-whiteboard-engine"><code>u915-whiteboard-engine</code></a><p>Whiteboard engine core: shapes in a last-writer-wins replicated scene, camera zoom and pan, grid-indexed hit testing, selection, undo and exact SVG export</p><span><span class="tag">TypeScript</span></span></li>
+        <li><a href="https://github.com/Trysac/u938-wasm-image-filters"><code>u938-wasm-image-filters</code></a><p>Integer-only RGBA image filters that give bit-identical results natively and in WebAssembly, with Gaussian blur, Sobel edges, sepia, contrast and a filter pipeline</p><span><span class="tag">Rust</span></span></li>
+      </ul>
+    </details>
+    <details><summary>Games and graphics <span>3 utilities</span></summary>
+      <ul>
+        <li><a href="https://github.com/Trysac/u935-unity-dialogue-system"><code>u935-unity-dialogue-system</code></a><p>Run branching game dialogues from JSON graphs with typed variables, a bounded condition language, assignment nodes and localized lines with locale fallback</p><span><span class="tag">C#</span></span></li>
+        <li><a href="https://github.com/Trysac/u946-software-rasterizer"><code>u946-software-rasterizer</code></a><p>Rasterize triangles on the CPU with a top-left fill rule, z-buffer, perspective-correct texturing, Lambert lighting, OBJ loading and tolerance-based image comparison</p><span><span class="tag">C++</span></span></li>
+        <li><a href="https://github.com/Trysac/u947-physics-2d"><code>u947-physics-2d</code></a><p>Simulate 2D rigid bodies deterministically with SAT collision for convex polygons and circles, sequential impulses with restitution and friction, distance joints and sleeping</p><span><span class="tag">C++</span></span></li>
       </ul>
     </details>
   </div>
